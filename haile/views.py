@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Contract
+from .models import Contract, Delier
 from decimal import Decimal, InvalidOperation
 from django.http import HttpResponse
 
@@ -25,6 +25,24 @@ def contract_print(request, contract_id):
 
 def home(request):
     return render(request, 'home.html')
+
+def delier_form(request):
+    if request.method == 'POST':
+        data = request.POST.dict()
+        data.pop('csrfmiddlewaretoken', None)
+        delier = Delier(**data)
+        delier.save()
+        return redirect('delier_preview', delier_id=delier.id)
+    return render(request, 'delier_form.html')
+
+def delier_preview(request, delier_id):
+    delier = get_object_or_404(Delier,  pk=delier_id)
+    return render(request, 'delier_preview.html', {'delier': delier})
+
+def delier_print(request, delier_id):
+    delier = get_object_or_404(Contract, pk=delier_id)
+    return render(request, 'delier_print.html', {'delier': delier})
+
 
 def your_view(request):
     if request.method == 'POST':

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contract Preview</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        @media print {
+            .noprint {
+              display: none;
+            }
+          }
+          
+          body {
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.5;
+            margin-top: 210px;
+          }
+          
+          .form-container {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+          }
+          
+          .section-container {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+          }
+          
+          pre {
+            font-size: 16px;
+            font-family: Arial, sans-serif;
+            line-height: 1.5;
+            margin: 0; /* Added to remove margin around paragraphs */
+          }
+          
+          h2, h3, h4 {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            text-decoration: underline;
+          }
+          
+          .timer {
+            text-align: right;
+            margin-top: 40px;
+            margin-right: 60;
+          }
+          
+          @page {
+            size: A4; /* Adjust the size to your required page size */
+            orphans: 0;
+            widows: 0;
+            margin-top: 20mm; /* Adjust top margin as needed */
+            margin-bottom: 20mm;
+          }
+          
+          .page {
+            page-break-after: always;
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+          }
+          
+          .page:first-child {
+            padding-top: 0;
+          }
+          
+          .page:last-child {
+            padding-bottom: 0;
+          }
+          
+          .content {
+            display: flex; /* Added to distribute paragraphs horizontally */
+            flex-wrap: wrap; /* Added to wrap paragraphs to new lines */
+            display: flex;
+            margin-top: 20px;    /* Add margin to the top */
+            margin-bottom: 20px;
+          }
+          
+          .content > div {
+            flex-basis: 100%; /* Added to make each div take full width */
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 20px;    /* Add margin to the top */
+            margin-bottom: 20px;
+          }
+          
+          .line-break {
+            margin-bottom: 0.2em; /* Adjust the value to control the spacing */
+          }
+          
+          .text-right {
+            text-align: right;
+            padding-left: 0;
+            margin-bottom: 0;
+          }
+          
+          .page:nth-child(even) {
+            background-color: #f7f7f7;
+          }
+    </style>
+</head>
+<body>
+    <div class="container">
+        {% comment %} <div class="form-container"> {% endcomment %}
+            <form method="POST" action="{% url 'delier_form' %}">
+                {% csrf_token %}
+            </form>
+            <div class="timer-container">
+                <p class="timer mr-5"><strong>ቀን</strong> {{ delier.ken }}</p>
+            </div>
+            <br>
+            <div class="page">
+                <div class="content" style="display: flex; flex-wrap: wrap;">
+                    <div style="margin-left: 60px; margin-right: 60px;">
+                        <div style="font-size: 19px; font-family: Arial, sans-serif; line-height: 2.0; text-align: justify;">
+                            <p class="hidden">
+                                                    <h3>በግንባታ ላይ በሚገኝ ማደያ የዲለርሽፕ ውል</h3>
+                                
+                                                                <h3>ክፍል ፩</h3>
+                                                                <h3>አጠቃላይ</h3>
+                                <h3>1. ተዋዋይ ወገኖች</h3>
+                                በዚህ ውል ፡-
+                                1.1 "ኩባንያ" እየተባለ የሚጠራው ታፍ ኦይል ኃላፊነቱ የተወሰነ የግል ማህበር አድራሻ አዲስ አበባ ፣ ቂርቆስ
+                                ክፍለ ከተማ ፣ ወረዳ 02 ፣ የቤ. ቁ አዲስ ፣ ስ.ቁ 0115580686/87 ፣ fax 0115580689 ፣ መንገድ 370 ፣
+                                ፖ.ሣ.ቁ. 43625 አዲስ አበባ ኢትዮጵያ ኢሜል info@tafoilplc.com.et በአንድ በኩል በመሆን ፤</p>
+                                                                <h3>እና</h3>
+                            <p>1.2 "ዲለር" እየተባሉ የሚጠሩት
+                                አቶ/ወሮ {{ delier.sim }} እና {{ delier.sim1}} የሚጠሩት {{ delier.yemiterut}}
+                                አድራሻ {{ delier.radrasha }} ክልል {{ delier.kilil }} ዞን {{ delier.zone }} ወረዳ (በውክልና ከሆነ)
+                                የተወካዪን ስም {{ delier.rsim }} ፣ አድራሻ {{ delier.radrasha }} ፣ የውክልና ቁጥር {{ delier.rnumber }} ፣ ውክልናው የተሰጠበት ቀን {{ delier. rissued_date }}
+                                ይሞላ
+                                በተሰጣቸው ውክልና በሌላ በኩል በመሆን
+                                ይህን ውል ከዛሬ {{ delier. wil_ken }} ዓም ጀምሮ በመካከላችን አስገዳጅ መብትና ግዴታዎቸን
+                                እንዲፈጥርና በህግ ፊትም የጸና እንዲሆን ያለምንም አስገዳጅነትና ተፅዕኖ በፈቃዳችን ተዋውለናል፡፡</p>
+                    </div>
+                </div>
+            </div>
+          
+
+            <div class="page">
+                <div class="content" style="display: flex; flex-wrap: wrap;">
+                    <div style="margin-left: 60px; margin-right: 60px;">
+                        <div style="font-size: 19px; font-family: Arial, sans-serif; line-height: 2.0; text-align: justify;">
+                                                                <h3>Article 20</h3>
+                                                                <h3>Notice</h3>
+
+                            Any notice to be given under this agreement shall be in writing and shall be
+                            deemed to have been delivered if sent by registered post to the Supplier's
+                            address at P.O. Box 43625, Addis Ababa, Ethiopia, and to the address of the buyer
+                            P.O. Box {{ contract.pobox }} the 5th day unless and until either party is notified in writing
+                            of a different address to be used thereafter.<br>
+                            Witness whereof, the parties hereto have this day and year written above set their
+                            respective hands to sign and seal the agreement.<br>
+
+                            <div class="d-flex justify-content-between">
+                                <div class="text-left">
+                                    <p class="text-left"><strong>For and on behalf of the Supplier</strong></p>
+                                    <p class="text-left line-break">Name: Mr. {{ contract.supplierrepre_name }}</p>
+                                    <p class="text-left line-break">Position: {{ contract.supplierrepre_position }}</p>
+                                    <p class="text-left line-break">Signature: -----------------</p>
+                                    <p class="text-left line-break">Date: {{ contract.buyerrepre_signe_date }}</p>
+                                </div>
+                                <div class="text-right">
+                                    <p><strong>For and on behalf of the Buyer</strong></p>
+                                    <p class="text-left line-break">Name: {{ contract.buyerrepre_name }}</p>
+                                    <p class="text-left line-break">Position: {{ contract.buyerrepre_position }}</p>
+                                    <p class="text-left line-break">Signature: -----------------</p>
+                                    <p class="text-left line-break">Date: {{ contract.buyerrepre_signe_date }}</p>
+                                </div>
+                               
+                            </div><br>
+
+                            <div class="text-center">
+                                <p><strong>Witness</strong></p>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <div class="text-left">
+                                  <p><strong>Name</strong></p>
+                                  <p>1. {{ contract.wname }}</p>
+                                  <p>2. {{ contract.wname1 }}</p>
+                                </div>
+                                <div class="text-center">
+                                  <p><strong>Address</strong></p>
+                                  <p>{{ contract.waddress }} </p>
+                                  <p>{{ contract.waddress1 }} </p>
+                                </div>
+                                <div class="text-right">
+                                  <p><strong>Signature</strong></p>
+                                  <p>---------------</p>
+                                  <p>--------------</p>
+                                </div>
+                            </div>
+                              
+                                                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <br>
+        <a href="{% url 'delier_print' delier.id %}" target="_blank" class="btn btn-primary">Print Delier</a>
+    </div>
+    <button href="/form" class="btn btn-primary">Edit</button>
+</body>
+</html>
