@@ -53,7 +53,7 @@ class Delier(models.Model):
     woreda = models.CharField(max_length=100, default='')
     rsim = models.CharField(max_length=100, default='')
     rnumber = models.CharField(max_length=100, default='')
-    rissued_date = models.CharField(max_length=100, default='')
+    rissued_date = models.DateField()
     radrasha = models.CharField(max_length=100, default='')
     wil_ken = models.DateField()
 
