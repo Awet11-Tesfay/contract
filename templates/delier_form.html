@@ -87,253 +87,227 @@
         .page {
             display: none;
         }
+
+        .flex-container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .flex-item {
+            flex-basis: 50%;
+        }
     </style>  
 </head>
 <body>
     <div class="container">
         <div class="form-container">
-            <form method="POST" action="{% url 'contract_form' %}">
+            <form method="POST" action="{% url 'delier_form' %}">
                 {% csrf_token %}
                 <h1 class="text-center">በግንባታ ላይ በሚገኝ ማደያ የዲለርሽፕ ውል</h1>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="section-container">
                             <h3 class="text-center">ዲለር ፎርም</h3>
 
-                            <div class="form-group">
-                                <label for="sim">የ ዲለሩ መጀመርያ ስም</label>
-                                <input type="text" class="form-control" name="sim"  required>
-                            </div> 
+                            <!-- Wrap the input fields in a flex container -->
+                            <div class="flex-container">
+                                <div class="flex-item">
+                                    <div class="form-group">
+                                        <label for="sim">የ ዲለሩ መጀመርያ ስም</label>
+                                        <input type="text" class="form-control" name="sim" required>
+                                    </div> 
+                                </div>
+                                <div class="flex-item">
+                                    <div class="form-group">
+                                        <label for="sim1">የ ዲለሩ ሁለተኛ ስም</label>
+                                        <input type="text" class="form-control" name="sim1" required>
+                                    </div>
+                                </div>
+                                <div class="flex-item">
+                                    <div class="form-group">
+                                        <label for="yemiterut">የሚጠሩበት ስም</label>
+                                        <input type="text" class="form-control" name="yemiterut" required>
+                                    </div>
+                                </div>
+                                <div class="flex-item">
+                                    <div class="form-group">
+                                        <label for="adrasha">አድራሻ</label>
+                                        <input type="text" class="form-control" name="adrasha" required>
+                                    </div>
+                                </div>
+                                <div class="flex-item">
+                                    <div class="form-group">
+                                        <label for="kilil">ክልል</label>
+                                        <input type="text" class="form-control" name="kilil" required>
+                                    </div>
+                                </div>
 
-                            <div class="form-group">
-                                <label for="sim1">የ ዲለሩ ሁለተኛ ስም</label>
-                                <input type="text" class="form-control" name="sim1" required>
-                            </div>
+                                <div class="flex-item">
+                                    <div class="form-group">
+                                        <label for="zone">ዞን</label>
+                                        <input type="text" class="form-control" name="zone" required>
+                                    </div>
+                                </div>
+                                <div class="flex-item">
+                                    <div class="form-group">
+                                        <label for="woreda">ወረዳ</label>
+                                        <input type="text" class="form-control" name="woreda" required>
+                                    </div>
+                                </div>
+                                <div class="flex-item">
+                                    <div class="form-group">
+                                        <label for="rsim">የተወካይ ስም</label>
+                                        <input type="text" class="form-control" name="rsim" required>
+                                    </div>
+                                </div>
 
-                            <div class="form-group">
-                                <label for="yemiterut">የሚጠሩበት ስም</label>
-                                <input type="text" class="form-control" name="yemiterut" required>
-                            </div>
+                                <div class="flex-item">
+                                    <div class="form-group">
+                                        <label for="radrash">የተወካይ አድራሻ</label>
+                                        <input type="text" class="form-control" name="radrasha" required>
+                                    </div>
+                                </div>
 
+                                <div class="flex-item">
+                                    <div class="form-group">
+                                        <label for="rnumber">የውክልና ቁትር</label>
+                                        <input type="number" class="form-control" name="rnumber" required>
+                                    </div>
+                                </div>
 
-                            <div class="form-group">
-                                <label for="adrasha">አድራሻ</label>
-                                <input type="text" class="form-control" name="adrasha" required>
-                            </div>
+                                <div class="flex-item">
+                                    <div class="form-group">
+                                        <label for="rissued_date">ውክልናው የተሰጠበት ቀን</label>
+                                        <input type="date" class="form-control" name="rissued_date" required>
+                                    </div>
+                                </div>
 
-                            <div class="form-group">
-                                <label for="kilil">ክልል</label>
-                                <input type="text" class="form-control" name="kilil" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="zone">ዞን</label>
-                                <input type="text" class="form-control" name="zone" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="woreda">ወረዳ</label>
-                                <input type="text" class="form-control" name="woreda" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="rsim">የተወካይ ስም</label>
-                                <input type="text" class="form-control" name="rsim" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="radrash">የተወካይ አድራሻ</label>
-                                <input type="text" class="form-control" name="radrasha" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="rnumber">የውክልና ቁትር</label>
-                                <input type="number" class="form-control" name="rnumber" required>
+                                <div class="flex-item">
+                                    <div class="form-group">
+                                        <label for="wil_ken">ውሉ የተፈረመበት ቀን</label>
+                                        <input type="date" class="form-control" name="wil_ken" required>
+                                    </div>
+                                </div>
+                                
+                                <!-- Continue adding more input fields here -->
                             </div>
 
                             
-                             <div class="form-group">
-                                <label for="rissued_date">ውክልናው የተሰጠበት ቀን</label>
-                                <input type="date" class="form-control" name="rissued_date" required>
-                            </div>
 
-                            <div class="form-group">
-                                <label for="wil_ken">ውሉ የተፈረመበት ቀን</label>
-                                <input type="date" class="form-control" name="wil_ken" required>
-                            </div>
-                            <!-- Add more fields for section 1 -->
+                            
+                            <!-- Section 1 Fields Here -->
                         </div>
                     </div>
-                    <div class="col-md-6">
+
+                    <div class="col-md-4">
                         <div class="section-container">
                             <h3 class="text-center">ማደያው የሚገኝበት አድራሻ ፣ ባለቤትነትና ዋስትና</h3>
 
                             <div class="form-group">
-                                <label for="sim">አድራሻ ክልል</label>
-                                <input type="text" class="form-control" name="sim"  required>
+                                <label for="madya_kilil">አድራሻ ክልል</label>
+                                <input type="text" class="form-control" name="madya_kilil" required>
                             </div> 
 
                             <div class="form-group">
-                                <label for="sim1">አድራሻ ከተማ</label>
-                                <input type="text" class="form-control" name="sim1" required>
+                                <label for="madya_ketema">አድራሻ ከተማ</label>
+                                <input type="text" class="form-control" name="madya_ketema" required>
                             </div>
 
                             <div class="form-group">
-                                <label for="yemiterut">አጠቃላይ የቦታው ስፋቱ</label>
-                                <input type="text" class="form-control" name="yemiterut" required>
-                            </div>
-
-
-                            <div class="form-group">
-                                <label for="adrasha">የካርታ ቁጥሩ</label>
-                                <input type="text" class="form-control" name="adrasha" required>
+                                <label for="madya_area">አጠቃላይ የቦታው ስፋቱ</label>
+                                <input type="text" class="form-control" name="madya_area" required>
                             </div>
 
                             <div class="form-group">
-                                <label for="kilil">ከማን እንደተሰጠ</label>
-                                <input type="text" class="form-control" name="kilil" required>
+                                <label for="map_kutr">የካርታ ቁጥሩ</label>
+                                <input type="text" class="form-control" name="map_kutr" required>
                             </div>
 
                             <div class="form-group">
-                                <label for="zone">ተመዝግቦ የሚገኝበት ስም</label>
-                                <input type="text" class="form-control" name="zone" required>
+                                <label for="map_date">ከማን እንደተሰጠ</label>
+                                <input type="text" class="form-control" name="map_date" required>
                             </div>
-                            <!-- Add more fields for section 2 -->
+
+                            <div class="form-group">
+                                <label for="ke_yetesete">ተመዝግቦ የሚገኝበት ስም</label>
+                                <input type="text" class="form-control" name="ke_yetesete" required>
+                            </div>
+                            <!-- Section 2 Fields Here -->
                         </div>
                     </div>
-                </div>
 
-                <div class="col-md-6">
-                    <div class="section-container">
-                        <h3 class="text-center">Buyer Representative Form</h3>
-                        <div class="form-group">
-                            <label for="buyerrepre_name">Name</label>
-                            <input type="text" class="form-control" name="buyerrepre_name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="buyerrepre_position">Position</label>
-                            <input type="text" class="form-control" name="buyerrepre_position" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="buyerrepre_signe_date">Signed Date</label>
-                            <input type="date" class="form-control" name="buyerrepre_signe_date" required>
-                        </div>
-                        <!-- Add more fields for buyer representative form -->
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="section-container">
-                            <h3 class="text-center">Witness Form</h3>
-                            <div class="form-group">
-                                <label for="companyname">Witness1 Name:</label>
-                                <input type="text" class="form-control" name="wname" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="companyname">Witness1 Address:</label>
-                                <input type="text" class="form-control" name="waddress" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="companyname">Witness2 Name:</label>
-                                <input type="text" class="form-control" name="wname1" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="waddress1">Witness2 Address:</label>
-                                <input type="text" class="form-control" name="waddress1" required>
-                            </div>
-                            <!-- Add more fields for witness form -->
-                        </div>
-                    </div>
-                    
-                    <div class="col-md-6">
-                        <div class="section-container">
-                            <h3 class="text-center">Supplier Representative Form</h3>
-                            <div class="form-group">
-                                <label for=" supplierrepre_name">Name</label>
-                                <input type="text" class="form-control" name="supplierrepre_name" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="supplierrepre_position">Position</label>
-                                <input type="text" class="form-control" name="supplierrepre_position" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="supplierrepre_signe_date">Signed Date</label>
-                                <input type="date" class="form-control" name="supplierrepre_signe_date" required>
-                            </div>
-                            <!-- Add more fields for buyer representative form -->
-                        </div>
-                    </div>
-                </div>
-                <!-- Hidden input fields -->
-                {% comment %} <div class="form-container"> {% endcomment %}
-                    {% comment %} <form method="POST" action="{% url 'contract_form' %}">
-                        {% csrf_token %}
-                    </form> {% endcomment %}
-                    
-    
-                    <div class="page">
-                        <div class="content" style="display: flex; flex-wrap: wrap;">
-                            <div style="margin-left: 60px; margin-right: 60px;">
-                                <div style="font-size: 19px; font-family: Arial, sans-serif; line-height: 2.0; text-align: justify;">
-                                                                        <h3>Article 20</h3>
-                                                                        <h3>Notice</h3>
-    
-                                    Any notice to be given under this agreement shall be in writing and shall be
-                                    deemed to have been delivered if sent by registered post to the Supplier's
-                                    address at P.O. Box 43625, Addis Ababa, Ethiopia, and to the address of the buyer
-                                    P.O. Box {{ contract.pobox }} the 5th day unless and until either party is notified in writing
-                                    of a different address to be used thereafter.<br>
-                                    Witness whereof, the parties hereto have this day and year written above set their
-                                    respective hands to sign and seal the agreement.<br>
-    
-                                    <div class="d-flex justify-content-between">
-                                        <div class="text-left">
-                                            <p class="text-left"><strong>For and on behalf of the Supplier</strong></p>
-                                            <p class="text-left line-break">Name: Mr. {{ contract.supplierrepre_name }}</p>
-                                            <p class="text-left line-break">Position: {{ contract.supplierrepre_position }}</p>
-                                            <p class="text-left line-break">Signature: -----------------</p>
-                                            <p class="text-left line-break">Date: {{ contract.buyerrepre_signe_date }}</p>
-                                        </div>
-                                        <div class="text-right">
-                                            <p class="hidden"><strong>For and on behalf of the Buyer</strong></p>
-                                            <p class="text-left line-break">Name: {{ contract.buyerrepre_name }}</p>
-                                            <p class="text-left line-break">Position: {{ contract.buyerrepre_position }}</p>
-                                            <p class="text-left line-break">Signature: -----------------</p>
-                                            <p class="text-left line-break">Date: {{ contract.buyerrepre_signe_date }}</p>
-                                        </div>
-                                       
-                                    </div><br>
-    
-                                    <div class="text-center">
-                                        <p class="hidden"><strong>Witness</strong></p>
-                                    </div>
-                                    <div class="d-flex justify-content-between">
-                                        <div class="text-left">
-                                          <p class="hidden"><strong>Name</strong></p>
-                                          <p class="hidden">1. {{ contract.wname }}</p>
-                                          <p class="hidden">2. {{ contract.wname1 }}</p>
-                                        </div>
-                                        <div class="text-center">
-                                          <p class="hidden"><strong>Address</strong></p>
-                                          <p class="hidden">{{ contract.waddress }} </p>
-                                          <p class="hidden">{{ contract.waddress1 }} </p>
-                                        </div>
-                                        <div class="text-right">
-                                          <p class="hidden"><strong>Signature</strong></p>
-                                          <p class="hidden">---------------</p>
-                                          <p class="hidden">--------------</p>
-                                        </div>
-                                    </div>
-                                      
-                                                                   
+                    <!-- Add a third column with col-md-4 class -->
+                    <div>
+                        <div class="col-md-26">
+                            <div class="section-container">
+                                <h3 class="text-center">ስለ ኩባንያው</h3>
+                                <div class="form-group">
+                                    <label for="kubanya_tewekay">የስራ አስኪያጁ ስም</label>
+                                    <input type="text" class="form-control" name="kubanya_tewekay" required>
                                 </div>
+                                <div class="form-group">
+                                    <label for="kubanya_position">የስራ ሃላፊነት</label>
+                                    <input type="text" class="form-control" name="kubanya_position" required>
+                                </div>
+                                
+                                <!-- Section 3 Fields Here -->
+                            </div>
+                        </div>
+
+                        <div class="col-md-26">
+                            <div class="section-container">
+                                <h3 class="text-center">ስለ ዲለሩ</h3>
+                                <div class="form-group">
+                                    <label for="tewekay">የተወካዩ ስም</label>
+                                    <input type="text" class="form-control" name="tewekay" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="tewkay_position">የስራ ሃላፊነት</label>
+                                    <input type="text" class="form-control" name="tewkay_position" required>
+                                </div>
+                                
+                                <!-- Section 3 Fields Here -->
+                            </div>
+                        </div>
+                        <div class="col-md-26">
+                            <div class="section-container">
+                                <h3 class="text-center">የምስክሮች ፎርም</h3>
+                                <div class="flex-item">
+                                    <div class="form-group">
+                                        <label for="miskir1">1ኛ ምስክር</label>
+                                        <input type="text" class="form-control" name="miskir1" required>
+                                    </div>
+                                </div>
+                                <div class="flex-item">
+                                    <div class="form-group">
+                                        <label for="misikir1_address">1ኛ ምስክር አድራሻ:</label>
+                                        <input type="text" class="form-control" name="misikir1_address" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="misikir1_house_no">1ኛ ምስክር የቤ.ቁ</label>
+                                    <input type="number" class="form-control" name="misikir1_house_no" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="miskir2">2ኛ ምስክር ስም:</label>
+                                    <input type="text" class="form-control" name="miskir2" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="misilir2_address">2ኛ ምስክር አድራሻ:</label>
+                                    <input type="text" class="form-control" name="misilir2_address" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="misikir2_house_no">2ኛ ምስክር የቤ.ቁ:</label>
+                                    <input type="number" class="form-control" name="misikir2_house_no" required>
+                                </div>
+                                <!-- Add more fields for witness form -->
                             </div>
                         </div>
                     </div>
                 </div>
+                <!-- Add more sections if needed -->
+
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
-    </div>
 </body>
 </html>

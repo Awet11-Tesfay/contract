@@ -820,57 +820,44 @@
             ማህተም ቀጥሎ በማተም አረጋግጠዋል፡፡
             ዲለሩ አቶ_______________________________ (በውክልና ከሆነ የወካዩ ስም) _________________________________________ህጋዊ ወኪል
             ይህንን ውል ወደውና ፈቅደው መዋዋላቸውን በፊርማቸው አረጋግጠዋል፡፡
-            ስለ ኩባንያው ስለ ዲለሩ
-
-            -------------------------------- ------------------------------
-            አቶ አበበ ታደሰ
-            ዋና ስራ አስኪያጅ
-            36. ምስክሮች
-
-            ሥም አድራሻ ፊርማ
-            1ኛ/ -------------------------------------- -------ክ/ከተማ ወረዳ/ቀበሌ----- የቤ. ቁ------ ---------------
-            2ኛ/ -------------------------------------- -------ክ/ከተማ ወረዳ/ቀበሌ----- የቤ. ቁ------ ---------------
-          </div>
-      </div>
-  </div>
-</div>
-            <div class="page">
-                <div class="content" style="display: flex; flex-wrap: wrap;">
-                    <div style="margin-left: 60px; margin-right: 60px;">
-                        <div style="font-size: 19px; font-family: Arial, sans-serif; line-height: 2.0; text-align: justify;">
-                                                                <h3>Article 20</h3>
-                                                                <h3>Notice</h3>
+            
                             <div class="d-flex justify-content-between">
                                 <div class="text-left">
-                                    <p class="text-left"><strong>For and on behalf of the Supplier</strong></p>
-                                    <p class="text-left line-break">Name: Mr. {{ contract.supplierrepre_name }}</p>
-                                    <p class="text-left line-break">Position: {{ contract.supplierrepre_position }}</p>
+                                    <p class="text-left"><strong>ስለ ኩባንያው</strong></p>
+                                    <p class="text-left line-break">አቶ. {{ delier.kubanya_tewekay  }}</p>
+                                    <p class="text-left line-break">Position: {{ delier.kubanya_position }}</p>
                                     <p class="text-left line-break">Signature: -----------------</p>
-                                    <p class="text-left line-break">Date: {{ contract.buyerrepre_signe_date }}</p>
+                                    <p class="text-left line-break">Date: {{ delier.wil_ken }}</p>
                                 </div>
                                 <div class="text-right">
-                                    <p><strong>For and on behalf of the Buyer</strong></p>
-                                    <p class="text-left line-break">Name: {{ contract.buyerrepre_name }}</p>
-                                    <p class="text-left line-break">Position: {{ contract.buyerrepre_position }}</p>
+                                    <p><strong>ስለ ዲለሩ</strong></p>
+                                    <p class="text-left line-break">Name: {{ delier.delier_tewekay }}</p>
+                                    <p class="text-left line-break">Position: {{ delier.delier_tewekay }}</p>
                                     <p class="text-left line-break">Signature: -----------------</p>
-                                    <p class="text-left line-break">Date: {{ contract.buyerrepre_signe_date }}</p>
+                                    <p class="text-left line-break">Date: {{ delier.wil_ken }}</p>
                                 </div>
                                
                             </div><br>
 
                             <div class="text-center">
-                                <p><strong>Witness</strong></p>
+                                <p><strong>ምስክሮች</strong></p>
                             </div>
                             <div class="d-flex justify-content-between">
                                 <div class="text-left">
-                                  <p><strong>Name</strong></p>
-                                  <p>1. {{ contract.wname }}</p>
-                                  <p>2. {{ contract.wname1 }}</p>
+                                  <p><strong>ስም</strong></p>
+                                  <p>1ኛ/ {{ delier.miskir1 }}</p>
+                                  <p>2ኛ/ {{ delier.miskir2 }}</p>
                                 </div>
                                 <div class="text-center">
-                                  <p><strong>Address</strong></p>
-                                  <p>{{ contract.waddress }} </p>
-                                  <p>{{ contract.waddress1 }} </p>
+                                  <p><strong>አድራሻ</strong></p>
+                                  <p>{{ delier.misikir1_address }} </p>
+                                  <p>{{ delier.misilir2_address }} </p>
+                                </div>
+
+                                <div class="text-center">
+                                  <p><strong>የቤ. ቁ</strong></p>
+                                  <p>{{ delier.misikir1_house_no }} </p>
+                                  <p>{{ delier.misikir2_house_no }} </p>
                                 </div>
                                 <div class="text-right">
                                   <p><strong>Signature</strong></p>
