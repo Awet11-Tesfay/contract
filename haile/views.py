@@ -40,7 +40,7 @@ def delier_preview(request, delier_id):
     return render(request, 'delier_preview.html', {'delier': delier})
 
 def delier_print(request, delier_id):
-    delier = get_object_or_404(Contract, pk=delier_id)
+    delier = get_object_or_404(Delier, pk=delier_id)
     return render(request, 'delier_print.html', {'delier': delier})
 
 
