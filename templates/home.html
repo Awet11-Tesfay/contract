@@ -1,7 +1,21 @@
 {% extends 'base.html' %}
-{% block title %}
-Home
-{% endblock title %}
+{% block title %}HAILE GEBREGERGIS{% endblock title %}
+{% block hero %}
+  <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
+    <div class="hero-container" data-aos="fade-in">
+      <h1>Taf Energies</h1>
+    </div>
+  </section>
+
+{% endblock hero %}
 {% block body %}
-<h1>Welcome This is Taf Energies</h1>
+
+{% for message in messages %}
+
+<div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+  <strong>{{message}} </strong> 
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor %}
+
 {% endblock body %}

@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Contract, Delier
 from decimal import Decimal, InvalidOperation
 from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
+
 
 def contract_form(request):
     if request.method == 'POST':
@@ -22,7 +24,7 @@ def contract_print(request, contract_id):
     contract = get_object_or_404(Contract, pk=contract_id)
     return render(request, 'contract_print.html', {'contract': contract})
 
-
+@login_required
 def home(request):
     return render(request, 'home.html')
 
