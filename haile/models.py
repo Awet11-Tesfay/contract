@@ -70,7 +70,7 @@ class Delier(models.Model):
     misikir1_address = models.CharField(max_length=100, default='')
     misilir2_address = models.CharField(max_length=100, default='')
     kubanya_tewekay = models.CharField(max_length=100, default='')
-    tewkay_position = models.CharField(max_length=100, default='')
+    tewekay_position = models.CharField(max_length=100, default='')
     tewekay = models.CharField(max_length=100, default='')
     kubanya_position = models.CharField(max_length=100, default='')
     delier_tewekay = models.CharField(max_length=100, default='')
