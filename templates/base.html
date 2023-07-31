@@ -58,7 +58,17 @@
           <li><a href="delier/" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Delier</span></a></li>
         
           <li><a href="/contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contact Us</span></a></li>
+          
 
+        {% if not request.user.is_authenticated %}
+
+        <li><a href="/auth/signup/" class="nav-link scrollto"><i class="bx bx-user"></i> <span>SignUp</span></a></li>
+
+          <li><a href="/auth/login/" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Login</span></a></li>
+        {% else %}
+
+          <li><a href="/auth/logout/" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Logout</span></a></li>
+        {% endif %}
 
 
      
