@@ -94,6 +94,8 @@
         }
         .flex-item {
             flex-basis: 50%;
+            flex: 1 0 calc(33.333% - 10px); /* Adjust the width as needed */
+            margin: 5px;
         }
     </style>  
 </head>
@@ -169,7 +171,7 @@
 
                                 <div class="flex-item">
                                     <div class="form-group">
-                                        <label for="rnumber">የውክልና ቁትር</label>
+                                        <label for="rnumber">የውክልና ቁጥር</label>
                                         <input type="number" class="form-control" name="rnumber" required>
                                     </div>
                                 </div>
@@ -257,61 +259,73 @@
                                 <!-- Section 3 Fields Here -->
                             </div>
                         </div>
+                            <div class="col-md-26">
+                                <div class="section-container">
+                                    <h3 class="text-center">ስለ ዲለሩ</h3>
+                                    <div class="form-group">
+                                        <label for="tewekay">የተወካዩ ስም</label>
+                                        <input type="text" class="form-control" name="tewekay" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="tewekay_position">የስራ ሃላፊነት</label>
+                                        <input type="text" class="form-control" name="tewekay_position" required>
+                                    </div>
 
-                        <div class="col-md-26">
-                            <div class="section-container">
-                                <h3 class="text-center">ስለ ዲለሩ</h3>
-                                <div class="form-group">
-                                    <label for="tewekay">የተወካዩ ስም</label>
-                                    <input type="text" class="form-control" name="tewekay" required>
+                                    <div class="form-group">
+                                        <label for="wil_ken">ቀን</label>
+                                        <input type="date" class="form-control" name="wil_ken" required>
+                                    </div>
+                                    
+                                    <!-- Section 3 Fields Here -->
                                 </div>
-                                <div class="form-group">
-                                    <label for="tewekay_position">የስራ ሃላፊነት</label>
-                                    <input type="text" class="form-control" name="tewekay_position" required>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="wil_ken">ቀን</label>
-                                    <input type="date" class="form-control" name="wil_ken" required>
-                                </div>
-                                
-                                <!-- Section 3 Fields Here -->
                             </div>
-                        </div>
-                        <div class="col-md-26">
-                            <div class="section-container">
-                                <h3 class="text-center">የምስክሮች ፎርም</h3>
-                                <div class="flex-item">
-                                    <div class="form-group">
-                                        <label for="miskir1">1ኛ ምስክር</label>
-                                        <input type="text" class="form-control" name="miskir1" required>
-                                    </div>
+                    </div>
+                </div>
+
+                <div class="col-md-26">
+                    <div class="section-container">
+                        <h3 class="text-center">የምስክሮች ፎርም</h3>
+                            <div class="flex-item">
+                                <div class="form-group">
+                                    <label for="miskir1">1ኛ ምስክር</label>
+                                    <input type="text" class="form-control" name="miskir1" required>
                                 </div>
-                                <div class="flex-item">
-                                    <div class="form-group">
-                                        <label for="misikir1_address">1ኛ ምስክር አድራሻ:</label>
-                                        <input type="text" class="form-control" name="misikir1_address" required>
-                                    </div>
+                            </div>
+                            <div class="flex-item">
+                                <div class="form-group">
+                                    <label for="misikir1_address">1ኛ ምስክር አድራሻ:</label>
+                                    <input type="text" class="form-control" name="misikir1_address" required>
                                 </div>
+                            </div>
+                            <div class="flex-item">
                                 <div class="form-group">
                                     <label for="misikir1_house_no">1ኛ ምስክር የቤ.ቁ</label>
                                     <input type="number" class="form-control" name="misikir1_house_no" required>
                                 </div>
+                            </div>
+
+                            <div class="flex-item">
                                 <div class="form-group">
                                     <label for="miskir2">2ኛ ምስክር ስም:</label>
                                     <input type="text" class="form-control" name="miskir2" required>
                                 </div>
+                            </div>
+                            <div class="flex-item">
                                 <div class="form-group">
                                     <label for="misilir2_address">2ኛ ምስክር አድራሻ:</label>
                                     <input type="text" class="form-control" name="misilir2_address" required>
                                 </div>
+
+                            </div>
+
+                            <div class="flex-item">
                                 <div class="form-group">
                                     <label for="misikir2_house_no">2ኛ ምስክር የቤ.ቁ:</label>
                                     <input type="number" class="form-control" name="misikir2_house_no" required>
                                 </div>
-                                <!-- Add more fields for witness form -->
                             </div>
-                        </div>
+                    
+                        <!-- Add more fields for witness form -->
                     </div>
                 </div>
                 <!-- Add more sections if needed -->
