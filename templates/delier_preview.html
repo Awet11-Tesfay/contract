@@ -1,7 +1,9 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
     <title>Dealership Preview</title>
+    <script src="{% static 'js/script.js' %}"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <style>
         @media print {
@@ -879,7 +881,11 @@
             </div>
         </div>
     <br>
-        <a href="{% url 'delier_print' delier.id %}" target="_blank" class="btn btn-primary">Print Delier</a>
-    </div>
+    </div><br>
+    <div>
+      <a href="{% url 'delier_print' delier.id %}" target="_blank" class="btn btn-primary">Click Here to print</a>
+      <a href="{% url 'delier_form' %}" class="btn btn-primary">Edit</a>
+    </div><br><br>
+    <script src="{% static 'js/script.js' %}"></script>
 </body>
 </html>

@@ -1,13 +1,11 @@
-let referenceNumber = 0; // Initial reference number, can also use a timestamp-based approach
+function goToDelierForm() {
+  const form = document.getElementById('my-delier-form');
+  const formData = new FormData(form);
+  const params = new URLSearchParams(formData).toString();
+  const formUrl = "{% url 'delier_form' %}" + "?" + params;
 
-document.getElementById('printBtn').addEventListener('click', function() {
-  referenceNumber++; // Increment the reference number
-  printContract(referenceNumber);
-});
+  console.log('Form Data:', formData);
+  console.log('Form URL:', formUrl);
 
-function printContract(referenceNumber) {
-  // Display the reference number (you can replace this with your actual printing code)
-  alert('Reference Number: ' + referenceNumber);
-
-  // Add your actual printing logic here...
+  window.location.href = formUrl;
 }
