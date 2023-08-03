@@ -35,6 +35,14 @@
 
       <form action="/auth/login/" method="post">
         {% csrf_token %}
+
+        <div class="form-group">
+          <h5>
+            <span><i class="bx bx-envelope"></i> Name</span>
+          </h5>
+          <input type="text" class="form-control mb-3" name="userr" required/>
+        </div>
+
         <div class="form-group">
           <h5>
             <span><i class="bx bx-envelope"></i> Email</span>

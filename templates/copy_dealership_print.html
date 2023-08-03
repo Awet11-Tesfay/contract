@@ -4,121 +4,108 @@
     <title>Dealership Preview</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <style>
-      @media print {
-          .noprint {
-            display: none;
+        @media print {
+            .noprint {
+              display: none;
+            }
           }
+          
           body {
-            margin: 0; /* Remove default body margin for print */
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.5;
+            margin-top: 100px;
           }
-
-          .page {
-              page-break-inside: avoid; /* Avoid page breaks inside the .page element */
-              margin: 0; /* Remove any additional margins for print */
+          
+          .form-container {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
           }
-
-          /* Add page size and margin settings for print */
+          
+          .section-container {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+          }
+          
+          
+          h2, h3, h4 {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            text-decoration: underline;
+          }
+          
+          .timer {
+            text-align: right;
+            margin-top: 40px;
+            margin-right: 60;
+          }
+          
           @page {
-              size: A4; /* Adjust the size to your required page size */
-              margin: 0; /* Remove default page margin for print */
+            size: A4; /* Adjust the size to your required page size */
+            orphans: 0;
+            widows: 0;
+            margin-top: 20mm; /* Adjust top margin as needed */
+            margin-bottom: 20mm;
           }
-
+          
+          .page {
+            page-break-after: always;
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+          }
+          
+          .page:first-child {
+            padding-top: 0;
+          }
+          
+          .page:last-child {
+            padding-bottom: 0;
+          }
+          
           .content {
-              flex-direction: column; /* Stack paragraphs vertically for print */
+            display: flex; /* Added to distribute paragraphs horizontally */
+            flex-wrap: wrap; /* Added to wrap paragraphs to new lines */
+            display: flex;
+            margin-top: 20px;    /* Add margin to the top */
+            margin-bottom: 20px;
           }
-      }
-        
-      body {
-          font-family: Arial, sans-serif;
-          font-size: 12px;
-          line-height: 1.5;
-          margin: 0;
-      }
-      
-      .form-container {
-          margin-top: 20px;
-          padding: 10px;
-          border: 1px solid #ccc;
-      }
-      
-      .section-container {
-          margin-top: 20px;
-          padding: 10px;
-          border: 1px solid #ccc;
-          border-radius: 5px;
-      }
-      
-      h2, h3, h4 {
-          font-family: Arial, sans-serif;
-          text-align: center;
-          text-decoration: underline;
-          margin-top: 20px; /* Adjust margin to separate headings from content */
-          margin-bottom: 10px; /* Adjust margin to separate headings from content */
-      }
-      
-      .timer {
-          text-align: right;
-          margin-top: 40px;
-          margin-right: 60;
-      }
-      
-      .page {
-          page-break-after: always;
-          width: 100%;
-          height: 100%;
-          padding: 0;
-          margin: 0;
-          page-break-inside: avoid;
-      }
-      
-      .page:first-child {
-          padding-top: 0;
-      }
-      
-      .page:last-child {
-          padding-bottom: 0;
-      }
-      
-      .content {
-          display: flex; /* Added to distribute paragraphs horizontally */
-          flex-wrap: wrap; /* Added to wrap paragraphs to new lines */
-          display: flex;
-          margin-top: 20px;    /* Add margin to the top */
-          margin-bottom: 20px;
-          flex-direction: column;
-      }
-      
-      .content > div {
-          flex-basis: 100%; /* Added to make each div take full width */
-          display: flex;
-          flex-wrap: wrap;
-          margin-top: 20px;    /* Add margin to the top */
-          margin-bottom: 20px;
-      }
-      
-      .line-break {
-          margin-bottom: 0.2em; /* Adjust the value to control the spacing */
-      }
-      
-      .text-right {
-          text-align: right;
-          padding-left: 0;
-          margin-bottom: 0;
-          margin-right: 30px;
-      }
+          
+          .content > div {
+            flex-basis: 100%; /* Added to make each div take full width */
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 20px;    /* Add margin to the top */
+            margin-bottom: 20px;
+          }
+          
+          .line-break {
+            margin-bottom: 0.2em; /* Adjust the value to control the spacing */
+          }
+          
+          .text-right {
+            text-align: right;
+            padding-left: 0;
+            margin-bottom: 0;
+            margin-right: 30px;
+          }
 
-      .text-left {
-          text-align: left;
-          padding-right: 0;
-          margin-bottom: 0;
-          margin-left: 30px;
-      }
-      
-      .page:nth-child(even) {
-          background-color: #f7f7f7;
-      }
+          .text-left {
+            text-align: left;
+            padding-right: 0;
+            margin-bottom: 0;
+            margin-left: 30px;
+          }
+          
+          .page:nth-child(even) {
+            background-color: #f7f7f7;
+          }
 
-  </style>
+        </style>
 </head>
 <body>
   <div>
@@ -127,20 +114,20 @@
               <form method="POST" action="{% url 'delier_form' %}">
                   {% csrf_token %}
               </form>
+              <div class="timer-container">
+                  <p class="timer mr-5"><strong>ቀን</strong> {{ delier.wil_ken }}</p>
+              </div>
+              <br>
               <div class="page">
                   <div class="content" style="display: flex; flex-wrap: wrap;">
                       <div style="margin-left: 60px; margin-right: 60px;">
                           <div style="font-size: 19px; font-family: Arial, sans-serif; line-height: 2.0; text-align: justify;">
-
-                            <div class="timer-container">
-                              <p class="timer mr-5"><strong>ቀን</strong> {{ delier.wil_ken }}</p>
-                          </div>
-                             
+                              <p class="hidden">
                                                       <h3><strong>በግንባታ ላይ በሚገኝ ማደያ የዲለርሽፕ ውል</strong></h3>
                                   
                                                                   <h3><strong>ክፍል ፩</strong></h3>
-                                                                  <h3 ><strong>አጠቃላይ</strong></h3>
-                                  <p><strong>1. ተዋዋይ ወገኖች</strong></p>
+                                                                  <h3><strong>አጠቃላይ</strong></h3>
+                                  <strong>1. ተዋዋይ ወገኖች</strong></p>
                                   <p style="margin-left: 20px">በዚህ ውል ፡</p>
                                   <p style="margin-left: 20px">1.1 "ኩባንያ" እየተባለ የሚጠራው ታፍ ኦይል ኃላፊነቱ የተወሰነ የግል ማህበር አድራሻ አዲስ አበባ ፣ ቂርቆስ
                                   ክፍለ ከተማ ፣ ወረዳ 02 ፣ የቤ. ቁ አዲስ ፣ ስ.ቁ 0115580686/87 ፣ fax 0115580689 ፣ መንገድ 370 ፣
