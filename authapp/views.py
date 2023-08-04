@@ -7,7 +7,7 @@ from django.contrib import messages
 def signup(request):
     
     if request.method=="POST":
-        name = request.POST.get('userr')
+        name1 = request.POST.get('userr')
         get_email=request.POST.get('email')
         get_password=request.POST.get('pass1')
         get_confirm_password=request.POST.get('pass2')
