@@ -4,121 +4,66 @@
     <title>Dealership Preview</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <style>
+      /* Hide elements with class "noprint" when printing */
       @media print {
-          .noprint {
-            display: none;
-          }
-          body {
-            margin: 0; /* Remove default body margin for print */
-          }
-
-          .page {
-              page-break-inside: avoid; /* Avoid page breaks inside the .page element */
-              margin: 0; /* Remove any additional margins for print */
-          }
-
-          /* Add page size and margin settings for print */
-          @page {
-              size: A4; /* Adjust the size to your required page size */
-              margin: 0; /* Remove default page margin for print */
-          }
-
-          .content {
-              flex-direction: column; /* Stack paragraphs vertically for print */
-          }
-      }
-        
-      body {
-          font-family: Arial, sans-serif;
-          font-size: 12px;
-          line-height: 1.5;
+        .noprint {
+          display: none;
+        }
+    
+        /* Apply styles for printed content */
+        body {
           margin: 0;
-      }
-      
-      .form-container {
-          margin-top: 20px;
-          padding: 10px;
-          border: 1px solid #ccc;
-      }
-      
-      .section-container {
-          margin-top: 20px;
-          padding: 10px;
-          border: 1px solid #ccc;
-          border-radius: 5px;
-      }
-      
-      h2, h3, h4 {
-          font-family: Arial, sans-serif;
-          text-align: center;
-          text-decoration: underline;
-          margin-top: 20px; /* Adjust margin to separate headings from content */
-          margin-bottom: 10px; /* Adjust margin to separate headings from content */
-      }
-      
-      .timer {
-          text-align: right;
-          margin-top: 40px;
-          margin-right: 60;
-      }
-      
-      .page {
-          page-break-after: always;
-          width: 100%;
-          height: 100%;
-          padding: 0;
-          margin: 0;
+        }
+    
+        .page {
           page-break-inside: avoid;
+          margin: 0;
+          page-break-after: auto; /* Or 'avoid' if necessary */
+        }
+    
+        @page {
+          size: A4;
+          margin-top: 60px;
+          margin-left: 20px;
+          margin-right: 20px;
+          margin-bottom: 20px;
+        }
       }
-      
-      .page:first-child {
-          padding-top: 0;
-      }
-      
-      .page:last-child {
-          padding-bottom: 0;
-      }
-      
+    
+      /* General styling for the content */
       .content {
-          display: flex; /* Added to distribute paragraphs horizontally */
-          flex-wrap: wrap; /* Added to wrap paragraphs to new lines */
-          display: flex;
-          margin-top: 20px;    /* Add margin to the top */
-          margin-bottom: 20px;
-          flex-direction: column;
+        flex-direction: column;
       }
-      
-      .content > div {
-          flex-basis: 100%; /* Added to make each div take full width */
-          display: flex;
-          flex-wrap: wrap;
-          margin-top: 20px;    /* Add margin to the top */
-          margin-bottom: 20px;
+    
+      h2, h3, h4 {
+        margin-top: 20px;
+        margin-bottom: 10px;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        text-decoration: underline;
       }
-      
-      .line-break {
-          margin-bottom: 0.2em; /* Adjust the value to control the spacing */
+    
+      .timer {
+        margin-top: 40px;
+        text-align: right;
+        margin-right: 60px;
       }
-      
+    
       .text-right {
-          text-align: right;
-          padding-left: 0;
-          margin-bottom: 0;
-          margin-right: 30px;
+        text-align: right;
+        margin-right: 30px;
       }
-
+    
       .text-left {
-          text-align: left;
-          padding-right: 0;
-          margin-bottom: 0;
-          margin-left: 30px;
+        text-align: left;
+        margin-left: 30px;
       }
-      
-      .page:nth-child(even) {
-          background-color: #f7f7f7;
+    
+      /* Set font size for paragraphs */
+      p {
+        font-size: 14px;
       }
-
-  </style>
+    </style>
 </head>
 <body>
   <div>
@@ -243,9 +188,9 @@
                     <div class="content" style="display: flex; flex-wrap: wrap;">
                         <div style="margin-left: 60px; margin-right: 60px;">
                             <div style="font-size: 19px; font-family: Arial, sans-serif; line-height: 2.0; text-align: justify;">
-                              ዲለሩ በስራውም ሆነ በሌላ ምክንያት እዳ ወይም ብድር ቢኖርባቸው ብድሩን እንዲበደሩ ኩባንያው
+                              <p style="margin-left: 20px">5.7 ዲለሩ በስራውም ሆነ በሌላ ምክንያት እዳ ወይም ብድር ቢኖርባቸው ብድሩን እንዲበደሩ ኩባንያው
                               ቢፈቅድም እንኳን እዳው ወይም ብድሩ ኩባንያውን አይመለከተውም፡፡ በመሆኑም በማደያው ውስጥ
-                              የሚገኙ የኩባንያውን ንብረቶች በዕዳ ማስያዣነትም ሆነ ለዕዳ ማስከፈያነት ሊውሉ አይችሉም፡:
+                              የሚገኙ የኩባንያውን ንብረቶች በዕዳ ማስያዣነትም ሆነ ለዕዳ ማስከፈያነት ሊውሉ አይችሉም፡:</p>
 
                               <h3><strong>ክፍል ፪</strong></h3>
 
