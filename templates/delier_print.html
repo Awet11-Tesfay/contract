@@ -9,6 +9,11 @@
         .noprint {
           display: none;
         }
+
+        .no-gap {
+          margin: 0;
+          padding: 0;
+        }
     
         /* Apply styles for printed content */
         body {
@@ -24,7 +29,7 @@
         @page {
           size: A4;
           margin-top: 60px;
-          margin-left: 20px;
+          margin-left: 80px;
           margin-right: 20px;
           margin-bottom: 20px;
         }
@@ -85,21 +90,21 @@
                                   
                                                                   <h3><strong>ክፍል ፩</strong></h3>
                                                                   <h3 ><strong>አጠቃላይ</strong></h3>
-                                  <p><strong>1. ተዋዋይ ወገኖች</strong></p>
-                                  <p style="margin-left: 20px">በዚህ ውል ፡</p>
-                                  <p style="margin-left: 20px">1.1 "ኩባንያ" እየተባለ የሚጠራው ታፍ ኦይል ኃላፊነቱ የተወሰነ የግል ማህበር አድራሻ አዲስ አበባ ፣ ቂርቆስ
+                                  <p class="no-gap"><strong>1. ተዋዋይ ወገኖች</strong></p>
+                                  <p class="no-gap" style="margin-left: 20px">በዚህ ውል ፡</p>
+                                  <p class="no-gap" style="margin-left: 20px">1.1 <strong>"ኩባንያ"</strong> እየተባለ የሚጠራው ታፍ ኦይል ኃላፊነቱ የተወሰነ የግል ማህበር አድራሻ አዲስ አበባ ፣ ቂርቆስ
                                   ክፍለ ከተማ ፣ ወረዳ 02 ፣ የቤ. ቁ አዲስ ፣ ስ.ቁ 0115580686/87 ፣ fax 0115580689 ፣ መንገድ 370 ፣
                                   ፖ.ሣ.ቁ. 43625 አዲስ አበባ ኢትዮጵያ ኢሜል info@tafoilplc.com.et በአንድ በኩል በመሆን ፤</p>
                                                                   <h3>እና</h3>
-                              <p style="margin-left: 20px">1.2 "ዲለር" እየተባሉ የሚጠሩት
-                                  አቶ/ወሮ {{ delier.sim }} እና {{ delier.sim1}} የሚጠሩት {{ delier.yemiterut}}
-                                  አድራሻ {{ delier.radrasha }} ክልል {{ delier.kilil }} ዞን {{ delier.zone }} ወረዳ (በውክልና ከሆነ)
+                              <p class="no-gap" style="margin-left: 20px">1.2 <strong>"ዲለር"</strong> እየተባሉ የሚጠሩት
+                                  አቶ/ወሮ {{ delier.sim }} አድራሻ {{ delier.radrasha }} ከተማ ፣ {{ delier.zone }} ዞን ፣ {{ delier.kilil }} ክልል  (በውክልና ከሆነ)
+                                  የተወካዪን ስም {{ delier.rsim }} ፣ አድራሻ {{ delier.radrasha }} ፣ የውክልና ቁጥር {{ delier.rnumber }} ፣ ውክልናው የተሰጠበት ቀን {{ delier.rissued_date }}
                                   የተወካዪን ስም {{ delier.rsim }} ፣ አድራሻ {{ delier.radrasha }} ፣ የውክልና ቁጥር {{ delier.rnumber }} ፣ ውክልናው የተሰጠበት ቀን {{ delier.rissued_date }}
                                   ይሞላ
-                                  በተሰጣቸው ውክልና በሌላ በኩል በመሆን
+                                  በተሰጣቸው ውክልና በሌላ በኩል በመሆን ፤<br>
                                   ይህን ውል ከዛሬ {{ delier.wil_ken }} ዓም ጀምሮ በመካከላችን አስገዳጅ መብትና ግዴታዎቸን
                                   እንዲፈጥርና በህግ ፊትም የጸና እንዲሆን ያለምንም አስገዳጅነትና ተፅዕኖ በፈቃዳችን ተዋውለናል፡፡</p>
-                              <p>2. የውሉ ዓላማ፤
+                              <p class="no-gap">2. የውሉ ዓላማ፤
                                 <ul>
                                   <li style="margin-left: 20px">ኩባንያው ነዳጅና የነዳጅ ውጤቶችን ከውጭ የሚያስመጣ ፤ በሀገር ውስጥ የሚያከፋፍልና የሚያሰራጭ
                                     በመሆኑ ይህንን ስራ ለማከናወን የሚረዱ መሣሪያዎች ባለቤት በመሆኑና ይህንንም ስራ ብቃት ባላቸው
