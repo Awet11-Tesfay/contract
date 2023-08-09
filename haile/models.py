@@ -51,6 +51,8 @@ class Delier(models.Model):
     yediler_tewekay_kebele = models.CharField(max_length=100, default='')
     yedilier_tewekay_bet_kutr = models.CharField(max_length=100, default='')
     yediler_tewekay_silk_kutr = models.CharField(max_length=100, default='')
+    madya_zone = models.CharField(max_length=100, default='')
+    madya_wereda = models.CharField(max_length=100, default='')
     adrasha = models.CharField(max_length=100, default='')
     kilil = models.CharField(max_length=100, default='')
     zone = models.CharField(max_length=100, default='')
