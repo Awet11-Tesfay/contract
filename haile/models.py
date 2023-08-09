@@ -43,7 +43,7 @@ class Contract(models.Model):
         return self.companyname
 
 class Delier(models.Model):
-    ken = models.DateField(null=True, blank=True)
+    ken = models.CharField(max_length=100, default='')
     sim = models.CharField(max_length=100, default='')
     yediler_kebele = models.CharField(max_length=100, default='')
     yediler_bet_kutur = models.CharField(max_length=100, default='')
@@ -61,7 +61,7 @@ class Delier(models.Model):
     rnumber = models.CharField(max_length=100, default='')
     rissued_date = models.CharField(max_length=100, default='')
     radrasha = models.CharField(max_length=100, default='')
-    wil_ken = models.DateField(null=True, blank=True)
+    wil_ken = models.CharField(max_length=100, default='')
     madya_kilil = models.CharField(max_length=50, default='')
     madya_ketema = models.CharField(max_length=50, default='')
     madya_area = models.CharField(max_length=100, default='')
