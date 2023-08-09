@@ -67,7 +67,7 @@ class Delier(models.Model):
     madya_area = models.CharField(max_length=100, default='')
     map_kutr = models.CharField(max_length=100, default='')
     map_date = models.DateField(null=True, blank=True)
-    ke_yetesete = models.CharField(max_length=100, default='')
+    ke_yetesete = models.CharField(max_length=500, default='')
     temezgbo_yemigegn = models.CharField(max_length=100, default='')
     misikir1_house_no = models.IntegerField(default=0)
     misikir2_house_no = models.IntegerField(default=0)
