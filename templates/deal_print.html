@@ -68,9 +68,7 @@
     
       /* Set font size for paragraphs */
       p {
-        margin: 5px 0; /* Adjust top and bottom margins to control spacing between paragraphs */
-      line-height: 1.2; /* Adjust line height for paragraphs */
-      font-size: 16px;
+        font-size: 16px;
       }
     </style>
 </head>
@@ -101,9 +99,7 @@
                                   ፖ.ሣ.ቁ. 43625 አዲስ አበባ ኢትዮጵያ ኢሜል info@tafoilplc.com.et በአንድ በኩል በመሆን ፤</p>
                                                                   <h3>እና</h3>
                               <p class="no-gap" style="margin-left: 20px">1.2 <strong>"ዲለር"</strong> እየተባሉ የሚጠሩት
-                                  አቶ/ወሮ {{ delier.sim }} አድራሻ {{ delier.adrasha }} ከተማ ፣ ቀበሌ {{ delier.yediler_kebele }} ፣ {{ delier.zone }} ዞን ፣ {{ delier.kilil }} ክልል ፣ ህጋዊ ተወካይ አቶ/ወሮ {{ delier.rsim }} ፣  ቀበሌ {{ delier.yediler_tewekay_kebele }}
-                                  ፣ የቤቁ {{  delier.yedilier_tewekay_bet_kutr }} ፣ ስቁ {{  delier.yediler_tewekay_silk_kutr }} ፣ በውክልና ቁጥር {{ delier.rnumber }} ፣ በቀን {{ delier.rissued_date }} ዓ.ም ፣ 
-                                  በተሰጣቸው ውክልና በሌላ በኩል በመሆን ፤<br>
+                                  አቶ/ወሮ {{ delier.sim }} አድራሻ {{ delier.adrasha }} ከተማ ፣ ቀበሌ {{ delier.yediler_kebele }} ፣ {{ delier.zone }} ዞን ፣ {{ delier.kilil }} ክልል ፣ በሌላ በኩል በመሆን ፤<br>
                                   ይህን ውል ከዛሬ ቀን {{ delier.wil_ken }} ዓ.ም ጀምሮ በመካከላችን አስገዳጅ መብትና ግዴታዎቸን
                                   እንዲፈጥርና በህግ ፊትም የጸና እንዲሆን ያለምንም አስገዳጅነትና ተፅዕኖ በፈቃዳችን ተዋውለናል፡፡</p>
                               <p class="no-gap">2. የውሉ ዓላማ፤
@@ -790,8 +786,7 @@
               <p style="margin-left: 20px">በኩባንያው በኩል ዋና ሥራ አስኪያጁ እና ይህን ውል እንዲያፀድቁ ስልጣን የተሰጣቸው የኩባንያው ዋና ኦዲተር እና
               የአስተዳደር እና የፋይናንስ ዳይሬክተሩ ይህንን ውል ፈቅደውና ወደው መስማማታቸውን በፊርማቸንና የኩባንያውን
               ማህተም ቀጥሎ በማተም አረጋግጠዋል፡፡
-              ዲለሩ አቶ/ወሮ {{ delier.sim}}  ህጋዊ ወኪል ተወካይ አቶ/ወሮ {{ delier.tewekay}} 
-              ይህንን ውል ወደውና ፈቅደው መዋዋላቸውን በፊርማቸው አረጋግጠዋል፡፡</p>
+              ዲለሩ አቶ/ወሮ {{ delier.sim}} ይህንን ውል ወደውና ፈቅደው መዋዋላቸውን በፊርማቸው አረጋግጠዋል፡፡</p>
               
                               <div class="d-flex justify-content-between">
                                   <div class="text-left">
@@ -847,7 +842,7 @@
       <br>
       </div>
       <div><br>
-        <a href="{% url 'delier_print' delier.id %}" target="_blank" class="btn btn-primary">Print Delier</a>
+        <button onclick="window.print()" class="btn btn-primary noprint">Print Contract</button>
       </div><br><br>
     </div>
 </body>

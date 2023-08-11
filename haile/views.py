@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Contract, Delier
+from .models import Contract, Delier, Deal
 from decimal import Decimal, InvalidOperation
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
@@ -44,6 +44,24 @@ def delier_preview(request, delier_id):
 def delier_print(request, delier_id):
     delier = get_object_or_404(Delier, pk=delier_id)
     return render(request, 'delier_print.html', {'delier': delier})
+
+
+def deal_form(request):
+    if request.method == 'POST':
+        com = request.POST.dict()
+        com.pop('csrfmiddlewaretoken', None)
+        deal = Deal(**com)
+        deal.save()
+        return redirect('delier_preview', deal_id=deal.id)
+    return render(request, 'deal_form.html')
+
+def deal_preview(request, deal_id):
+    deal = get_object_or_404(Deal,  pk=deal_id)
+    return render(request, 'deal_preview.html', {'deal': deal})
+
+def deal_print(request, deal_id):
+    deal = get_object_or_404(Deal, pk=deal_id)
+    return render(request, 'deal_print.html', {'deal': deal})
 
 
 def your_view(request):

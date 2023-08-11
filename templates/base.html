@@ -43,18 +43,7 @@
 
       <nav id="navbar" class="nav-menu navbar">
         <ul>
-         
-           {% comment %}  <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Delier
-              </button>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item text-primary" href="test/"><i class="bx bx-book-content"></i><span>ዲለር ፎርም<span></a></li>
-                  <li><a class="dropdown-item text-primary" href="delier/"><i class="bx bx-book-content"></i><span>ማደያው የሚገኝበት አድራሻ ፣ ባለቤትነትና ዋስትና<span></a></li>
-              </ul>
-            </div> {% endcomment %}
-       
-          
+
 
         {% if not request.user.is_authenticated %}
 
@@ -65,7 +54,16 @@
     
           <li><a href="/" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
           <li><a href="form/" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Supply Petroleum</span></a></li>
-          <li><a href="delier/" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Dealership</span></a></li>
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Deliership
+            </button>
+            <ul class="dropdown-menu">
+              <li><a href="deal/" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Dealership</span></a></li>
+              <li><a href="delier/" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Dealership Representative</span></a></li>
+            </ul>
+          </div>
+          
           <li><a href="/auth/logout/" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Logout</span></a></li>
 
         {% endif %}

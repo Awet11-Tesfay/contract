@@ -81,3 +81,38 @@ class Delier(models.Model):
     kubanya_position = models.CharField(max_length=100, default='')
     delier_tewekay = models.CharField(max_length=100, default='')
 
+    def __str__(self):
+        return self.sim
+
+
+class Deal(models.Model):
+        ken = models.CharField(max_length=100, default='')
+        sim = models.CharField(max_length=100, default='')
+        madya_zone = models.CharField(max_length=100, default='')
+        madya_wereda = models.CharField(max_length=100, default='')
+        adrasha = models.CharField(max_length=100, default='')
+        kilil = models.CharField(max_length=100, default='')
+        zone = models.CharField(max_length=100, default='')
+        woreda = models.CharField(max_length=100, default='')
+        wil_ken = models.CharField(max_length=100, default='')
+        madya_kilil = models.CharField(max_length=50, default='')
+        madya_ketema = models.CharField(max_length=50, default='')
+        madya_area = models.CharField(max_length=100, default='')
+        map_kutr = models.CharField(max_length=100, default='')
+        map_date = models.CharField(max_length=100, default='')
+        ke_yetesete = models.CharField(max_length=500, default='')
+        temezgbo_yemigegn = models.CharField(max_length=100, default='')
+        misikir1_house_no = models.IntegerField(default=0)
+        misikir2_house_no = models.IntegerField(default=0)
+        miskir1 = models.CharField(max_length=100, default='')
+        miskir2 = models.CharField(max_length=100, default='')
+        misikir1_address = models.CharField(max_length=100, default='')
+        misilir2_address = models.CharField(max_length=100, default='')
+        kubanya_tewekay = models.CharField(max_length=100, default='')
+        kubanya_position = models.CharField(max_length=100, default='')
+        delier_tewekay = models.CharField(max_length=100, default='')
+
+        def __str__(self):
+            return self.sim
+
+

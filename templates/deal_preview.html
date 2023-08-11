@@ -68,9 +68,7 @@
     
       /* Set font size for paragraphs */
       p {
-        margin: 5px 0; /* Adjust top and bottom margins to control spacing between paragraphs */
-      line-height: 1.2; /* Adjust line height for paragraphs */
-      font-size: 16px;
+        font-size: 16px;
       }
     </style>
 </head>
@@ -78,7 +76,7 @@
   <div>
       <div class="container">
           {% comment %} <div class="form-container"> {% endcomment %}
-              <form method="POST" action="{% url 'delier_form' %}">
+              <form method="POST" action="{% url 'deal_form' %}">
                   {% csrf_token %}
               </form>
               <div class="page">
@@ -87,7 +85,7 @@
                           <div style="font-size: 19px; font-family: Arial, sans-serif; line-height: 2.5; text-align: justify;">
 
                             <div class="timer-container">
-                              <p class="timer mr-5"><strong>ቀን</strong> {{ delier.wil_ken }}</p>
+                              <p class="timer mr-5"><strong>ቀን</strong> {{ deal.wil_ken }}</p>
                           </div>
                              
                                                       <h3><strong>በግንባታ ላይ በሚገኝ ማደያ የዲለርሽፕ ውል</strong></h3>
@@ -101,10 +99,8 @@
                                   ፖ.ሣ.ቁ. 43625 አዲስ አበባ ኢትዮጵያ ኢሜል info@tafoilplc.com.et በአንድ በኩል በመሆን ፤</p>
                                                                   <h3>እና</h3>
                               <p class="no-gap" style="margin-left: 20px">1.2 <strong>"ዲለር"</strong> እየተባሉ የሚጠሩት
-                                  አቶ/ወሮ {{ delier.sim }} አድራሻ {{ delier.adrasha }} ከተማ ፣ ቀበሌ {{ delier.yediler_kebele }} ፣ {{ delier.zone }} ዞን ፣ {{ delier.kilil }} ክልል ፣ ህጋዊ ተወካይ አቶ/ወሮ {{ delier.rsim }} ፣  ቀበሌ {{ delier.yediler_tewekay_kebele }}
-                                  ፣ የቤቁ {{  delier.yedilier_tewekay_bet_kutr }} ፣ ስቁ {{  delier.yediler_tewekay_silk_kutr }} ፣ በውክልና ቁጥር {{ delier.rnumber }} ፣ በቀን {{ delier.rissued_date }} ዓ.ም ፣ 
-                                  በተሰጣቸው ውክልና በሌላ በኩል በመሆን ፤<br>
-                                  ይህን ውል ከዛሬ ቀን {{ delier.wil_ken }} ዓ.ም ጀምሮ በመካከላችን አስገዳጅ መብትና ግዴታዎቸን
+                                  አቶ/ወሮ {{ deal.sim }} አድራሻ {{ deal.adrasha }} ከተማ ፣ ቀበሌ {{ deal.yediler_kebele }} ፣ {{ deal.zone }} ዞን ፣ {{ deal.kilil }} ክልል ፣ በሌላ በኩል በመሆን ፤<br>
+                                  ይህን ውል ከዛሬ ቀን {{ deal.wil_ken }} ዓ.ም ጀምሮ በመካከላችን አስገዳጅ መብትና ግዴታዎቸን
                                   እንዲፈጥርና በህግ ፊትም የጸና እንዲሆን ያለምንም አስገዳጅነትና ተፅዕኖ በፈቃዳችን ተዋውለናል፡፡</p>
                               <p class="no-gap">2. የውሉ ዓላማ፤
                                 <ul>
@@ -166,11 +162,11 @@
                                     <p style="margin-left: 20px">4.2 አባሪ 2 የኩባንያው የጤና ፣ የደህንነት ፣ የአካባቢ ጥበቃ ደንቦች</p>
                               
                                 <p><strong>5. ማደያው የሚገኝበት አድራሻ ፣ ባለቤትነትና ዋስትና</strong></p>
-                                  <p style="margin-left: 20px;">5.1 በዚህ ውል የተመለከቱት ነዳጅና የነዳጅ ውጤቶች የሚሸጥበት ማደያ አድራሻ {{ delier.madya_zone }} ፣ {{ delier.madya_wereda}} ፣ {{ delier.madya_kilil}} ክልል
-                                    {{ delier.madya_ketema }} ከተማ ነው፡</p>
-                                    <p style="margin-left: 20px">5.2 ማደያው ያረፈበት አጠቃላይ የቦታው ስፋቱ {{ delier.adya_area }} ካሬ ሜትር ፣ የካርታ ቁጥሩ
-                                    {{ delier.map_kutr }} ፣ በቀን {{ delier.map_date }}
-                                    ከ {{ delier.ke_yetesete }} የተሰጠ እና በአቶ {{ delier.temezgbo_yemigegn }} ስም
+                                  <p style="margin-left: 20px;">5.1 በዚህ ውል የተመለከቱት ነዳጅና የነዳጅ ውጤቶች የሚሸጥበት ማደያ አድራሻ {{ deal.madya_zone }} ፣ {{ deal.madya_wereda}} ፣ {{ deal.madya_kilil}} ክልል
+                                    {{ deal.madya_ketema }} ከተማ ነው፡</p>
+                                    <p style="margin-left: 20px">5.2 ማደያው ያረፈበት አጠቃላይ የቦታው ስፋቱ {{ deal.adya_area }} ካሬ ሜትር ፣ የካርታ ቁጥሩ
+                                    {{ deal.map_kutr }} ፣ በቀን {{ deal.map_date }}
+                                    ከ {{ deal.ke_yetesete }} የተሰጠ እና በአቶ {{ deal.temezgbo_yemigegn }} ስም
                                     ተመዝግቦ የሚገኝ ነው፡፡</p>
                                     <p style="margin-left: 20px">5.3 ዲለሩ ይህ ንብረት የራሳቸው መሆኑን ፣ በንብረቱ ላይ ይገባኛል ባይ የሌለው መሆኑን፣ በንብረቱ ላይ
                                     ይህንን ስራ መስራት ወይም መዋዋል አትችሉም የሚል ተቃዋሚ ወገን የሌለ መሆኑን፣ ዕዳና ዕገዳ የሌለበት
@@ -707,7 +703,7 @@
               
               <p><strong>28. ውሉ ጸንቶ ስለሚቆይበት ጊዜና ስለሚታደስበት ሁኔታ</strong></p>
               
-              <p style="margin-left: 20px">28.1. ይህ ውል በተዋዋይ ወገኖች ከተፈረመ ከዛሬ {{ delier.wil_ken }} ዓ.ም ጀምሮ ለ 25 ዓመታት
+              <p style="margin-left: 20px">28.1. ይህ ውል በተዋዋይ ወገኖች ከተፈረመ ከዛሬ {{ deal.wil_ken }} ዓ.ም ጀምሮ ለ 25 ዓመታት
               በመካከላችን አስገዳጅና በህግ ፊትም የጸና ሆኖ ይቆያል፡፡</p>
               <p style="margin-left: 20px">28.2. ከላይ በአንቀፅ 29.1 ላይ የተቀመጠው የውል ዘመን ከማለቁ በፊት ይህ ውል በማናቸውም ምክንያት
               ቢቋረጥ ዲለሩ ከኩባንያው መልቀቂያ ሳያገኝ ከየትኛውን የነዳጅ ደርጅት ጋር ውል ተዋውሎ መስራት
@@ -790,23 +786,22 @@
               <p style="margin-left: 20px">በኩባንያው በኩል ዋና ሥራ አስኪያጁ እና ይህን ውል እንዲያፀድቁ ስልጣን የተሰጣቸው የኩባንያው ዋና ኦዲተር እና
               የአስተዳደር እና የፋይናንስ ዳይሬክተሩ ይህንን ውል ፈቅደውና ወደው መስማማታቸውን በፊርማቸንና የኩባንያውን
               ማህተም ቀጥሎ በማተም አረጋግጠዋል፡፡
-              ዲለሩ አቶ/ወሮ {{ delier.sim}}  ህጋዊ ወኪል ተወካይ አቶ/ወሮ {{ delier.tewekay}} 
-              ይህንን ውል ወደውና ፈቅደው መዋዋላቸውን በፊርማቸው አረጋግጠዋል፡፡</p>
+              ዲለሩ አቶ/ወሮ {{ deal.sim}} ይህንን ውል ወደውና ፈቅደው መዋዋላቸውን በፊርማቸው አረጋግጠዋል፡፡</p>
               
                               <div class="d-flex justify-content-between">
                                   <div class="text-left">
                                       <p class="text-center"><strong>ስለ ኩባንያው</strong></p>
-                                      <p class="text-left line-break">አቶ. {{ delier.kubanya_tewekay  }}</p>
-                                      <p class="text-left line-break">የስራ ሃላፊነት: {{ delier.kubanya_position }}</p>
+                                      <p class="text-left line-break">አቶ. {{ deal.kubanya_tewekay  }}</p>
+                                      <p class="text-left line-break">የስራ ሃላፊነት: {{ deal.kubanya_position }}</p>
                                       <p class="text-left line-break">ፌርማ: -----------------</p>
-                                      <p class="text-left line-break">ቀን: {{ delier.wil_ken }}</p>
+                                      <p class="text-left line-break">ቀን: {{ deal.wil_ken }}</p>
                                   </div>
                                   <div class="text-right">
                                       <p class="text-center"><strong>ስለ ዲለሩ</strong></p>
-                                      <p class="text-left line-break">ስም: {{ delier.delier_tewekay }}</p>
-                                      <p class="text-left line-break">የስራ ሃላፊነት: {{ delier.tewekay_position  }}</p>
+                                      <p class="text-left line-break">ስም: {{ deal.delier_tewekay }}</p>
+                                      <p class="text-left line-break">የስራ ሃላፊነት: {{ deal.tewekay_position  }}</p>
                                       <p class="text-left line-break">ፌርማ: -----------------</p>
-                                      <p class="text-left line-break">ቀን: {{ delier.wil_ken }}</p>
+                                      <p class="text-left line-break">ቀን: {{ deal.wil_ken }}</p>
                                   </div>
                                 
                               </div><br>
@@ -817,19 +812,19 @@
                               <div class="d-flex justify-content-between">
                                   <div class="text-left">
                                     <p><strong>ስም</strong></p>
-                                    <p>1ኛ/ {{ delier.miskir1 }}</p>
-                                    <p>2ኛ/ {{ delier.miskir2 }}</p>
+                                    <p>1ኛ/ {{ deal.miskir1 }}</p>
+                                    <p>2ኛ/ {{ deal.miskir2 }}</p>
                                   </div>
                                   <div class="text-center">
                                     <p><strong>አድራሻ</strong></p>
-                                    <p>{{ delier.misikir1_address }} </p>
-                                    <p>{{ delier.misilir2_address }} </p>
+                                    <p>{{ deal.misikir1_address }} </p>
+                                    <p>{{ deal.misilir2_address }} </p>
                                   </div>
 
                                   <div class="text-center">
                                     <p><strong>የቤ. ቁ</strong></p>
-                                    <p>{{ delier.misikir1_house_no }} </p>
-                                    <p>{{ delier.misikir2_house_no }} </p>
+                                    <p>{{ deal.misikir1_house_no }} </p>
+                                    <p>{{ deal.misikir2_house_no }} </p>
                                   </div>
                                   <div class="text-right">
                                     <p><strong>ፌርማ</strong></p>
@@ -847,7 +842,7 @@
       <br>
       </div>
       <div><br>
-        <a href="{% url 'delier_print' delier.id %}" target="_blank" class="btn btn-primary">Print Delier</a>
+        <button onclick="window.print()" class="btn btn-primary noprint">Print Contract</button>
       </div><br><br>
     </div>
 </body>
