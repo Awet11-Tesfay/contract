@@ -94,49 +94,49 @@
         <div class="form-container">
             <form method="POST" action="{% url 'contract_form' %}">
                 {% csrf_token %}
-                <h1 class="text-center">Petroleum Contract Form</h1>
+                <h1 class="text-center">ነዳጅና የነዳጅ ውጤቶች ሽያጭ ውል </h1>
                 <div class="row">
                     <div class="col-md-6">
                         <div class="section-container">
-                            <h3 class="text-center">Supplier Form</h3>
+                            <h3 class="text-center">የአቅራቢው ፎርም</h3>
 
                             <div class="form-group">
-                                <label for="suppliercname">Company Name</label>
+                                <label for="suppliercname">ስም</label>
                                 <input type="text" class="form-control" name="suppliercname" value="TAF Energies PLC," required>
                             </div> 
 
                             <div class="form-group">
-                                <label for="stown">Town</label>
+                                <label for="stown">ከተማ</label>
                                 <input type="text" class="form-control" name="stown"  value="Addis Ababa" required>
                             </div>
 
                             <div class="form-group">
-                                <label for="ssubcity">Town</label>
+                                <label for="ssubcity">ክ/ከተማ</label>
                                 <input type="text" class="form-control" name="ssubcity"  value="Kirkos" required>
                             </div>
 
                             <div class="form-group">
-                                <label for="sworeda">Woreda</label>
+                                <label for="sworeda">ወረዳ</label>
                                 <input type="text" class="form-control" name="sworeda"  value="Woreda 02" required>
                             </div>
 
                             <div class="form-group">
-                                <label for="tell">Tell</label>
+                                <label for="tell">ስቁ</label>
                                 <input type="text" class="form-control" name="stell"  value="0115580686/87" required>
                             </div>
 
                             <div class="form-group">
-                                <label for="sfax">Fax</label>
+                                <label for="sfax">ፋክስ</label>
                                 <input type="number" class="form-control" name="sfax" value="0115580689" required>
                             </div>
 
                             <div class="form-group">
-                                <label for="shouse">House No</label>
+                                <label for="shouse">ቤቁ</label>
                                 <input type="text" class="form-control" name="shouse" value="Addis" required>
                             </div>
 
                             <div class="form-group">
-                                <label for="sroad">Road</label>
+                                <label for="sroad">መንገድ</label>
                                 <input type="number" class="form-control" name="sroad" value="370" required>
                             </div>
 
@@ -146,18 +146,15 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="valid_year">Valid Year</label>
-                                <input type="number" class="form-control" name="valid_year" required>
-                            </div> 
-                            <div class="form-group">
-                                <label for="delivery_within">Delivery Date Within</label>
-                                <input type="number" class="form-control" name="delivery_within" required>
-                            </div>
-
-                            <div class="form-group">
                                 <label for="yemakrebya_gize">የማቅረብያ ግዜ</label>
                                 <input type="date" class="form-control" name="yemakrebya_gize" required>
                             </div>
+
+                            <div class="form-group">
+                                <label for="yewil_len">የፌርማ ቀን</label>
+                                <input type="text" class="form-control" name="yewil_len" required>
+                            </div>
+                            
                             <!-- Add more fields for section 1 -->
                         </div>
                     </div>
@@ -208,11 +205,7 @@
                                 <label for="yefabrika_addrasha">የፋብሪካ አድራሻ</label>
                                 <input type="number" class="form-control" name="yefabrika_addrasha" required>
                             </div>
-                            <div class="form-group">
-                                <label for="yewil_len">የፌርማ ቀን</label>
-                                <input type="text" class="form-control" name="yewil_len" required>
-                            </div>
-
+                            
                             <div class="form-group">
                                 <label for="ye_litter_bzat">መግዛት ያለበት የሊትር ብዛት</label>
                                 <input type="date" class="form-control" name="ye_litter_bzat" required>
@@ -221,6 +214,11 @@
                             <div class="form-group">
                                 <label for="post_kutur">pobox</label>
                                 <input type="date" class="form-control" name="post_kutur" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="yewil_len">የፌርማ ቀን</label>
+                                <input type="text" class="form-control" name="yewil_len" required>
                             </div>
                             <!-- Add more fields for section 2 -->
                         </div>

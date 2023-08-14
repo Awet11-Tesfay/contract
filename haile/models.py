@@ -116,7 +116,7 @@ class Deal(models.Model):
             return self.sim
 
 
-class Peroleum(models.Model):
+class Petroleum(models.Model):
      yegezi_sim = models.CharField(max_length=100, default='')
      Addrasha = models.CharField(max_length=100, default='')
      Kilil = models.CharField(max_length=100, default='')
