@@ -116,3 +116,31 @@ class Deal(models.Model):
             return self.sim
 
 
+class Peroleum(models.Model):
+     yegezi_sim = models.CharField(max_length=100, default='')
+     Addrasha = models.CharField(max_length=100, default='')
+     Kilil = models.CharField(max_length=100, default='')
+     ketema = models.CharField(max_length=100, default='')
+     wereda = models.CharField(max_length=100, default='')
+     kifle_letema = models.CharField(max_length=100, default='')
+     kebele = models.CharField(max_length=100, default='')
+     yebet_kutur = models.CharField(max_length=100, default='')
+     silk_kutur = models.IntegerField(default='')
+     gibir_meleya_kutur = models.CharField(max_length=100, default='')
+     yefabrika_addrasha = models.CharField(max_length=100, default='')
+     yewil_len = models.DateField(default='')
+     yemakrebya_gize = models.IntegerField(default='')
+     ye_litter_bzat = models.CharField(max_length=100, default='')
+     post_kutur = models.IntegerField(default='')
+     yeakrabiw_tewekay = models.CharField(max_length=100, default='')
+     yeakrabiw_tewekay_halafinet = models.CharField(max_length=100, default='')
+     yegezi_tewekay = models.CharField(max_length=100, default='')
+     yegezi_tewekay_halafinet = models.CharField(max_length=100, default='')
+
+     andegna_misikir_sim = models.CharField(max_length=100, default='')
+     andegna_lisikir_adrasha = models.CharField(max_length=100, default='')
+     huletegna_misikir_sim = models.CharField(max_length=100, default='')
+     huletegna_misikir_adrasha = models.CharField(max_length=100, default='')
+
+
+     
