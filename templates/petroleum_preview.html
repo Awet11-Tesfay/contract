@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contract Preview</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        @media print {
+            .noprint {
+              display: none;
+            }
+          }
+          
+          body {
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.5;
+            margin-top: 210px;
+          }
+          
+          .form-container {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+          }
+          
+          .section-container {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+          }
+          
+          pre {
+            font-size: 16px;
+            font-family: Arial, sans-serif;
+            line-height: 1.5;
+            margin: 0; /* Added to remove margin around paragraphs */
+          }
+          
+          h2, h3, h4 {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            text-decoration: underline;
+          }
+          
+          .timer {
+            text-align: right;
+            margin-top: 40px;
+            margin-right: 60;
+          }
+          
+          @page {
+            size: A4; /* Adjust the size to your required page size */
+            orphans: 0;
+            widows: 0;
+            margin-top: 20mm; /* Adjust top margin as needed */
+            margin-bottom: 20mm;
+          }
+          
+          .page {
+            page-break-after: always;
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+          }
+          
+          .page:first-child {
+            padding-top: 0;
+          }
+          
+          .page:last-child {
+            padding-bottom: 0;
+          }
+          
+          .content {
+            display: flex; /* Added to distribute paragraphs horizontally */
+            flex-wrap: wrap; /* Added to wrap paragraphs to new lines */
+            display: flex;
+            margin-top: 20px;    /* Add margin to the top */
+            margin-bottom: 20px;
+          }
+          
+          .content > div {
+            flex-basis: 100%; /* Added to make each div take full width */
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 20px;    /* Add margin to the top */
+            margin-bottom: 20px;
+          }
+          
+          .line-break {
+            margin-bottom: 0.2em; /* Adjust the value to control the spacing */
+          }
+          
+          .text-right {
+            text-align: right;
+            padding-left: 0;
+            margin-bottom: 0;
+          }
+          
+          .page:nth-child(even) {
+            background-color: #f7f7f7;
+          }
+    </style>
+</head>
+<body>
+    <div class="container">
+        {% comment %} <div class="form-container"> {% endcomment %}
+            <form method="POST" action="{% url 'petroleum_consumer_form' %}">
+                {% csrf_token %}
+            </form>
+            <div class="timer-container">
+                <p class="timer mr-5"><strong>ቀን</strong> {{ petroleum.yewil_len }} ዓ.ም</p>
+            </div>
+            <br>
+            <h3>ነዳጅና የነዳጅ ውጤቶች ሽያጭ ውል</h3>
+            <div class="page">
+                <div class="content" style="display: flex; flex-wrap: wrap;">
+                    <div style="margin-left: 60px; margin-right: 60px;">
+                        <div style="font-size: 19px; font-family: Arial, sans-serif; line-height: 2.0; text-align: justify;">
+                            <p>ይህ ውል በታፍ ኦይል ኃ/የተ/የግ/ማህበር አድራሻ አ.አ ፣ ቂርቆስ
+                                ክ/ከተማ ፣ ወረዳ 02 ፣ የቤ.ቁ አዲስ ፣ ስ.ቁ 0115580686/87 fax
+                                0115580689 መንገድ 370 ፣ ስ.ቁ ፖ.ሣ.ቁ. 43625 አዲስ አበባ
+                                ኢትዮጵያ ከዚህ በኋላ (“አቅራቢ” ተብሎ በሚጠራው) በአንድ ወገን፣</p>
+                                                                <h3>እና</h3>
+                            <p> {{ petroleum.yegezi_sim}} አድራሻ {{ petroleum.Addrasha }}
+                                ክልል፣ {{ petroleum.Kilil }} ፣ ከተማ {{ petroleum.ketema }} ፣ ወረዳ {{ petroleum.wereda }} ፡ {{ petroleum.kifle_letema }} ክ/ከተማ፣
+                                ቀበሌ {{ petroleum.kebele }} የቤ.ቁ {{ petroleum.yebet_kutur }} ፣ ስ.ቁ {{ petroleum.silk_kutur }} ፤
+                                የግብር ከፋይ መለያ ቁጥር፡ {{ petroleum.gibir_meleya_kutur}} (ከዚህ በኋላ
+                                “ገዢ” ተብሎ በሚጠራው) በሌላ ወገን በመሆን በአዲስ አበባ ከተማ
+                                ተዋውለዋል፡
+                                ገዢ እና አቅራቢው ከዚህ በኋላ በተናጠል “ተዋዋይ ወገን” ወይም
+                                በአንድ ላይ “ተዋዋይ ወገኖች” እየተባሉ ሊጠሩ ይችላሉ፡፡
+                                </p>
+                                                                <h3>አንቀጽ አንድ</h3>
+                                                                <h3>የውሉ ጉዳይ</h3>
+                            <p>አቅራቢው ነዳጅና የነዳጅ ውጤቶችን ለማስመጣት እና ለማከፋፈል ኃላፊነት ያለበት በመሆኑ፡-</p>
+                            <p>ገዢው ደግሞ በ {{ petroleum.yefabrika_addrasha }} ከተማ ላለው ፋብሪካው
+                                ምርቶቹን ከአቅራቢው ላይ በብቸኝነት በውል ለመግዛት በመፈለጉ
+                                ይህን ውል ከዛሬ ቀን {{ petroleum.yewil_len }} ዓ.ም ጀምሮ
+                                በመካከላችን አስገዳጅ መብትና ግዴታዎችን እንዲፈጥርና በህግ
+                                ፊትም የጸና እንዲሆን ያለምንም አስገዳጅነትና ተፅዕኖ በፈቃዳችን
+                                ተዋውለናል፡፡
+                                </p>
+                    </div>
+                </div>
+            </div>
+            
+
+            <div class="page">
+                <div  class="content" style="display: flex; flex-wrap: wrap;">
+                    <div style="margin-left: 60px; margin-right: 60px;">
+                        <div style="font-size: 19px; font-family: Arial, sans-serif; line-height: 2.0; text-align: justify;">
+                                                                    <h3>አንቀፅ ሁለት</h3>
+                                                                    <h3>ትርጓሜዎች</h3>
+                           <p>የቃሉ አግባብ ሌላ የተለየ ትርጉም የሚያሰጠው ካልሆነ ለዚህ
+                            ውል ዓላማ ብቻ ሲባል፡-
+                            ሀ.<strong>” ምርቶች”</strong> ማለት በዚህ ውል አባሪ 1 የተጠቀሱት ነዳጅ እና
+                            የነዳጅ ውጤቶች ማለት ነው፡፡
+                            ለ. <strong>“መንግስት”</strong> ማለት የኢትዮጵያ ፌዴራላዊ ዴሞክራሲያዊ
+                            ሪፖብሊክ መንግስት ማለት ነው፡፡
+                            ሐ. <strong>“ከአቅም በላይ የሆኑ ሁኔታዎች” </strong>ማለት በተፈጥሮ ከአቅም
+                            በላይ በሆነ መንገድ የሚከሰቱ እንደ (እሳት፣ ጐርፍ፣
+                            የመሬት መንቀጥቀጥ፣ መዓበል፣ አውሎንፋስ ወይም ሌሎች
+                            አደጋዎችን አካቶ፣) ጦርነት፣ ወረራ፣ የውጭ ጠላቶች
+                            ድርጊት፣ ፀብ አጫሪነት(ጦርነት ቢታወጅም ባይታወጅም)፣
+                            የእርስ በእርስ ጦርነት፣ አመጽ፣ አብዮት፣ ሰርጐ ገብነት፣
+                            የሰራዊት ወይም ስልጣን መቀማት፣ የአሸባሪዎች
+                            እንቅስቃሴ፣ መወረስ፣ የመንግስት ማዕቀብ፣ ማገድ፣ ስራ
+                            ማቆም/ማቋረጥ፣ የኤሌትሪክ አገልግሎት አለመስራት
+                            ወይም ሌሎች የማይቀሩ ወይም ቀደም ብለው ያልታዩ
+                            ጉዳዮች ናቸው፡፡ </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page">
+                <div class="content" style="display: flex; flex-wrap: wrap;">
+                    <div style="margin-left: 60px; margin-right: 60px;">
+                        <div style="font-size: 19px; font-family: Arial, sans-serif; line-height: 2.0; text-align: justify;">
+                                <h3>አንቀፅ ሶስት</h3>
+                                <h3>የምርቶቹ ርክክብ</h3>
+                            <p>በዚህ ውል ለሚሸጡት ምርቶች ርክክብ የሚፈፀመው በአባሪ “1” ወይም
+                                አቅራቢው እና ገዢው በተለያየ ጊዜ በጽሑፍ በጋራ በሚስማሙበት ሁኔታ
+                                እና ቦታ መሠረት ይሆናል፡፡</p>
+
+                                <h3>አንቀፅ አራት</h3>
+                                <h3>የምርት ማቅረቢያ የጊዜ ሠሌዳ ፣ ማጓጓዝ </h3>
+                            <p>4.1 ገዢው ወር በገባ እስከ 15ኛው ቀን ድረስ ለሚቀጥለው ወር በየሳምንቱ
+                                የሚቀርቡለትን የምርቶች ዝርዝሮች ጥያቄ ያቀርባል፡፡ ይህም ዝርዝር
+                                በዚህ ውል መሠረት ገዢው ለመግዛት ግዴታ የገባውን ዝቅተኛ ግዢን
+                                ያገናዘበ መሆን አለበት፡፡</p>
+                            <p>4.2 አቅራቢው የአቅርቦት ትዕዛዝ እንደደረሰው በተቻለው መጠንና
+                                ፍጥነት ምርቶቹን ያቀርባል፡፡ ሆኖም የአቅርቦቱ መዘግየት/አለመቅረብ
+                                ለገዥው ካሳ ለመጠየቅ መብት አይሰጠውም፡፡</p>
+                            <p>4.3 ገዢው የአቅርቦት ትዕዛዝ ሲያቀርብ በአንቀጽ 4.1 በተገለፀው መሠረት
+                                አቅራቢው የምርቱን መቅረብ ያረጋግጣል፤
+                                የማቅረቢያው ጊዜ ገዢው ለአቅራቢው ትዕዛዝ ከሠጠበት ቀን ጀምሮ
+                                በ {{ petroleum.yemakrebya_gize }} ቀናት ውስጥ ይሆናል፡፡</p>
+                            <p>4.4 ገዥው በወር ውስጥ ቢያንስ {{ petroleum.ye_litter_bzat }} ሊትር ነዳጅ እና
+                                ፍላጎትን መሰረት ያደረገ ዘይት ከአቅራቢው ላይ ለመግዛት ግዴታ
+                                ገብተዋል፡፡</p>
+                            <p>4.5 ገዥው የማለስለሻ ዘይቶችና ቅባቶችን በአንድ ጊዜ ትዕዛዝ 3,120
+                                ሊትር ወይም ከዚያ በላይ የሚገዛ ከሆነ አቅራቢው ለአዲስ አበባ ዙሪያ
+                                የትራንስፖርት አገልግሎት ሊሠጥ ይችላል፡፡ ከአዲስ አበባ ውጪ ከሆነ
+                                ገዥው በራሱ ትራንስፖርት ያጓዙዛል፡፡</p>
+                            <p>4.6 የተሸጡት ሁሉም ምርቶች ባለቤትነት እና ተያያዥ ስጋቶች (ጉዳቶች)
+                                በዚህ ውል አባሪ “1” መሠረት የምርቶቹ ርክክብ በሚደረግበት ጊዜ
+                                ወደ ገዢው የሚተላለፍ ይሆናል፡፡</p>
+                                        <h3>አንቀፅ አምስት</h3>
+                                        <h3>ክብደቶች እና ልኬቶች</h3>
+                                <p>የአቅራቢው ክብደቶች እና ልኬቶች በመንግስት ሕጋዊ አካል በሚረጋገጠው
+                                    እና በሚፀድቀው መሠረት ሲሆን በእያንዳንዱ ማስረከብ (ማቅረብ) ለነዳጅ
+                                    እና የነዳጅ ውጤቶች ብዛት እንደ አጥጋቢ ማስረጃ ተቀባይነት ይኖራቸዋል፡
+                                    ፡ ገዢው በራሱ ወጪ የምርቶቹ ርክክብ በሚደረግበት ቦታ የምርቶቹን
+                                    ክብደቶችና ልኬቶች የሚያጣራለት/የሚቆጣጠርለት ተወካይ ሊሾም ይችላል፡
+                                    ፡ በማስረከቢያ ቦታው ላይ ልዩነት በሚኖርበት ጊዜ የአቅራቢው አሽከርካሪ
+                                    ምርቶቹን ወደ ማከማቻ ታንከሮች ከማስገባቱ በፊት ለቀረበው የብዛት
+                                    ጉድለት በፍክቱር/ደረሰኝ ላይ ተስማምቶ መፈረሙን ገዥው ማረጋገጥ
+                                    አለበት፡፡
+                                </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page">
+                <div class="content" style="display: flex; flex-wrap: wrap;">
+                    <div style="margin-left: 60px; margin-right: 60px;">
+                        <div style="font-size: 19px; font-family: Arial, sans-serif; line-height: 2.0; text-align: justify;">
+                       
+
+                                                                <h3>አንቀፅ ስድስት</h3>
+                                                            <h3>የምርቶቹ ዋጋ</h3>
+                            <p>በዚህ የውል ድንጋጌ መሰረት የሚገዙት ምርቶች በአባሪ “1” የተጠቀሱት
+                                ናቸው፡፡ ዋጋቸውን በተመለከተ በመንግስት በሚደረገው የዋጋ ማስተካከያ
+                                መሠረት ሊቀንስ ወይም ሊጨምር ይችላል፡፡ ስለሆነም ነዳጁ ከጂቡቲ፣
+                                ከሱዳን እንዲሁም ከመንግስት የነዳጅ ማከማቻ (ዴፖ) በሚጫንበት ዕለት
+                                ያለው ዋጋ ተፈፃሚነት ይኖረዋል፡፡
+                                በዚህ ውል የተሸፈነው ዋጋ በአቅራቢው መደበኛ ምንጭ እና የማቅረብ
+                                መስመር ላይ የተመሠረተ ሲሆን ነገር ግን አቅራቢው በሚመለከተታቸው
+                                አካላት ድርጊት ወይም ከቁጥጥር ውጪ በሆኑ ሁኔታዎች የተነሳ ምርቶቹን
+                                ከሌሎች ምንጮች ወይም ሌላ የማቅረቢያ መስመር እንዲወስድ
+                                በሚገደድበት ጊዜ አቅራቢው የክስተቶቹን መፈጠር ቀደም ብሎ በፁሁፍ
+                                በማሳወቅ የሁሉንም ተጨማሪ የማቅረቢያ ወጪዎች የሚሸፍን ዋጋ
+                                ማስተካከያ መሰረት የማድረግ መብቱ የተጠበቀ ነው፡፡ ነገር ግን በኢንቮይስ
+                                እንዲከፈለው የተጠየቀው ዋጋ ካለው የመንግስት የቦታው ዋጋ መብለጥ
+                                የለበትም፡፡
+                                </p>
+
+                                                    <h3>አንቀፅ ሰባት</h3>
+                                                    <h3>የክፍያ ሁኔታ</h3>
+
+                                <p>7.1 ገዥው በቅድሚያ የምርቶቹን ዋጋ በመክፈል ምርቶቹን ይገዛል።</p>
+                                <p>7.2 የምርቶቹ ዋጋ በቅድሚያ ካልተከፈሉ አቅራቢው ምርቶቹን
+                                አያቀርብም።</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page">
+                <div class="content" style="display: flex; flex-wrap: wrap;">
+                    <div style="margin-left: 60px; margin-right: 60px;">
+                        <div style="font-size: 19px; font-family: Arial, sans-serif; line-height: 2.0; text-align: justify;">
+                                                                <h3>አንቀፅ ስምንት</h3>
+                                                            <h3>የቴክኒክ እገዛ</h3>
+
+                            8.1 አቅራቢው ስለ ነዳጁ አጠቃቀም አስፈላጊ የሆኑ ቴክኒካል ምክርና
+                            ስልጠና ለቀጥታ ተጠቃሚው ድርጅት ሠራተኞች ይሠጣል፡፡<br>
+                            8.2 አቅራቢው ስለ ማለስለሻ ዘይቶች ፣ ደህንነት ፣ የምርት ጥራት
+                            ማረጋገጫ መሳሪያዎች አጠቃቀምና የምርት የመቀበያ ሥነ ሥርዓት
+                            መመሪያን አስመልክቶ ስልጠና ይሰጣል፡፡
+
+                                                                <h3>አንቀፅ ዘጠኝ</h3>
+                                                            <h3>ከአቅም በላይ የሆኑ ሁኔታዎች</h3>
+
+                            ከአቅም በላይ በሆነ ምክንያቶች አቅራቢው በዚህ ውል በራሱ ፍፁማዊ
+                            በግል የመወሠን ምርጫና አግባብነት አለው ብሎ እንደሚያስበው
+                            እስከየትኛውም መጠን ምርቶቹን ለማገድ ወይም አቅርቦቶቹን
+                            ለመቀነስ ነፃነት ያለው ሲሆን ተረካቢውም ሆነ ተጠቃሚው ድርጅት
+                            በዚህ አንቀጽ ተግባራዊ መሆን የተነሳ ለሚከሰቱት ማናቸውም
+                            እጥረቶች እና ይህ ተግባራዊነት ለሚቆይበት ብቻ በራሱ ሂሳብ
+                            ከሌሎች አቅራቢዎች ለመግዛት ነፃ ይሆናሉ፡፡
+
+                                                                <h3>አንቀፅ 10 </h3>
+                                                                <h3>የማቆያ ጊዜ ክፍያ</h3>
+
+                            በመደበኛ ክንዋኔ ቁጥጥር ስር ቀጥታ ተጠቃሚው ድርጅት
+                            በማስረከቢያ ቦታው ለማራገፍ ከ 3 (ሶስት) የስራ ሰዓታት በላይ
+                            ለሚዘገይበት የማቆያ ክፍያ በሰዓት ብር 250.00 /ሁለት መቶ
+                            ሀምሳ/ ይከፍላል፡፡ አግባብነትና በስራ ላይ ባለው ሕግ መሠረት
+                            በዓመቱ ውስጥ ባሉት ማናቸውም የስራ ቀናት ውስጥ የስራ ሰዓታት
+                            ከጠዋቱ 2፡30 እስከ ከቀኑ 11:30 ሰዓት መካከል ያሉን ሰዓታት
+                            ሲሆኑ ከቀኑ 6፡30 እስከ 7፡30 ሰዓት ያለውን የምሳ ሰዓት/እረፍት
+                            የማያካትት ሆኖ ይፋዊ የእረፍት ወይም ስራ የማይሰራባቸው ቀናት
+                            ይሆናሉ ፡፡ ከዚህ በላይ በየጊዜው በሚወጣ ከወደብ የመጫኛ የጉዞ
+                            እና የማራገፊያ ጊዜ መመሪያ መሰረት ይሆናል፡፡
+                            ተሽከርካሪው የሚደርስበት ጊዜና ምርቶቹን የማራገፍና ማጠናቀቂያ
+                            ጊዜ በአቅራቢው ደረሰኝ/ፋክቱር ላይ ገዢው መመዝገብ፣ መፈረምና
+                            ማህተም ማድረግ ይገባዋል፡፡ የተሽከርካሪው አሽከርካሪም
+                            ስለትክክለኛነቱ መፈረም አለበት፡፡ ይህም ለማቆያ የክፍያ ጥያቄ
+                            መሠረት ይሆናል፡፡
+                        </div>
+                    </div>
+                </div>   
+            </div>
+
+            <div class="page">
+                <div class="content" style="display: flex; flex-wrap: wrap;">
+                    <div style="margin-left: 60px; margin-right: 60px;">
+                        <div style="font-size: 19px; font-family: Arial, sans-serif; line-height: 2.0; text-align: justify;">
+                                                                <h3>አንቀፅ አስራ አንድ</h3>
+                                                                <h3>የነዳጅ መቀበያ መመሪያ</h3>
+
+                            ገዢው ነዳጅን ሲረከብ በዚህ ውል አባሪ የተደረገውን የነዳጅ መቀበያ
+                            መመሪያ በጥብቅ መከተል ይኖርበታል፡፡
+                                                    <h3>አንቀፅ አስራ ሁለት </h3>
+                                                    <h3>የውሉ የቆይታ ጊዜና የሚቋረጥበት ሁኔታ</h3>
+
+                            12.1 ይህ ውል ከተፈረመበት ቀን ጀምሮ 2 አመት የፀና ይሆናል፡፡ ይህ
+                            የውል ዘመን ከማለቁ በፊት ከተዋዋይ ወገኖች አንደኛው ውሉን
+                            ማቋረጥ ከፈለገ ቢያንስ የ2(ሁለት) ወራት የጽሑፍ ማስጠንቀቂያ
+                            መስጠት ይኖርበታል፡፡<br>
+                            12.2 ቀደም ብሎ ውሉ የሚቋረጥ ቢሆን እያንዳንዱ ተዋዋይ ወገን
+                            መቋረጡ ከመፅናቱ በፊት በዚህ ውል መሰረት ያለበትን
+                            ግዴታዎች ማሟላት አለበት፡፡<br>
+                            12.3 በዚህ አንቀጽ በአንድ ተዋዋይ ወገን የሚደረገው የውል መቋረጥ
+                            በህግ ወይም በሌላ ያሉትን የዚህኑ ተዋዋይ ወገን ሌሎች
+                            ማናቸውንም መብቶቹን ወይም መፍትሔዎች የሚነካ
+                            አይደለም፡፡
+                                                    
+                                                                <h3>አንቀፅ አስራ ሶስት</h3>
+                                                            <h3>ማሻሻያዎች</h3>
+
+                            ይህ ውል በተዋዋይ ወገኖች የጋራ ፍቃድ በፁሁፍ ሊሻሻል ወይም ሊተካ ይችላል፡፡<br>
+                                                            <h3>አንቀፅ አስራ አራት</h3>
+                                                            <h3>ሚስጢራዊነት</h3>
+                            ይህ ውል የያዛቸው መረጃዎችና ውሉን አስመልክቶ ተዋዋይ ወገኖቹ
+                            የተለዋወጧቸው ሁሉም መረጃዎች በገዢውና አቅራቢው መካከል
+                            በሚስጥር የሚያዙ ይሆናሉ፡፡ <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page">
+                <div class="content" style="display: flex; flex-wrap: wrap;">
+                    <div style="margin-left: 60px; margin-right: 60px;">
+                        <div style="font-size: 19px; font-family: Arial, sans-serif; line-height: 2.0; text-align: justify;">
+                                                                <h3>አንቀፅ አስራ አምስት</h3>
+                                                                <h3>ኃላፊነት</h3>
+
+                            በዚህ ውል በግልጽ የተደነገገውን ሳያካትት አቅራቢውም ሆነ
+                            ገዢው ከዚህ ውል ጋር በተያያዘ ወይም ከውሉ ለሚነሱ
+                            ተከታይ፣ ተዘዋዋሪ ወይም ልዩ ጉዳቶች ኃላፊነት የለባቸው<br>
+                                                            <h3>አንቀፅ አስራ ስድስት</h3>
+                                                            <h3> አለመግባባቶችን መፍታትና ስልጣን ስላለው ፍ/ቤት</h3>
+                            ይህ ውል በስራ ላይ ባሉት የኢትዮጵያ ህጎች መሠረት የሚተረጎም
+                            እና ውጤት የሚኖረው ሲሆን ተዋዋይ ወገኖች የኢትዮጵያ ፍ/ቤት
+                            ስልጣን እንዳለው ተስማምተዋል፡፡ ከዚህ ውል ጋር በተያያዘ ወይም
+                            ከውሉ የሚነሱ ማናቸውም አለመግባባቶችን አስመልክቶ ተዋዋይ
+                            ወገኖቹ በስምምነት ለመፍታት ሁሉንም ጥረቶች ያደርጋሉ፡፡ ሆኖም
+                            ተዋዋይ ወገኖች ይህንን ማድረግ ካልቻሉ አዲስ አበባ የሚገኘው
+                            የፌደራል ፍ/ቤት ጉዳዩን የመዳኘት ስልጣን ይኖረዋል፡፡
+
+                                                    <h3>አንቀፅ አስራ ሰባት</h3>
+                                                    <h3>ማስጠንቀቂያ /ማስታወቂያ</h3>
+
+                            በዚህ ውል የሚሰጥ ማንኛውም ማስጠንቀቂያ በጽሑፍ መሆን
+                            አለበት፡፡ማስጠንቀቂያ እንደተሰጠ የሚቆጠረው የትኛውም ተዋዋይ
+                            ወገን ወደፊት የሚጠቀምበትን የተለየ አድራሻ በጽሑፍ እስካላሳወቀና
+                            እስከዚያው ድረስ በአቅራቢው አድራሻ ፖ.ሳ.ቁጥር 43625 አዲስ
+                            አበባ ኢትዮጵያ እንዲሁም በገዢው አድራሻ ፖ.ሣ.ቁ {{ petroleum.post_kutur }}
+                            በተመዘገበ ፖስታ ከተላከ በ 5ተኛው ቀን ነው፡
+
+                                <h3>አንቀፅ አስራ ስምንት</h3>
+
+                            <div class="d-flex justify-content-between">
+                                <div class="text-left">
+                                    <p class="text-left"><strong>የኩባንያ ተወካይ</strong></p>
+                                    <p class="text-left line-break">Name: Mr. {{ petroleum.yeakrabiw_tewekay }}</p>
+                                    <p class="text-left line-break">Position: {{ petroleum.yeakrabiw_tewekay_halafinet }}</p>
+                                    <p class="text-left line-break">Signature: -----------------</p>
+                                    <p class="text-left line-break">Date: {{ petroleum.yewil_len }}</p>
+                                </div>
+                                <div class="text-right">
+                                    <p><strong>የገዢ ተወካይ</strong></p>
+                                    <p class="text-left line-break">Name: {{ petroleum.yegezi_tewekay }}</p>
+                                    <p class="text-left line-break">Position: {{ petroleum.yegezi_tewekay_halafinet }}</p>
+                                    <p class="text-left line-break">Signature: -----------------</p>
+                                    <p class="text-left line-break">Date: {{ petroleum.yewil_len }}</p>
+                                </div>
+                               
+                            </div><br>
+
+                            <div class="text-center">
+                                <p><strong>ምስክሮች</strong></p>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <div class="text-left">
+                                  <p><strong>ስም</strong></p>
+                                  <p>1. {{ petroleum.andegna_misikir_sim }}</p>
+                                  <p>2. {{ petroleum.huletegna_misikir_sim }}</p>
+                                </div>
+                                <div class="text-center">
+                                  <p><strong>አድራሻ</strong></p>
+                                  <p>{{ petroleum.andegna_lisikir_adrasha }} </p>
+                                  <p>{{ petroleum.huletegna_misikir_adrasha }} </p>
+                                </div>
+                                <div class="text-right">
+                                  <p><strong>Signature</strong></p>
+                                  <p>---------------</p>
+                                  <p>--------------</p>
+                                </div>
+                            </div>
+                              
+                                                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <br>
+        <a href="{% url 'contract_print' contract.id %}" target="_blank" class="btn btn-primary">Print Contract</a>
+    </div>
+    <button href="/form" class="btn btn-primary">Edit</button>
+</body>
+</html>
