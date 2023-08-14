@@ -13,4 +13,7 @@ urlpatterns = [
     path('deal/', views.deal_form, name='deal_form'),
     path('preview_deal/<int:deal_id>/', views.deal_preview, name='deal_preview'),
     path('print_deal/<int:deal_id>/', views.deal_print, name='deal_print'),
+
+
+    path('consumer/', views.petroleum, name='petroleum')
 ]

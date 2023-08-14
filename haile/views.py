@@ -83,3 +83,8 @@ def your_view(request):
         except InvalidOperation:
             # Handle the exception in case the conversion fails
             return HttpResponse("Invalid decimal value. Please provide a valid decimal number.", status=400)
+        
+
+
+def petroleum(request):
+    return render(request, 'petroleum_consumer_form.html')
