@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>ኮንሲመር</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        @media print {
+            .noprint {
+                display: none;
+            }
+        }
+
+        body {
+            margin-top: 100px;
+            margin-bottom: 100px;
+        }
+    
+        . form-container {
+            margin-top: 20px;
+            padding: 10px;
+            {% comment %} border: 1px solid #ccc; {% endcomment %}
+        }
+    
+        .section-container {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    
+        pre {
+            font-size: 16px;
+            font-family: Arial, sans-serif;
+            line-height: 1.5;
+            margin: 0; /* Added to remove margin around paragraphs */
+        }
+    
+        h2, h3, h4 {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            text-decoration: underline;
+        }
+        .timer {
+            text-align: right;
+            margin-top: 40px;
+            margin-right: 60;
+        }
+    
+        .page {
+            page-break-after: always;
+            padding: 0; /* Updated to remove padding */
+            border: none;
+        }
+    
+        .page:first-child {
+            padding-top: 0;
+        }
+    
+        .page:last-child {
+            padding-bottom: 0;
+        }
+    
+        .content {
+            display: flex; /* Added to distribute paragraphs horizontally */
+            flex-wrap: wrap;/* Added to wrap paragraphs to new lines */
+            display: flex;
+            margin-top: 20px;    /* Add margin to the top */
+            margin-bottom: 20px;
+        }
+    
+        .content > div {
+            flex-basis: 100%; /* Added to make each div take full width */
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 20px;    /* Add margin to the top */
+            margin-bottom: 20px;
+        }
+
+        .line-break {
+            margin-bottom: 0.2em; /* Adjust the value to control the spacing */
+          }
+        .text-right {
+            text-align: right;
+            padding-left: 0;
+            margin-bottom: 0;
+        }
+        .page {
+            display: none;
+        }
+    </style>  
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <form method="POST" action="{% url 'petroleum_form' %}">
+                {% csrf_token %}
+                <h1 class="text-center">ነዳጅና የነዳጅ ውጤቶች ሽያጭ ውል </h1>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="section-container">
+                            
+
+                            <div class="form-group">
+                                <label for="yemakrebya_gize">የማቅረብያ ግዜ</label>
+                                <input type="date" class="form-control" name="yemakrebya_gize" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="yewil_len">የፌርማ ቀን</label>
+                                <input type="text" class="form-control" name="yewil_len" required>
+                            </div>
+                            
+                            <!-- Add more fields for section 1 -->
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="section-container">
+                            <h3 class="text-center">ገዢ</h3>
+                            <div class="form-group">
+                                <label for="yegezi_sim">የገዢ ስም:</label>
+                                <input type="text" class="form-control" name="yegezi_sim" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="Addrasha">አድራሻ</label>
+                                <input type="text" class="form-control" name="Addrasha" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="Kilil">ክልል</label>
+                                <input type="text" class="form-control" name="Kilil" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="ketema">ከተማ</label>
+                                <input type="number" class="form-control" name="ketema" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="wereda">ወረዳ</label>
+                                <input type="text" class="form-control" name="wereda" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="kifle_letema">ክ/ከተማ</label>
+                                <input type="text" class="form-control" name="kifle_letema" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="kebele">ቀበሌ</label>
+                                <input type="number" class="form-control" name="kebele" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="yebet_kutur">ቤቁ</label>
+                                <input type="text" class="form-control" name="yebet_kutur" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="silk_kutur">ስቁ</label>
+                                <input type="text" class="form-control" name="silk_kutur" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="gibir_meleya_kutur">ግብር መለያ ቁጥር</label>
+                                <input type="number" class="form-control" name="gibir_meleya_kutur" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="yefabrika_addrasha">የፋብሪካ አድራሻ</label>
+                                <input type="number" class="form-control" name="yefabrika_addrasha" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="ye_litter_bzat">መግዛት ያለበት የሊትር ብዛት</label>
+                                <input type="date" class="form-control" name="ye_litter_bzat" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="post_kutur">pobox</label>
+                                <input type="date" class="form-control" name="post_kutur" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="yewil_len">የፌርማ ቀን</label>
+                                <input type="text" class="form-control" name="yewil_len" required>
+                            </div>
+                            <!-- Add more fields for section 2 -->
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="section-container">
+                            <h3 class="text-center">ምስክሮች</h3>
+                            <div class="form-group">
+                                <label for="andegna_misikir_sim">1ኛ ምስክር</label>
+                                <input type="text" class="form-control" name="andegna_misikir_sim" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="andegna_lisikir_adrasha">1ኛ ምስክር አድራሻ</label>
+                                <input type="text" class="form-control" name="andegna_lisikir_adrasha" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="huletegna_misikir_sim">2ኛ ምስክር</label>
+                                <input type="text" class="form-control" name="huletegna_misikir_sim" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="huletegna_misikir_adrasha">2ኛ ምስክር አድራሻ</label>
+                                <input type="text" class="form-control" name="huletegna_misikir_adrasha" required>
+                            </div>
+                            <!-- Add more fields for witness form -->
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="section-container">
+                            <h3 class="text-center">የገዢ ተወካይ</h3>
+                            <div class="form-group">
+                                <label for="yegezi_tewekay">ስም</label>
+                                <input type="text" class="form-control" name="yegezi_tewekay" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="yegezi_tewekay_halafinet">ሃላፊነት</label>
+                                <input type="text" class="form-control" name="yegezi_tewekay_halafinet" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="yewil_len">የውል ቀን</label>
+                                <input type="date" class="form-control" name="yewil_len" required>
+                            </div>
+                            <!-- Add more fields for buyer representative form -->
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="section-container">
+                            <h3 class="text-center">የአቅራቢው ተወካይ</h3>
+                            <div class="form-group">
+                                <label for="yeakrabiw_tewekay">ስም</label>
+                                <input type="text" class="form-control" name="yeakrabiw_tewekay" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="yeakrabiw_tewekay_halafinet">ሃላፊነት</label>
+                                <input type="text" class="form-control" name="yeakrabiw_tewekay_halafinet" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="yewil_len">የውል ቀን</label>
+                                <input type="date" class="form-control" name="yewil_len" required>
+                            </div>
+                            <!-- Add more fields for buyer representative form -->
+                        </div>
+                    </div>
+                </div>
+                <!-- Hidden input fields -->
+                {% comment %} <div class="form-container"> {% endcomment %}
+                    {% comment %} <form method="POST" action="{% url 'contract_form' %}">
+                        {% csrf_token %}
+                    </form> {% endcomment %}
+        
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -107,7 +107,7 @@
 <body>
     <div class="container">
         {% comment %} <div class="form-container"> {% endcomment %}
-            <form method="POST" action="{% url 'petroleum_consumer_form' %}">
+            <form method="POST" action="{% url 'petroleum_form' %}">
                 {% csrf_token %}
             </form>
             <div class="timer-container">
@@ -424,8 +424,7 @@
             </div>
         </div>
     <br>
-        <a href="{% url 'contract_print' contract.id %}" target="_blank" class="btn btn-primary">Print Contract</a>
+    <a href="{% url 'petroleum_print' petroleum.id %}" target="_blank" class="btn btn-primary">Print Consumer</a>
     </div>
-    <button href="/form" class="btn btn-primary">Edit</button>
 </body>
 </html>

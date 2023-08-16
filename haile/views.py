@@ -93,12 +93,12 @@ def petroleum_form(request):
         petroleum = Petroleum(**petroleum)
         petroleum.save()
         return redirect('petroleum_preview', petroleum_id=petroleum.id)
-    return render(request, 'petroleum_consumer_form.html')
+    return render(request, 'petroleum_form.html')
 
 def petroleum_preview(request, petroleum_id):
     petroleum = get_object_or_404(Petroleum,  pk=petroleum_id)
     return render(request, 'petroleum_preview.html', {'petroleum': petroleum})
 
-def deal_print(request, petroleum_id):
+def petroleum_print(request, petroleum_id):
     petroleum = get_object_or_404(Petroleum, pk=petroleum_id)
-    return render(request, 'deal_print.html', {'petroleum': petroleum})
+    return render(request, 'petroleum_print.html', {'petroleum': petroleum})
