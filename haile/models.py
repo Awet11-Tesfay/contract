@@ -111,6 +111,11 @@ class Deal(models.Model):
         kubanya_tewekay = models.CharField(max_length=100, default='')
         kubanya_position = models.CharField(max_length=100, default='')
         delier_tewekay = models.CharField(max_length=100, default='')
+        yediler_kebele = models.CharField(max_length=100, default='')
+        yediler_bet_kutur = models.CharField(max_length=100, default='')
+        yediler_silk_kutr = models.CharField(max_length=100, default='')
+        tewekay_position = models.CharField(max_length=100, default='')
+        tewekay = models.CharField(max_length=100, default='')
 
         def __str__(self):
             return self.sim

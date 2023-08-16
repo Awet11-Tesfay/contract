@@ -52,7 +52,7 @@ def deal_form(request):
         com.pop('csrfmiddlewaretoken', None)
         deal = Deal(**com)
         deal.save()
-        return redirect('delier_preview', deal_id=deal.id)
+        return redirect('deal_preview', deal_id=deal.id)
     return render(request, 'deal_form.html')
 
 def deal_preview(request, deal_id):
