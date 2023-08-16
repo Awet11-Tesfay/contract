@@ -77,11 +77,12 @@ WSGI_APPLICATION = 'contract.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'telesko',
-        'USER': 'postgres',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'telusko',
+        'USER': 'root',
         'PASSWORD': 'Ki@42da08',
         'HOST': 'localhost',
+        'PORT':'3306',
     }
 }
 
