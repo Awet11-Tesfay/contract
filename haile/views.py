@@ -102,3 +102,79 @@ def petroleum_preview(request, petroleum_id):
 def petroleum_print(request, petroleum_id):
     petroleum = get_object_or_404(Petroleum, pk=petroleum_id)
     return render(request, 'petroleum_print.html', {'petroleum': petroleum})
+
+
+
+""" 
+def fetch_data(request):
+    yewil_ken_param = request.GET.get('yewil_ken', '')  # Get the parameter from the request
+
+    # Fetch records that match the yewil_ken parameter from all models
+    contract_records = Contract.objects.filter(wil_ken=yewil_ken_param)
+    delier_records = Delier.objects.filter(wil_ken=yewil_ken_param)
+    deal_records = Deal.objects.filter(wil_ken=yewil_ken_param)
+    petroleum_records = Petroleum.objects.filter(yewil_len=yewil_ken_param)
+
+    # Pass the records to the template context
+    context = {
+        'contract_records': contract_records,
+        'delier_records': delier_records,
+        'deal_records': deal_records,
+        'petroleum_records': petroleum_records,
+    }
+
+    return render(request, 'template_name.html', context)
+
+
+
+def delier_list(request):
+    yewil_ken_param = request.GET.get('yewil_ken', '')  # Get the parameter from the request
+
+    # Fetch contract records that match the yewil_ken parameter
+    contract_records = Delier.objects.filter(wil_ken=yewil_ken_param)
+
+    context = {
+        'contract_records': contract_records,
+    }
+
+    return render(request, 'delier.html', context)
+
+
+def petroleum_list(request):
+    yewil_ken_param = request.GET.get('yewil_ken', '')  # Get the parameter from the request
+
+    # Fetch contract records that match the yewil_ken parameter
+    contract_records = Petroleum.objects.filter(wil_ken=yewil_ken_param)
+
+    context = {
+        'contract_records': contract_records,
+    }
+
+    return render(request, 'petroleum_list.html', context)
+
+
+
+def contract_list(request):
+    yewil_ken_param = request.GET.get('yewil_ken', '')  # Get the parameter from the request
+
+    # Fetch contract records that match the yewil_ken parameter
+    contract_records = Contract.objects.filter(wil_ken=yewil_ken_param)
+
+    context = {
+        'contract_records': contract_records,
+    }
+
+    return render(request, 'contract_list.html', context)
+
+
+def deal_list(request):
+    yewil_ken_param = request.GET.get('yewil_ken', '')  # Get the parameter from the request
+
+    # Fetch contract records that match the yewil_ken parameter
+    contract_records = Deal.objects.filter(wil_ken=yewil_ken_param)
+
+    context = {
+        'contract_records': contract_records,
+    }
+
+    return render(request, 'deal_list.html', context) """

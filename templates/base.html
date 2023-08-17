@@ -77,7 +77,6 @@
               <li><a href="delier/" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>ዲለርሺፕ በውክልና</span></a></li>
             </ul>
           </div>
-          
           <li><a href="/auth/logout/" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Logout</span></a></li>
 
         {% endif %}
@@ -99,6 +98,12 @@
 
 
   <main id="main">
+    
+    {% block content %}
+    {# Content from the specific list templates will be inserted here #}
+    {% endblock %}
+    
+
   {% block body %}
   
   {% endblock body %}

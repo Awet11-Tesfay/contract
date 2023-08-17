@@ -133,7 +133,7 @@ class Petroleum(models.Model):
      silk_kutur = models.CharField(max_length=100, default='')
      gibir_meleya_kutur = models.CharField(max_length=100, default='')
      yefabrika_addrasha = models.CharField(max_length=100, default='')
-     yewil_len = models.CharField(max_length=100, default='')
+     yewil_ken = models.CharField(max_length=100, default='')
      yemakrebya_gize = models.CharField(max_length=100, default='')
      ye_litter_bzat = models.CharField(max_length=100, default='')
      post_kutur = models.CharField(max_length=100, default='')
