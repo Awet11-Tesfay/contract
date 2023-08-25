@@ -53,6 +53,8 @@
           font-family: Arial, sans-serif;
           text-align: center;
           text-decoration: underline;
+          weight: bold;
+          
         }
       
         .timer {
@@ -79,15 +81,13 @@
             <form method="POST" action="{% url 'petroleum_form' %}">
                 {% csrf_token %}
             </form>
-            <div class="timer-container">
-                <p style="margin-left: 20px; font-size: 24px;" class="timer mr-5"><strong>ቀን</strong> {{ petroleum.yewil_ken }} ዓ.ም</p>
-            </div>
-            <br>
-            <h3 style="margin-left: 20px; font-size: 24px;">ነዳጅና የነዳጅ ውጤቶች ሽያጭ ውል</h3>
             <div class="page">
                 <div class="content" style="display: flex; flex-wrap: wrap;">
                     <div style="margin-left: 60px; margin-right: 60px;">
                         <div style="font-family: Arial, sans-serif; line-height: 1.5; text-align: justify;">
+                            <p style="margin-left: 20px; font-size: 24px;" class="timer mr-5"><strong>ቀን</strong> {{ petroleum.yewil_ken }} ዓ.ም</p>
+                            <h3 style="margin-left: 20px; font-size: 24px;">ነዳጅና የነዳጅ ውጤቶች ሽያጭ ውል</h3>
+                            
                             <p style="margin-left: 20px; font-size: 24px;">ይህ ውል በታፍ ኦይል ኃ/የተ/የግ/ማህበር አድራሻ አ.አ ፣ ቂርቆስ
                                 ክ/ከተማ ፣ ወረዳ 02 ፣ የቤ.ቁ አዲስ ፣ ስ.ቁ 0115580686/87 fax
                                 0115580689 መንገድ 370 ፣ ስ.ቁ ፖ.ሣ.ቁ. 43625 አዲስ አበባ
@@ -125,11 +125,11 @@
                                                                     <h3>ትርጓሜዎች</h3>
                            <p style="font-size: 24px;">የቃሉ አግባብ ሌላ የተለየ ትርጉም የሚያሰጠው ካልሆነ ለዚህ
                             ውል ዓላማ ብቻ ሲባል፡-
-                            ሀ.<strong>” ምርቶች”</strong> ማለት በዚህ ውል አባሪ 1 የተጠቀሱት ነዳጅ እና
-                            የነዳጅ ውጤቶች ማለት ነው፡፡
-                            ለ. <strong>“መንግስት”</strong> ማለት የኢትዮጵያ ፌዴራላዊ ዴሞክራሲያዊ
-                            ሪፖብሊክ መንግስት ማለት ነው፡፡
-                            ሐ. <strong>“ከአቅም በላይ የሆኑ ሁኔታዎች” </strong>ማለት በተፈጥሮ ከአቅም
+                           <p style="font-size: 24px;"> ሀ.<strong>” ምርቶች”</strong> ማለት በዚህ ውል አባሪ 1 የተጠቀሱት ነዳጅ እና
+                            የነዳጅ ውጤቶች ማለት ነው፡፡</p>
+                            <p style="font-size: 24px;">ለ.<strong>“መንግስት”</strong> ማለት የኢትዮጵያ ፌዴራላዊ ዴሞክራሲያዊ
+                            ሪፖብሊክ መንግስት ማለት ነው፡፡</p>
+                            <p style="font-size: 24px;">ሐ. <strong>“ከአቅም በላይ የሆኑ ሁኔታዎች” </strong>ማለት በተፈጥሮ ከአቅም
                             በላይ በሆነ መንገድ የሚከሰቱ እንደ (እሳት፣ ጐርፍ፣
                             የመሬት መንቀጥቀጥ፣ መዓበል፣ አውሎንፋስ ወይም ሌሎች
                             አደጋዎችን አካቶ፣) ጦርነት፣ ወረራ፣ የውጭ ጠላቶች

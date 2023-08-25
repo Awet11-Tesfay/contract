@@ -79,21 +79,21 @@
             <form method="POST" action="{% url 'petroleum_form' %}">
                 {% csrf_token %}
             </form>
-            <div class="timer-container">
-                <p style="font-size: 24px;" class="timer mr-5"><strong>ቀን</strong> {{ petroleum.yewil_ken }} ዓ.ም</p>
-            </div>
             <br>
-            <h3>ነዳጅና የነዳጅ ውጤቶች ሽያጭ ውል</h3>
+            <h3 style="margin-left: 20px; font-size: 24px;">ነዳጅና የነዳጅ ውጤቶች ሽያጭ ውል</h3>
             <div class="page">
                 <div class="content" style="display: flex; flex-wrap: wrap;">
                     <div style="margin-left: 60px; margin-right: 60px;">
                         <div style="font-family: Arial, sans-serif; line-height: 1.5; text-align: justify;">
-                            <p style="font-size: 24px;">ይህ ውል በታፍ ኦይል ኃ/የተ/የግ/ማህበር አድራሻ አ.አ ፣ ቂርቆስ
+                            <div class="timer-container">
+                                <p style="margin-left: 20px; font-size: 24px;" class="timer mr-5"><strong>ቀን</strong> {{ petroleum.yewil_ken }} ዓ.ም</p>
+                            </div>
+                            <p style="margin-left: 20px; font-size: 24px;">ይህ ውል በታፍ ኦይል ኃ/የተ/የግ/ማህበር አድራሻ አ.አ ፣ ቂርቆስ
                                 ክ/ከተማ ፣ ወረዳ 02 ፣ የቤ.ቁ አዲስ ፣ ስ.ቁ 0115580686/87 fax
                                 0115580689 መንገድ 370 ፣ ስ.ቁ ፖ.ሣ.ቁ. 43625 አዲስ አበባ
                                 ኢትዮጵያ ከዚህ በኋላ (“አቅራቢ” ተብሎ በሚጠራው) በአንድ ወገን፣</p>
                                                                 <h3>እና</h3>
-                            <p style="font-size: 24px;"> {{ petroleum.yegezi_sim}} አድራሻ {{ petroleum.Addrasha }}
+                            <p style="margin-left: 20px; font-size: 24px;"> {{ petroleum.yegezi_sim}} አድራሻ {{ petroleum.Addrasha }}
                                 ክልል፣ {{ petroleum.Kilil }} ፣ ከተማ {{ petroleum.ketema }} ፣ ወረዳ {{ petroleum.wereda }} ፡ {{ petroleum.kifle_letema }} ክ/ከተማ፣
                                 ቀበሌ {{ petroleum.kebele }} የቤ.ቁ {{ petroleum.yebet_kutur }} ፣ ስ.ቁ {{ petroleum.silk_kutur }} ፤
                                 የግብር ከፋይ መለያ ቁጥር፡ {{ petroleum.gibir_meleya_kutur}} (ከዚህ በኋላ
@@ -102,10 +102,10 @@
                                 ገዢ እና አቅራቢው ከዚህ በኋላ በተናጠል “ተዋዋይ ወገን” ወይም
                                 በአንድ ላይ “ተዋዋይ ወገኖች” እየተባሉ ሊጠሩ ይችላሉ፡፡
                                 </p>
-                                                                <h3 style="font-size: 24px;">አንቀጽ አንድ</h3>
+                                                                <h3 style="margin-left: 20px; font-size: 24px;">አንቀጽ አንድ</h3>
                                                                 <h3 style="font-size: 24px;">የውሉ ጉዳይ</h3>
-                            <p style="font-size: 24px;">አቅራቢው ነዳጅና የነዳጅ ውጤቶችን ለማስመጣት እና ለማከፋፈል ኃላፊነት ያለበት በመሆኑ፡-</p>
-                            <p style="font-size: 24px;">ገዢው ደግሞ በ {{ petroleum.yefabrika_addrasha }} ከተማ ላለው ፋብሪካው
+                            <p style="margin-left: 20px; font-size: 24px;">አቅራቢው ነዳጅና የነዳጅ ውጤቶችን ለማስመጣት እና ለማከፋፈል ኃላፊነት ያለበት በመሆኑ፡-</p>
+                            <p style="margin-left: 20px; font-size: 24px;">ገዢው ደግሞ በ {{ petroleum.yefabrika_addrasha }} ከተማ ላለው ፋብሪካው
                                 ምርቶቹን ከአቅራቢው ላይ በብቸኝነት በውል ለመግዛት በመፈለጉ
                                 ይህን ውል ከዛሬ ቀን {{ petroleum.yewil_ken }} ዓ.ም ጀምሮ
                                 በመካከላችን አስገዳጅ መብትና ግዴታዎችን እንዲፈጥርና በህግ
@@ -125,11 +125,11 @@
                                                                     <h3>ትርጓሜዎች</h3>
                            <p style="font-size: 24px;">የቃሉ አግባብ ሌላ የተለየ ትርጉም የሚያሰጠው ካልሆነ ለዚህ
                             ውል ዓላማ ብቻ ሲባል፡-
-                            ሀ.<strong>” ምርቶች”</strong> ማለት በዚህ ውል አባሪ 1 የተጠቀሱት ነዳጅ እና
-                            የነዳጅ ውጤቶች ማለት ነው፡፡
-                            ለ. <strong>“መንግስት”</strong> ማለት የኢትዮጵያ ፌዴራላዊ ዴሞክራሲያዊ
-                            ሪፖብሊክ መንግስት ማለት ነው፡፡
-                            ሐ. <strong>“ከአቅም በላይ የሆኑ ሁኔታዎች” </strong>ማለት በተፈጥሮ ከአቅም
+                           <p style="font-size: 24px;"> ሀ.<strong>” ምርቶች”</strong> ማለት በዚህ ውል አባሪ 1 የተጠቀሱት ነዳጅ እና
+                            የነዳጅ ውጤቶች ማለት ነው፡፡</p>
+                            <p style="font-size: 24px;">ለ.<strong>“መንግስት”</strong> ማለት የኢትዮጵያ ፌዴራላዊ ዴሞክራሲያዊ
+                            ሪፖብሊክ መንግስት ማለት ነው፡፡</p>
+                            <p style="font-size: 24px;">ሐ. <strong>“ከአቅም በላይ የሆኑ ሁኔታዎች” </strong>ማለት በተፈጥሮ ከአቅም
                             በላይ በሆነ መንገድ የሚከሰቱ እንደ (እሳት፣ ጐርፍ፣
                             የመሬት መንቀጥቀጥ፣ መዓበል፣ አውሎንፋስ ወይም ሌሎች
                             አደጋዎችን አካቶ፣) ጦርነት፣ ወረራ፣ የውጭ ጠላቶች
@@ -393,7 +393,9 @@
             </div>
         </div>
     <br>
-    <a href="{% url 'petroleum_print' petroleum.id %}" target="_blank" class="btn btn-primary">Click to Preview</a>
+    <div>
+        <button onclick="window.print()" class="btn btn-primary noprint">Click to Print</button>
+    </div>
     </div>
 </body>
 </html>
