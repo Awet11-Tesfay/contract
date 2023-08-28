@@ -12,7 +12,7 @@ class Contract(models.Model):
     location1 = models.CharField(max_length=100, default='')
     contract_date = models.CharField(max_length=100, default='')
     obliged_purchase = models.CharField(max_length=100, default='')
-    amount_litter = models.DecimalField(max_digits=20, decimal_places=10, null=True)
+    amount_litter = models.CharField(max_length=100, default='')
     delivery_within = models.CharField(max_length=100, default='')
     valid_year = models.CharField(max_length=100, default='')
     pobox = models.CharField(max_length=100, default='')
@@ -32,9 +32,9 @@ class Contract(models.Model):
     ssubcity = models.CharField(max_length=100, default='')
     sworeda = models.CharField(max_length=100, default='')
     stell = models.CharField(max_length=50, default='')
-    sfax = models.IntegerField(default=0)
+    sfax = models.CharField(max_length=100, default='')
     shouse = models.CharField(max_length=50, default='')
-    sroad = models.IntegerField(default=0)
+    sroad = models.CharField(max_length=100, default='')
     spobox = models.CharField(max_length=25, default='')
 
 
