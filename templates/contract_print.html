@@ -1,109 +1,78 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Print Contract</title>
+    <title>Consumer Agreement</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
     <style>
-        @media print {
-            .noprint {
-              display: none;
-            }
-          }
-          
-          body {
-            font-family: Arial, sans-serif;
-            font-size: 16px;
-            line-height: 1.5;
-            margin-top: 210px;
-          }
-          
-          .form-container {
-            margin-top: 20px;
-            padding: 10px;
-            border: 1px solid #ccc;
-          }
-          
-          .section-container {
-            margin-top: 20px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-          }
-          
-          pre {
-            font-size: 16px;
-            font-family: Arial, sans-serif;
-            line-height: 1.5;
-            margin: 0; /* Added to remove margin around paragraphs */
-          }
-          
-          h2, h3, h4 {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            text-decoration: underline;
-          }
-          
-          .timer-container {
-            text-align: right;
-            margin-top: 40px;
-            margin-right: 10px;
-          }
-          
-          @page {
-            size: A4; /* Adjust the size to your required page size */
-            orphans: 0;
-            widows: 0;
-            margin-top: 20mm; /* Adjust top margin as needed */
-            margin-bottom: 20mm;
-          }
-          
-          .page {
-            page-break-after: always;
-            width: 100%;
-            height: 100%;
-            padding: 0;
-            margin: 0;
-          }
-          
-          .page:first-child {
-            padding-top: 0;
-          }
-          
-          .page:last-child {
-            padding-bottom: 0;
-          }
-          
-          .content {
-            display: flex; /* Added to distribute paragraphs horizontally */
-            flex-wrap: wrap; /* Added to wrap paragraphs to new lines */
-            display: flex;
-            margin-top: 20px;    /* Add margin to the top */
-            margin-bottom: 20px;
-          }
-          
-          .content > div {
-            flex-basis: 100%; /* Added to make each div take full width */
-            display: flex;
-            flex-wrap: wrap;
-            margin-top: 20px;    /* Add margin to the top */
-            margin-bottom: 20px;
-          }
-          
-          .line-break {
-            margin-bottom: 0.2em; /* Adjust the value to control the spacing */
-          }
-          
-          .text-right {
-            text-align: right;
-            padding-left: 0;
-            margin-bottom: 0;
-          }
-          
-          .page:nth-child(even) {
-            background-color: #f7f7f7;
-          }
+      /* Hide elements with class "noprint" when printing */
+      @media print {
+        .noprint {
+          display: none;
+        }
+
+        .no-gap {
+          margin: 0;
+          padding: 0;
+        }
+    
+        /* Apply styles for printed content */
+        body {
+          margin: 0;
+          font-family: sans-serif;
+          line-height: 1.5;
+        }
+    
+        .page {
+          page-break-inside: avoid;
+          margin: 0;
+        }
+    
+        @page {
+          size: A4;
+          margin-top: 40px;
+          margin-left: 40px;
+          margin-right: 10px;
+          margin-bottom: 20px;
+        }
+
+        p, h1, h2, h3, h4, ul, li {
+          font-size: 24px; /* Set the desired font size for printed content */
+          margin: 0; /* Reset margin for consistent spacing */
+          padding: 0; /* Reset padding for consistent spacing */
+        }
+      }
+    
+      /* General styling for the content */
+      .content {
+        flex-direction: column;
+      }
+    
+      h2, h3, h4 {
+        margin-top: 20px;
+        margin-bottom: 10px;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        text-decoration: underline;
+      }
+    
+      .timer {
+        margin-top: 40px;
+        text-align: right;
+        margin-right: 60px;
+      }
+    
+      .text-right {
+        text-align: right;
+        margin-right: 30px;
+      }
+    
+      .text-left {
+        text-align: left;
+        margin-left: 30px;
+      }
+    
     </style>
-         
 </head>
 <body>
     <div>
@@ -112,32 +81,29 @@
                 <form method="POST" action="{% url 'contract_form' %}">
                     {% csrf_token %}
                 </form>
-                <div class="timer-container">
-                    <p class="timer mr-5"><strong>Date</strong> {{contract.contract_date}}</p>
-                </div>
-                <br>
-                <h3> Contract Agreement for the supply of petroleum</h3>
                 <div class="page">
                     <div class="content" style="display: flex; flex-wrap: wrap;">
                         <div style="margin-left: 60px; margin-right: 60px;">
-                            <div style="font-size: 19px; font-family: Arial, sans-serif; line-height: 2.0; text-align: justify;">
-                                <p>This contract is made between {{ contract.suppliercname }}  Whose address is Addis Ababa ፣ {{ contract.ssubcity }}
+                            <div style="font-size: 19px; font-family: Arial, sans-serif; line-height: 1.5; text-align: justify;">
+                                <p class="timer mr-5" style="font-size: 24px;"><strong>Date</strong> {{contract.contract_date}} GC</p>
+                                <h3 style="font-size: 24px;"> Contract Agreement for the supply of petroleum</h3>
+                                <p style="font-size: 24px;">This contract is made between {{ contract.suppliercname }}  Whose address is Addis Ababa ፣ {{ contract.ssubcity }}
                                 Sub city ፣ {{ contract.sworeda }} ፣ tell {{ contract.stell }} ፣ fax {{ contract.sfax }} ፣ House No {{ contract.shouse }} ፣ road
                                 {{ contract.sroad }} ፣ P.O. Box {{ contract.spobox }} Addis Ababa, Ethiopia (hereinafter referred to as ("Supplier").</p>
-                                                                    <h3>AND</h3>
-                                <p style="color: red;">{{ contract.companyname }} whose address is {{ contract.address }}, {{ contract.address1 }}, house number {{ contract.housenumber }};
+                                                                    <h3 style="font-size: 24px;"><strong>AND</strong></h3>
+                                <p style="color: red, font-size: 24px;">{{ contract.companyname }} whose address is {{ contract.address }}, {{ contract.address1 }}, house number {{ contract.housenumber }};
                                 woreda {{ contract.woreda }}; Kebele {{ contract.kebele }}; tell {{ contract.tell }} (Herein after referred to as
                                 "buyer") on the other.</p>
-                                Buyer and Supplier will herein after be referred to individually as "Party" and jointly as "Parties".</p>
-                                                                    <h3>Article 1</h3>
-                                                            <h3>Objects of the contract</h3>
-                                <p style="color: red;">Whereas the Supplier is responsible for the importation and distribution of petroleum and petroleum products.</p>
-                                <p style="color: red;">Whereas the buyer hereby is desirous to enter into a contractual deal for the purchase of petroleum and petroleum products for its Factory located at {{ contract.location }}, {{ contract.location1 }} subject to the terms and conditions of this contract dated on {{ contract.contract_date }}.</p>
-                                <p style="color: red;">Now therefore, the parties have entered into this agreement according to the following terms and conditions.</p>
-                                                                    <h3>Article 2</h3>
-                                                                    <h3>Definitions</h3>
-                                <p>Unless the context otherwise requires</p>
-                                <p>a. <strong>"Product"</strong> means Gasoil specified in the proforma.</p><br>
+                                <p style="font-size: 24px;">Buyer and Supplier will herein after be referred to individually as "Party" and jointly as "Parties".</p>
+                                                                    <h3 style="font-size: 24px;"><strong>Article 1</strong></h3>
+                                                            <h3 style="font-size: 24px;"><strong>Objects of the contract</strong></h3>
+                                <p style="color: red, font-size: 24px;">Whereas the Supplier is responsible for the importation and distribution of petroleum and petroleum products.</p>
+                                <p style="color: red, font-size: 24px;">Whereas the buyer hereby is desirous to enter into a contractual deal for the purchase of petroleum and petroleum products for its Factory located at {{ contract.location }}, {{ contract.location1 }} subject to the terms and conditions of this contract dated on {{ contract.contract_date }}.</p>
+                                <p style="color: red, font-size: 24px;">Now therefore, the parties have entered into this agreement according to the following terms and conditions.</p>
+                                                                    <h3 style="font-size: 24px;"><strong>Article 2</strong></h3>
+                                                                    <h3 style="font-size: 24px;"><strong>Definitions</strong></h3>
+                                <p style="font-size: 24px;">Unless the context otherwise requires</p>
+                                <p style="font-size: 24px;">a. <strong>"Product"</strong> means Gasoil specified in the proforma.</p><br>
                         </div>
                     </div>
                 </div>
@@ -146,40 +112,40 @@
                 <div class="page">
                     <div  class="content" style="display: flex; flex-wrap: wrap;">
                         <div style="margin-left: 60px; margin-right: 60px;">
-                            <div style="font-size: 19px; font-family: Arial, sans-serif; line-height: 2.0; text-align: justify;">
-                                <p>b. <strong>"Government"</strong> means the Government of the Federal Democratic Republic of
+                            <div style="font-size: 19px; font-family: Arial, sans-serif; line-height: 1.5; text-align: justify;">
+                                <p style="font-size: 24px;">b. <strong>"Government"</strong> means the Government of the Federal Democratic Republic of
                                 Ethiopia.</p>
-                                <p>c. <strong>"Force Majeure"</strong> means Natural unforeseen disaster acts of /God/ (including
+                                <p style="font-size: 24px;">c. <strong>"Force Majeure"</strong> means Natural unforeseen disaster acts of /God/ (including
                                 fire, flood, earthquake, storm, hurricane, or other natural disaster), war, invasion,
                                 act of foreign enemies, hostilities (regardless of whether war is declared) civil
                                 war, rebellion, revolution, insurrection, military or usurped power or terrorist
                                 activities, nationalization, government sanction, blockage, embargo, strike,
                                 lockout or interruption or failure of electricity service or other inevitable or
-                                unforeseen causes.</p><br>
-                                <br>
-                                                                    <h3>Article 3</h3>
-                                                                <h3>Exclusive Supplier</h3>
-                                <p>During the contract period the Buyer is obligated to purchase exclusively from the
-                                Buyer all the product mentioned under Annex A.</p><br>
+                                unforeseen causes.</p>
+                                
+                                                                    <h3 style="font-size: 24px;"><strong>Article 3</strong></h3>
+                                                                <h3 style="font-size: 24px;"><strong>Exclusive Supplier</strong></h3>
+                                <p style="font-size: 24px;">During the contract period the Buyer is obligated to purchase exclusively from the
+                                Buyer all the product mentioned under Annex A.</p>
 
-                                                                    <h3>Article 4</h3>
-                                                                <h3>Supply of Products</h3>
+                                                                    <h3 style="font-size: 24px;"><strong>Article 4</strong></h3>
+                                                                <h3 style="font-size: 24px;"><strong>Supply of Products</strong></h3>
 
-                                <p>Delivery of the product sold under this agreement shall be made as specified in<br>
-                                the proforma or at the place both parties jointly agreed in written.</p><br>
+                                <p style="font-size: 24px;">Delivery of the product sold under this agreement shall be made as specified in<br>
+                                the proforma or at the place both parties jointly agreed in written.</p>
 
-                                                                    <h3>Article 5</h3>
-                                                        <h3>Product Delivery Schedule፣ transport</h3>
+                                                                    <h3 style="font-size: 24px;"><strong>Article 5</strong></h3>
+                                                        <h3 style="font-size: 24px;"><strong>Product Delivery Schedule፣ transport</strong></h3>
 
-                                <p>5.1 The buyer will provide details of product order to be made for the coming
+                                <p style="font-size: 24px;">5.1 The buyer will provide details of product order to be made for the coming
                                 month on the 15th day of the current month on a weekly basis. This will state
                                 the total product required to be delivered at the delivery place mentioned
-                                under this contract.</p><br>
-                                <p>5.2 Upon receiving the details of the order, the supplier as much as possible
+                                under this contract.</p>
+                                <p style="font-size: 24px;">5.2 Upon receiving the details of the order, the supplier as much as possible
                                 delivers the products. But the delay to deliver on time does not allow the
-                                buyer to claim compensation</p><br>
-                                <p style="color: red;">5.3 The Supplier shall ensure delivery as per the order of the buyer stated above
-                                in Art.</p><br>
+                                buyer to claim compensation</p>
+                                <p style="color: red, font-size: 24px;">5.3 The Supplier shall ensure delivery as per the order of the buyer stated above
+                                in Art.</p>
                                
                             </div>
                         </div>
@@ -189,40 +155,40 @@
                 <div class="page">
                     <div class="content" style="display: flex; flex-wrap: wrap;">
                         <div style="margin-left: 60px; margin-right: 60px;">
-                            <div style="font-size: 19px; font-family: Arial, sans-serif; line-height: 2.0; text-align: justify;">
-                                <p style="color: red;">5.4 The buyer is obliged to purchase {{ contract.obliged_purchase }} trucks fuel and {{ contract.amount_litter }} litters of
-                                lubricants in a month/ demand based lubricants.</p><br>
-                                5.5 The supplier will provide transportation service for Addis Ababa and its
+                            <div style="font-size: 19px; font-family: Arial, sans-serif; line-height: 1.5; text-align: justify;">
+                                <p style="color: red, font-size: 24px;">5.4 The buyer is obliged to purchase {{ contract.obliged_purchase }} trucks fuel and {{ contract.amount_litter }} litters of
+                                lubricants in a month/ demand based lubricants.</p>
+                                <p style="font-size: 24px;">5.5 The supplier will provide transportation service for Addis Ababa and its
                                 surroundings if the buyer makes order for lubricants and greases items of
                                 3,120 litters or above. But if it is out of Addis Ababa the buyer will provide
-                                transportation cost.<br>
-                                5.6 The risk attached to and the title of all the products sold shall be transferred
+                                transportation cost.<p>
+                                <p style="font-size: 24px;">5.6 The risk attached to and the title of all the products sold shall be transferred
                                 to the Purchaser upon delivery thereof in accordance with the attached
-                                proforma.<br>
+                                proforma.</p>
 
-                                                                    <h3>Article 6</h3>
-                                                            <h3>Weights and Measurements</h3>
+                                                                    <h3 style="font-size: 24px;"><strong>Article 6</strong></h3>
+                                                            <h3 style="font-size: 24px;"><strong>Weights and Measurements</strong></h3>
 
-                                The Supplier's weights and measurement as verified and approved by the official
+                                <p style="font-size: 24px;">The Supplier's weights and measurement as verified and approved by the official
                                 body of the Government shall be accepted as conclusive evidence of the
                                 quantity of fuel comprising each delivery, but the buyer shall appoint at his
                                 expense a representative at the place of the transfer of possession, check such
                                 weights and measurement. In case of discrepancy at the delivery point, the buyer
                                 must ensure, before discharge into storage tanks, that the Supplier's driver agrees
-                                and signs on the invoice for quantity short delivered.<br>
+                                and signs on the invoice for quantity short delivered.</p>
 
-                                                                    <h3>Article 7</h3>
-                                                            <h3>Resale of the products</h3>
+                                                                    <h3 style="font-size: 24px;"><strong>Article 7</strong></h3>
+                                                            <h3 style="font-size: 24px;"><strong>Resale of the products</strong></h3>
 
-                                Under this Contract, the Supplier sells the products to the Buyer, and the Buyer shall not
+                                <p style="font-size: 24px;">Under this Contract, the Supplier sells the products to the Buyer, and the Buyer shall not
                                 re-sell the products nor assign its rights under this Contract without the written consent
-                                of the Seller.<br>
+                                of the Seller.</p>
 
-                                                                    <h3>Article 8</h3>
-                                                                <h3>Price of the Product</h3>
-                                The products to be purchased under the terms of this agreement and their prices
+                                                                    <h3 style="font-size: 24px;"><strong>Article 8</strong></h3>
+                                                                <h3 style="font-size: 24px;"><strong>Price of the Product</strong></h3>
+                                <p style="font-size: 24px;">The products to be purchased under the terms of this agreement and their prices
                                 as specified in the proforma are subject to adjustment upward or downward in the
-                                event of changes made by the government.<br>
+                                event of changes made by the government.</p>
                             </div>
                         </div>
                     </div>
@@ -231,44 +197,39 @@
                 <div class="page">
                     <div class="content" style="display: flex; flex-wrap: wrap;">
                         <div style="margin-left: 60px; margin-right: 60px;">
-                            <div style="font-size: 19px; font-family: Arial, sans-serif; line-height: 2.0; text-align: justify;">
-                                Therefore, the price of the fuel shall be set as per the loading date price from
+                            <div style="font-size: 19px; font-family: Arial, sans-serif; line-height: 1.5; text-align: justify;">
+                                <p style="font-size: 24px;">Therefore, the price of the fuel shall be set as per the loading date price from
                                 Djibouti, Sudan, and Government's Depots.
                                 The price covered by this agreement is based on the Supplier's normal source
                                 and line of supply, but in the event that the Supplier is obliged either by action of
                                 the responsible bodies or through circumstances beyond his control to take
                                 products from other sources or by other lines of supply, the supplier reserves the
                                 right to adjust prices accordingly to cover all additional supply costs upon prior
-                                notification of the knowledge of the events.<br>
+                                notification of the knowledge of the events.</p>
 
-                                                                    <h3>Article 9</h3>
-                                                                <h3>Terms of Payment</h3>
+                                                                    <h3 style="font-size: 24px;"><strong>Article 9</strong></h3>
+                                                                <h3 style="font-size: 24px;"><strong>Terms of Payment</strong></h3>
 
-                                <p style="color: red;">9.1. The buyer shall make the full payment before placing an order for the
+                                <p style="color: red, font-size: 24px;">9.1. The buyer shall make the full payment before placing an order for the
                                 products.</p>
-                                9.2 Where the buyer fails to make advance payment, the Supplier shall have
-                                the right to suspend further deliveries until payment in full is made.<br>
+                                <p style="font-size: 24px;">9.2 Where the buyer fails to make advance payment, the Supplier shall have
+                                the right to suspend further deliveries until payment in full is made.</p>
 
-                                                                    <h3>Article 10</h3>
-                                                                <h3>Technical Support</h3>
+                                                                    <h3 style="font-size: 24px;"><strong>Article 10</strong></h3>
+                                                                <h3 style="font-size: 24px;"><strong>Technical Support</strong></h3>
 
-                                10.1 The Supplier shall provide all the necessary technical advice and training on
-                                the fuel application to the Purchaser's technical staff.
-                                10.2 The Supplier shall provide training on lubricants, safety, the use of quality checking
-                                tools mentioned above and product receiving procedures.<br>
+                                <p style="font-size: 24px;">10.1 The Supplier shall provide all the necessary technical advice and training on
+                                the fuel application to the Purchaser's technical staff.</p>
+                                <p style="font-size: 24px;">10.2 The Supplier shall provide training on lubricants, safety, the use of quality checking
+                                tools mentioned above and product receiving procedures.</p>
 
-                                                                    <h3>Article 11</h3>
-                                                                    <h3>Force Majeure</h3>
+                                                                    <h3 style="font-size: 24px;"><strong>Article 11</strong></h3>
+                                                                    <h3 style="font-size: 24px;"><strong>Force Majeure</strong></h3>
 
-                                By reason of force majeure, the supplier shall be at liberty to withhold, suspend,
+                                <p style="font-size: 24px;">By reason of force majeure, the supplier shall be at liberty to withhold, suspend,
                                 or reduce deliveries under this agreement to any extent the buyer shall then be
                                 free to purchase from other suppliers on its account any deficiencies hereunder
-                                caused by the operation of this clause and only for the duration of its operation.<br>
-
-                                                                    <h3>Article 12</h3>
-                                                                <h3>Fuel Receipt Procedure</h3>
-
-                                The buyer shall follow strictly the procedure for the discharging of the fuel.
+                                caused by the operation of this clause and only for the duration of its operation.</p>
                             </div>
                         </div>
                     </div>
@@ -277,39 +238,43 @@
                 <div class="page">
                     <div class="content" style="display: flex; flex-wrap: wrap;">
                         <div style="margin-left: 60px; margin-right: 60px;">
-                            <div style="font-size: 19px; font-family: Arial, sans-serif; line-height: 2.0; text-align: justify;">
-                                                                    <h3>Article 13</h3>
-                                                                <h3>Demurrage charge</h3>
+                            <div style="font-size: 19px; font-family: Arial, sans-serif; line-height: 1.5; text-align: justify;">
+                                                                <h3 style="font-size: 24px;"><strong>Article 12</strong></h3>
+                                                                <h3 style="font-size: 24px;"><strong>Fuel Receipt Procedure</strong></h3>
 
-                                Under normal operation, the buyer shall pay delivery Delay for the delay beyond
+                                <p style="font-size: 24px;">The buyer shall follow strictly the procedure for the discharging of the fuel.</p>
+                                                                    <h3 style="font-size: 24px;"><strong>Article 13</strong></h3>
+                                                                <h3 style="font-size: 24px;"><strong>Demurrage charge</strong></h3>
+
+                                <p style="font-size: 24px;">Under normal operation, the buyer shall pay delivery Delay for the delay beyond
                                 3 (three) working hours to discharge at the delivery point at the rate of Birr 250.00
                                 per hour. According to the current relevant law, working hours are between 8:30
                                 am and 5:30 pm while the lunch break is between 12:30 and 01:30 pm on any
-                                working days in the year excluding official time-offs.<br>
-                                The time of arrival of the vehicle and the time of completion of the discharge of
+                                working days in the year excluding official time-offs.</p>
+                                <p style="font-size: 24px;">The time of arrival of the vehicle and the time of completion of the discharge of
                                 the product shall be registered, signed, and sealed by the Purchaser and counter-
                                 signed by the driver of the vehicle on the supplier's invoice which shall be the
-                                basis for the claim.<br>
+                                basis for the claim.</p>
 
-                                                                    <h3>Article 14</h3>
-                                                        <h3>Duration and Termination of the Agreement</h3>
+                                                                    <h3 style="font-size: 24px;"><strong>Article 14</strong></h3>
+                                                        <h3 style="font-size: 24px;"><strong>Duration and Termination of the Agreement</strong></h3>
 
-                                <p style="color: red;">14.1 This Agreement shall be valid for {{ contract.valid_year }} years starting from the signing of this
+                                <p style="color: red, font-size: 24px;">14.1 This Agreement shall be valid for {{ contract.valid_year }} years starting from the signing of this
                                 contract. If either party needs to terminate the contract before the
                                 contract period lapsed, the party who needs the termination needs to give
                                 a minimum of 2 (two) months written notice to the other party of its intention
                                 to terminate the agreement.</p>
-                                14.2 Notwithstanding early termination, each party shall fulfill all obligations
+                                <p style="font-size: 24px;">14.2 Notwithstanding early termination, each party shall fulfill all obligations
                                 accrued under this Agreement prior to the time such termination becomes
-                                effective.<br>
-                                14.3 Termination effected by a party under this Article shall not affect any other
-                                rights or remedies of such party under the law or otherwise.<br>
+                                effective.</p>
+                                <p style="font-size: 24px;">14.3 Termination effected by a party under this Article shall not affect any other
+                                rights or remedies of such party under the law or otherwise.</p>
 
-                                                                    <h3>Article 15</h3>
-                                                                    <h3>Amendments</h3>
+                                                                    <h3 style="font-size: 24px;"><strong>Article 15</strong></h3>
+                                                                    <h3 style="font-size: 24px;"><strong>Amendments</strong></h3>
 
-                                This agreement shall be modified or superseded by mutual consent of the
-                                contracting parties in written form only.
+                                <p style="font-size: 24px;">This agreement shall be modified or superseded by mutual consent of the
+                                contracting parties in written form only.</p>
                             </div>
                         </div>
                     </div>   
@@ -318,38 +283,38 @@
                 <div class="page">
                     <div class="content" style="display: flex; flex-wrap: wrap;">
                         <div style="margin-left: 60px; margin-right: 60px;">
-                            <div style="font-size: 19px; font-family: Arial, sans-serif; line-height: 2.0; text-align: justify;">
-                                                                    <h3>Article 16</h3>
-                                                                <h3>Confidentiality</h3>
+                            <div style="font-size: 19px; font-family: Arial, sans-serif; line-height: 1.5; text-align: justify;">
+                                                                    <h3 style="font-size: 24px;"><strong>Article 16</strong></h3>
+                                                                <h3 style="font-size: 24px;"><strong>Confidentiality</strong></h3>
 
-                                The information contained under this Contract and all information exchanged
-                                relating to it are confidential between the buyer and the Supplier.<br>
+                                <p style="font-size: 24px;">The information contained under this Contract and all information exchanged
+                                relating to it are confidential between the buyer and the Supplier.</p>
 
-                                                                    <h3>Article 17</h3>
-                                                                    <h3>Liability</h3>
+                                                                    <h3 style="font-size: 24px;"><strong>Article 17</strong></h3>
+                                                                    <h3 style="font-size: 24px;"><strong>Liability</strong></h3>
 
-                                Except where expressly provided in this agreement, neither the Supplier nor the
+                                <p style="font-size: 24px;">Except where expressly provided in this agreement, neither the Supplier nor the
                                 customer shall be liable for consequential, indirect, or special damages arising
-                                out of or in connection with this agreement.<br>
+                                out of or in connection with this agreement.</p>
                                                         
-                                                                    <h3>Article 18</h3>
-                                                                <h3>Consequential Loss</h3>
+                                                                    <h3 style="font-size: 24px;"><strong>Article 18</strong></h3>
+                                                                <h3 style="font-size: 24px;"><strong>Consequential Loss</strong></h3>
 
-                                18.1 If there is a shortage of fuel from the original source, the Seller will notify the
-                                Buyer of it as soon as he gets the information.<br>
-                                18.2 Neither party shall have any liability to the other in respect of any breach of this
+                                <p style="font-size: 24px;">18.1 If there is a shortage of fuel from the original source, the Seller will notify the
+                                Buyer of it as soon as he gets the information.<p>
+                                <p style="font-size: 24px;">18.2 Neither party shall have any liability to the other in respect of any breach of this
                                 Contract for any loss of business profit, revenue, missed contractual opportunity, or any
-                                direct or consequential loss, however, it arises.<br>
+                                direct or consequential loss, however, it arises.</p>
 
-                                                                    <h3>Article 19</h3>
-                                                        <h3>Jurisdiction and Settlement of Disputes</h3>
+                                                                    <h3 style="font-size: 24px;"><strong>Article 19</strong></h3>
+                                                        <h3 style="font-size: 24px;"><strong>Jurisdiction and Settlement of Disputes</strong></h3>
 
-                                This agreement shall be construed and take effect in accordance with the laws
+                                <p style="font-size: 24px;">This agreement shall be construed and take effect in accordance with the laws
                                 in force in Ethiopia, and the parties hereby consent to the jurisdiction of the
-                                Ethiopian Court.<br>
-                                If any dispute arises from or in connection with this agreement, the parties shall
+                                Ethiopian Court.</p>
+                                <p style="font-size: 24px;">If any dispute arises from or in connection with this agreement, the parties shall
                                 make all efforts to settle amicably, and failing that, either party may resort to legal
-                                action in the Federal Court found in Addis Ababa.<br>
+                                action in the Federal Court found in Addis Ababa.</p>
                             </div>
                         </div>
                     </div>
@@ -358,32 +323,32 @@
                 <div class="page">
                     <div class="content" style="display: flex; flex-wrap: wrap;">
                         <div style="margin-left: 60px; margin-right: 60px;">
-                            <div style="font-size: 19px; font-family: Arial, sans-serif; line-height: 2.0; text-align: justify;">
-                                                                    <h3>Article 20</h3>
-                                                                    <h3>Notice</h3>
+                            <div style="font-size: 19px; font-family: Arial, sans-serif; line-height: 1.5; text-align: justify;">
+                                                                    <h3 style="font-size: 24px;"><strong>Article 20</strong></h3>
+                                                                    <h3 style="font-size: 24px;"><strong>Notice</strong></h3>
 
-                                Any notice to be given under this agreement shall be in writing and shall be
+                                <p style="font-size: 24px;">Any notice to be given under this agreement shall be in writing and shall be
                                 deemed to have been delivered if sent by registered post to the Supplier's
                                 address at P.O. Box 43625, Addis Ababa, Ethiopia, and to the address of the buyer
                                 P.O. Box {{ contract.pobox }} the 5th day unless and until either party is notified in writing
-                                of a different address to be used thereafter.<br>
-                                Witness whereof, the parties hereto have this day and year written above set their
-                                respective hands to sign and seal the agreement.<br>
+                                of a different address to be used thereafter.</p>
+                                <p style="font-size: 24px;">Witness whereof, the parties hereto have this day and year written above set their
+                                respective hands to sign and seal the agreement.</p>
 
                                 <div class="d-flex justify-content-between">
                                     <div class="text-left">
-                                        <p class="text-left"><strong>For and on behalf of the Supplier</strong></p>
-                                        <p class="text-left line-break">Name: Mr. {{ contract.supplierrepre_name }}</p>
-                                        <p class="text-left line-break">Position: {{ contract.supplierrepre_position }}</p>
-                                        <p class="text-left line-break">Signature: -----------------</p>
-                                        <p class="text-left line-break">Date: {{ contract.buyerrepre_signe_date }}</p>
+                                        <p class="text-left" style="font-size: 24px;"><strong>For and on behalf of the Supplier</strong></p>
+                                        <p class="text-left line-break" style="font-size: 24px;">Name: Mr. {{ contract.supplierrepre_name }}</p>
+                                        <p class="text-left line-break" style="font-size: 24px;">Position: {{ contract.supplierrepre_position }}</p>
+                                        <p class="text-left line-break" style="font-size: 24px;">Signature: -----------------</p>
+                                        <p class="text-left line-break" style="font-size: 24px;">Date: {{ contract.buyerrepre_signe_date }}</p>
                                     </div>
                                     <div class="text-right">
-                                        <p><strong>For and on behalf of the Buyer</strong></p>
-                                        <p class="text-left line-break">Name: {{ contract.buyerrepre_name }}</p>
-                                        <p class="text-left line-break">Position: {{ contract.buyerrepre_position }}</p>
-                                        <p class="text-left line-break">Signature: -----------------</p>
-                                        <p class="text-left line-break">Date: {{ contract.buyerrepre_signe_date }}</p>
+                                        <p style="font-size: 24px;"><strong>For and on behalf of the Buyer</strong></p>
+                                        <p class="text-left line-break" style="font-size: 24px;">Name: {{ contract.buyerrepre_name }}</p>
+                                        <p class="text-left line-break" style="font-size: 24px;">Position: {{ contract.buyerrepre_position }}</p>
+                                        <p class="text-left line-break" style="font-size: 24px;">Signature: -----------------</p>
+                                        <p class="text-left line-break" style="font-size: 24px;">Date: {{ contract.buyerrepre_signe_date }}</p>
                                     </div>
                                    
                                 </div><br>
@@ -393,19 +358,19 @@
                                 </div>
                                 <div class="d-flex justify-content-between">
                                     <div class="text-left">
-                                      <p><strong>Name</strong></p>
-                                      <p>1. {{ contract.wname }}</p>
-                                      <p>2. {{ contract.wname1 }}</p>
+                                      <p style="font-size: 24px;"><strong>Name</strong></p>
+                                      <p style="font-size: 24px;">1. {{ contract.wname }}</p>
+                                      <p style="font-size: 24px;">2. {{ contract.wname1 }}</p>
                                     </div>
                                     <div class="text-center">
-                                      <p><strong>Address</strong></p>
-                                      <p>{{ contract.waddress }} </p>
-                                      <p>{{ contract.waddress1 }} </p>
+                                      <p style="font-size: 24px;"><strong>Address</strong></p>
+                                      <p style="font-size: 24px;">{{ contract.waddress }} </p>
+                                      <p style="font-size: 24px;">{{ contract.waddress1 }} </p>
                                     </div>
                                     <div class="text-right">
-                                      <p><strong>Signature</strong></p>
-                                      <p>---------------</p>
-                                      <p>--------------</p>
+                                      <p style="font-size: 24px;"><strong>Signature</strong></p>
+                                      <p style="font-size: 24px;">---------------</p>
+                                      <p style="font-size: 24px;">--------------</p>
                                     </div>
                                 </div>
                                   
