@@ -30,7 +30,7 @@
     
         @page {
           size: A4;
-          margin-top: 40px;
+          margin-top: 50px;
           margin-left: 40px;
           margin-right: 10px;
           margin-bottom: 20px;
@@ -84,7 +84,7 @@
                 <div class="page">
                     <div class="content" style="display: flex; flex-wrap: wrap;">
                         <div style="margin-left: 60px; margin-right: 60px;">
-                            <div style="font-size: 19px; font-family: Arial, sans-serif; line-height: 1.5; text-align: justify;">
+                            <div style="font-family: Arial, sans-serif; line-height: 1.5; text-align: justify;">
                                 <p class="timer mr-5" style="font-size: 24px;"><strong>Date</strong> {{contract.contract_date}} GC</p>
                                 <h3 style="font-size: 24px;"> Contract Agreement for the supply of petroleum</h3>
                                 <p style="font-size: 24px;">This contract is made between {{ contract.suppliercname }}  Whose address is Addis Ababa ፣ {{ contract.ssubcity }}
@@ -103,7 +103,9 @@
                                                                     <h3 style="font-size: 24px;"><strong>Article 2</strong></h3>
                                                                     <h3 style="font-size: 24px;"><strong>Definitions</strong></h3>
                                 <p style="font-size: 24px;">Unless the context otherwise requires</p>
-                                <p style="font-size: 24px;">a. <strong>"Product"</strong> means Gasoil specified in the proforma.</p><br>
+                                <p style="font-size: 24px;">a. <strong>"Product"</strong> means Gasoil specified in the proforma.</p>
+                                <p style="font-size: 24px;">b. <strong>"Government"</strong> means the Government of the Federal Democratic Republic of
+                                Ethiopia.</p>
                         </div>
                     </div>
                 </div>
@@ -112,9 +114,7 @@
                 <div class="page">
                     <div  class="content" style="display: flex; flex-wrap: wrap;">
                         <div style="margin-left: 60px; margin-right: 60px;">
-                            <div style="font-size: 19px; font-family: Arial, sans-serif; line-height: 1.5; text-align: justify;">
-                                <p style="font-size: 24px;">b. <strong>"Government"</strong> means the Government of the Federal Democratic Republic of
-                                Ethiopia.</p>
+                            <div style="font-family: Arial, sans-serif; line-height: 1.5; text-align: justify;">
                                 <p style="font-size: 24px;">c. <strong>"Force Majeure"</strong> means Natural unforeseen disaster acts of /God/ (including
                                 fire, flood, earthquake, storm, hurricane, or other natural disaster), war, invasion,
                                 act of foreign enemies, hostilities (regardless of whether war is declared) civil
@@ -145,7 +145,14 @@
                                 delivers the products. But the delay to deliver on time does not allow the
                                 buyer to claim compensation</p>
                                 <p style="color: red, font-size: 24px;">5.3 The Supplier shall ensure delivery as per the order of the buyer stated above
-                                in Art.</p>
+                                in Art 4. The delivery time should be within {{contract.delivery_within}} days from the buyer places an order.</p>
+
+                                <p style="color: red, font-size: 24px;">5.4 The buyer is obliged to purchase {{ contract.obliged_purchase }} trucks fuel and {{ contract.amount_litter }} litters of
+                                    lubricants in a month/ demand based lubricants.</p>
+                                    <p style="font-size: 24px;">5.5 The supplier will provide transportation service for Addis Ababa and its
+                                    surroundings if the buyer makes order for lubricants and greases items of
+                                    3,120 litters or above. But if it is out of Addis Ababa the buyer will provide
+                                    transportation cost.<p>
                                
                             </div>
                         </div>
@@ -155,13 +162,7 @@
                 <div class="page">
                     <div class="content" style="display: flex; flex-wrap: wrap;">
                         <div style="margin-left: 60px; margin-right: 60px;">
-                            <div style="font-size: 19px; font-family: Arial, sans-serif; line-height: 1.5; text-align: justify;">
-                                <p style="color: red, font-size: 24px;">5.4 The buyer is obliged to purchase {{ contract.obliged_purchase }} trucks fuel and {{ contract.amount_litter }} litters of
-                                lubricants in a month/ demand based lubricants.</p>
-                                <p style="font-size: 24px;">5.5 The supplier will provide transportation service for Addis Ababa and its
-                                surroundings if the buyer makes order for lubricants and greases items of
-                                3,120 litters or above. But if it is out of Addis Ababa the buyer will provide
-                                transportation cost.<p>
+                            <div style="font-family: Arial, sans-serif; line-height: 1.5; text-align: justify;">
                                 <p style="font-size: 24px;">5.6 The risk attached to and the title of all the products sold shall be transferred
                                 to the Purchaser upon delivery thereof in accordance with the attached
                                 proforma.</p>
@@ -189,15 +190,7 @@
                                 <p style="font-size: 24px;">The products to be purchased under the terms of this agreement and their prices
                                 as specified in the proforma are subject to adjustment upward or downward in the
                                 event of changes made by the government.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="page">
-                    <div class="content" style="display: flex; flex-wrap: wrap;">
-                        <div style="margin-left: 60px; margin-right: 60px;">
-                            <div style="font-size: 19px; font-family: Arial, sans-serif; line-height: 1.5; text-align: justify;">
                                 <p style="font-size: 24px;">Therefore, the price of the fuel shall be set as per the loading date price from
                                 Djibouti, Sudan, and Government's Depots.
                                 The price covered by this agreement is based on the Supplier's normal source
@@ -206,6 +199,15 @@
                                 products from other sources or by other lines of supply, the supplier reserves the
                                 right to adjust prices accordingly to cover all additional supply costs upon prior
                                 notification of the knowledge of the events.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="page">
+                    <div class="content" style="display: flex; flex-wrap: wrap;">
+                        <div style="margin-left: 60px; margin-right: 60px;">
+                            <div style="font-family: Arial, sans-serif; line-height: 1.5; text-align: justify;">
 
                                                                     <h3 style="font-size: 24px;"><strong>Article 9</strong></h3>
                                                                 <h3 style="font-size: 24px;"><strong>Terms of Payment</strong></h3>
@@ -230,16 +232,8 @@
                                 or reduce deliveries under this agreement to any extent the buyer shall then be
                                 free to purchase from other suppliers on its account any deficiencies hereunder
                                 caused by the operation of this clause and only for the duration of its operation.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="page">
-                    <div class="content" style="display: flex; flex-wrap: wrap;">
-                        <div style="margin-left: 60px; margin-right: 60px;">
-                            <div style="font-size: 19px; font-family: Arial, sans-serif; line-height: 1.5; text-align: justify;">
-                                                                <h3 style="font-size: 24px;"><strong>Article 12</strong></h3>
+                                <h3 style="font-size: 24px;"><strong>Article 12</strong></h3>
                                                                 <h3 style="font-size: 24px;"><strong>Fuel Receipt Procedure</strong></h3>
 
                                 <p style="font-size: 24px;">The buyer shall follow strictly the procedure for the discharging of the fuel.</p>
@@ -255,6 +249,15 @@
                                 the product shall be registered, signed, and sealed by the Purchaser and counter-
                                 signed by the driver of the vehicle on the supplier's invoice which shall be the
                                 basis for the claim.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="page">
+                    <div class="content" style="display: flex; flex-wrap: wrap;">
+                        <div style="margin-left: 60px; margin-right: 60px;">
+                            <div style="font-family: Arial, sans-serif; line-height: 1.5; text-align: justify;">
 
                                                                     <h3 style="font-size: 24px;"><strong>Article 14</strong></h3>
                                                         <h3 style="font-size: 24px;"><strong>Duration and Termination of the Agreement</strong></h3>
@@ -275,16 +278,8 @@
 
                                 <p style="font-size: 24px;">This agreement shall be modified or superseded by mutual consent of the
                                 contracting parties in written form only.</p>
-                            </div>
-                        </div>
-                    </div>   
-                </div>
 
-                <div class="page">
-                    <div class="content" style="display: flex; flex-wrap: wrap;">
-                        <div style="margin-left: 60px; margin-right: 60px;">
-                            <div style="font-size: 19px; font-family: Arial, sans-serif; line-height: 1.5; text-align: justify;">
-                                                                    <h3 style="font-size: 24px;"><strong>Article 16</strong></h3>
+                                <h3 style="font-size: 24px;"><strong>Article 16</strong></h3>
                                                                 <h3 style="font-size: 24px;"><strong>Confidentiality</strong></h3>
 
                                 <p style="font-size: 24px;">The information contained under this Contract and all information exchanged
@@ -306,6 +301,16 @@
                                 Contract for any loss of business profit, revenue, missed contractual opportunity, or any
                                 direct or consequential loss, however, it arises.</p>
 
+                            </div>
+                        </div>
+                    </div>   
+                </div>
+
+                <div class="page">
+                    <div class="content" style="display: flex; flex-wrap: wrap;">
+                        <div style="margin-left: 60px; margin-right: 60px;">
+                            <div style="font-family: Arial, sans-serif; line-height: 1.5; text-align: justify;">
+
                                                                     <h3 style="font-size: 24px;"><strong>Article 19</strong></h3>
                                                         <h3 style="font-size: 24px;"><strong>Jurisdiction and Settlement of Disputes</strong></h3>
 
@@ -323,7 +328,7 @@
                 <div class="page">
                     <div class="content" style="display: flex; flex-wrap: wrap;">
                         <div style="margin-left: 60px; margin-right: 60px;">
-                            <div style="font-size: 19px; font-family: Arial, sans-serif; line-height: 1.5; text-align: justify;">
+                            <div style="font-family: Arial, sans-serif; line-height: 1.5; text-align: justify;">
                                                                     <h3 style="font-size: 24px;"><strong>Article 20</strong></h3>
                                                                     <h3 style="font-size: 24px;"><strong>Notice</strong></h3>
 
@@ -333,7 +338,7 @@
                                 P.O. Box {{ contract.pobox }} the 5th day unless and until either party is notified in writing
                                 of a different address to be used thereafter.</p>
                                 <p style="font-size: 24px;">Witness whereof, the parties hereto have this day and year written above set their
-                                respective hands to sign and seal the agreement.</p>
+                                respective hands to sign and seal the agreement.</p><br>
 
                                 <div class="d-flex justify-content-between">
                                     <div class="text-left">
