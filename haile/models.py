@@ -148,4 +148,43 @@ class Petroleum(models.Model):
      huletegna_misikir_adrasha = models.CharField(max_length=100, default='')
 
 
+class Transport(models.Model):
+    wil_ken = models.CharField(max_length=40)
+    transporter_name = models.CharField(max_length=40)
+    title = models.CharField(max_length=20)
+    Adrasha = models.CharField(max_length=40)
+    ketema = models.CharField(max_length=40)
+    kifle_ketema = models.CharField(max_length=40)
+    wereda = models.CharField(max_length=40)
+    yebet_kutr = models.CharField(max_length=40)
+    silk_kutr = models.CharField(max_length=40)
+    date_year = models.CharField(max_length=40)
+    yekubanya_tewekay = models.CharField(max_length=40)
+    yekubanya_tewekay_position = models.CharField(max_length=40)
+    transporter_tewekay = models.CharField(max_length=40)
+    transporter_tewekay_position = models.CharField(max_length=40)
+    miskir1 = models.CharField(max_length=40)
+    miskir2 = models.CharField(max_length=40)
+    misikir1_address = models.CharField(max_length=40)
+    misikir2_address = models.CharField(max_length=40)
+    misikir1_house_no = models.CharField(max_length=40)
+    misikir2_house_no = models.CharField(max_length=40)
+    yekubanya_title = models.CharField(max_length=40)
+    contract_length = models.CharField(max_length=40)
+    numberof_cars = models.CharField(max_length=80)
+    yseleda_kutr = models.IntegerField(max_length=40)
+    yetesabi_kutr = models.IntegerField(max_length=50)
+    yeseleda_kutr1 = models.IntegerField(max_length=40)
+    yetesabi_kutr1 = models.IntegerField(max_length=50)
+    yeseleda_kutr2 = models.IntegerField(max_length=40)
+    yetesabi_kutr2 = models.IntegerField(max_length=40)
+    yeseleda_kutr3 = models.IntegerField(max_length=40)
+    yetesabi_kutr3 = models.IntegerField(max_length=40)
+    yeseleda_kutr4 = models.IntegerField(max_length=40)
+    yetesabi_kutr4 = models.IntegerField(max_length=40)
+
+
+
+
+
      

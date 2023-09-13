@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lan='am'>
+<head>
+    <title>Transport</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+      /* Hide elements with class "noprint" when printing */
+      @media print {
+        .noprint {
+          display: none;
+        }
+
+        .no-gap {
+          margin: 0;
+          padding: 0;
+        }
+    
+        /* Apply styles for printed content */
+        body {
+          margin: 0;
+          font-family: sans-serif;
+          line-height: 1.5;
+        }
+    
+        .page {
+          page-break-inside: avoid;
+          margin: 0;
+        }
+    
+        @page {
+          size: A4;
+          margin-top: 40px;
+          margin-left: 40px;
+          margin-right: 10px;
+          margin-bottom: 20px;
+        }
+
+        p, h1, h2, h3, h4, ul, li {
+          font-size: 24px; /* Set the desired font size for printed content */
+          margin: 0; /* Reset margin for consistent spacing */
+          padding: 0; /* Reset padding for consistent spacing */
+        }
+      }
+    
+      /* General styling for the content */
+      .content {
+        flex-direction: column;
+      }
+    
+      h2, h3, h4 {
+        margin-top: 20px;
+        margin-bottom: 10px;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        text-decoration: underline;
+      }
+    
+      .timer {
+        margin-top: 40px;
+        text-align: right;
+        margin-right: 60px;
+      }
+    
+      .text-right {
+        text-align: right;
+        margin-right: 30px;
+      }
+    
+      .text-left {
+        text-align: left;
+        margin-left: 30px;
+      }
+    
+    </style>
+</head>
+<body>
+  <div>
+      <div class="container">
+          {% comment %} <div class="form-container"> {% endcomment %}
+              <form method="POST" action="{% url 'transport_form' %}">
+                  {% csrf_token %}
+              </form>
+              <div class="page">
+                  <div class="content" style="display: flex; flex-wrap: wrap;">
+                      <div style="margin-left: 60px; margin-right: 60px;">
+                          <div style="font-family: Arial, sans-serif; line-height: 1.5; text-align: justify;">
+
+                            <div class="timer-container">
+                              <p class="timer mr-5" style="font-size: 24px;"><strong>ቀን</strong> {{ deal.wil_ken }}</p>
+                          </div>
+                             
+                                                      <h3 style="font-size: 24px;"><strong>የአጓጓዥ ንብረት በሆነ መኪና ነዳጅ የማጓጓዝ ውል</strong></h3>
+                                  
+                                                                  <h3 style="font-size: 24px;"><strong>ተዋዋይ ወገኖች</strong></h3>
+                                                                 
+                                  <p class="no-gap" style="margin-left: 20px, font-size: 24px;">"ኩባንያ" እየተባለ የሚጠራው ታፍ ኦይል ኃላፊነቱ የተወሰነ የግል ማህበር ዋና ስራ አስኪያጅ አቶ አበበ ታደሰ አድራሻ አ.አ ፣ 
+                                  ቂርቆስ ክ/ከተማ ፣ ወረዳ 02 የቤ. ቁ አዲስ ፣ ስ.ቁ 0115580686/87 ፣ fax 0115580689 ፣ መንገድ 370 ፣ ፖ.ሣ.ቁ. 43625 አዲስ አበባ 
+                                  ኢትዮጵያ ኢሜል info@tafoilplc.com.et በአንድ በኩል በመሆን፣   </p>
+                                                                  <h3 style="font-size: 24px;">እና</h3>
+                              <p class="no-gap" style="margin-left: 20px, font-size: 24px;"><strong>"ትራንስፖርተር"</strong> {{transport.transporter_name}} እየተባለ የሚጠራው  የፈሳሽ ጭነት የግል ትራንስፖርት ዋና ስራ አስኪያጅ {{transport.title}} አድራሻ {{transport.Adrasha}} {{transport.ketema}}ከተማ፣ 
+                              {{transport.kifle_ketema}} ክ/ከተማ ፣ ወረዳ {{transport.wereda}} ፣ የቤ.ቁ {{transport.yebet_kutr}}፣ ስ.ቁ {{transport.silk_kutr}} በሌላ በኩል በመሆን ይህንን የነዳጅ ማጓጓዝ ውል ዛሬ ቀን {{transport.date_year}} ዓ.ም በአዲስ አበባ ከተማ ፈፅመዋል፡፡ </p>
+                                                    <h3 style="font-size: 24px;">አንቀፅ አንድ</h3>
+                                                    <h3 style="font-size: 24px;">የውሉ አላማ</h3>
+                              <p class="no-gap" style="margin-left: 20px, font-size: 24px;">ትራንስፖርተሩ ለኩባንያው ከጅቡቲ ፣ ከሱዳን ፣ እንዲሁም የኢትዮጲያ ነዳጅ አቅራቢ ድርጅት በመላው ሀገሪቱ ካሉት የነዳጅ ማከማቻ 
+                              ዴፖዎች ፤ በተለያዩ የአገሪቱ ክፍል ወደሚገኙ የኩባንያው የነዳጅ ማደያዎች ፣ የነዳጅ ማከማቻ ዴፖዎች እና በመላው አገሪቱ ለሚገኙ ቀጥታ 
+                              ተጠቃሚዎች ፤ የተለያዩ የነዳጅ ዓይነቶችን ለማጓጓዝ የተስማማ በመሆኑ ይህንን ዓላማ ሊያሳካ የሚችል በህግ ፊት አስገዳጅነት ያለውና የሚከተለውን ውል አድርገናል፡፡</p>
+                                                    <h3 style="font-size: 24px;">አንቀፅ ሁለት</h3>
+                                                    <h3 style="font-size: 24px;">ትርጉም</h3>
+                              <p class="no-gap" style="margin-left: 20px, font-size: 24px;">የቃሉ አገባብ ሌላ ትርጉም ካልተሰጠው በስተቀር በዚህ ውል ውስጥ፣</p>
+
+                              <p style="margin-left: 20px; font-size: 24px;">1. <strong>"ነዳጅ"</strong> ማለት ተራ ቤንዝን ፣ ኢታኖል ቤንዚን፣ ነጭ ጋዝ ፣ ላምባ (ኪሮሲን) ፣ ናፍታ ፣ ቀላል ጥቁር ናፍታና ከባድ ጥቁር ናፍጣ ፣ ቡታጋዝ (LPG) ማለት ነው፡፡</p>
+                              <p style="margin-left: 20px; font-size: 24px;">2.	<strong>"አውቶቦቴ"</strong> ማለት ፈሳሽ ጭነት ለማጓጓዝ የተዘጋጀ ባለተሳቢ ወይም ተሳቢ የሌለው ተሽከርካሪ ነው፡፡</p>
+                              <p style="margin-left: 20px; font-size: 24px;">3.	<strong>"ሼልቶ"</strong> ማለት ተሳቢ የሌለው አውቶቦቴ ተሽከርካሪ ነው፡፡</p>
+                              <p style="margin-left: 20px; font-size: 24px;">4.	<strong>"ታንከር"</strong> ማለት ነዳጅ የሚጫንበት ከአውቶቦቴ ተሽከርካሪ አካል ጋር የተያያዘ ጋን ነው፡፡</p>
+                              <p style="margin-left: 20px; font-size: 24px;">5.	<strong>"ባለተሳቢ ተሽከርካሪ"</strong> ማለት ሼልቶ መኪና ከነተሳቢው ወይም ቢሊኩ ወይም ከ 35,000/ሊትር በላይ የሚጭን አንድ ወጥ ተሽከርካሪ ማለት ነው፡፡</p>
+                              <p style="margin-left: 20px; font-size: 24px;">6.	<strong>"ወደ ቀጥታ ዴፖዎች ጭኖ ማጓጓዝ"</strong> ማለት በቀጥታ በማራገፊያው ቦታ ነዳጁን መለካት ማራገፍና ርክክብ መፈጸም ማለት ነው፡፡</p>
+                              <p style="margin-left: 20px; font-size: 24px;">7.	<strong>"ደንበኛ"</strong> ማለት የኩባንያው የነዳጅ ማደያዎች፤ ወይም የነዳጅ ማከማቻ ዴፖዎች፤ ወይም ቀጥታ ተጠቃሚዎች፤ ወይም ኩባንያው ለትራንስፖርተሩ የሚያሳውቀው የማራገፊያ ወይም የማከማቻ ቦታ ማለት ነው</p>
+
+                      </div>
+                  </div>
+              </div>
+
+              <div class="page">
+                <div class="content" style="display: flex; flex-wrap: wrap;">
+                    <div style="font-family: Arial, sans-serif; line-height: 1.5; text-align: justify;">
+                              
+                                        <h3 style="font-size: 24px;">አንቀጽ ሶስት</h3>
+                                        <h3 style="font-size: 24px;">የአውቶ ቦቴ አቅርቦት</h3>
+                                  <p class="no-gap" style="margin-left: 20px, font-size: 24px;">ኩባንያው ከትራንስፖርተሩ ጋር ባደረገው ውል መሰረት ንብረትነታቸው የትራንስፖርተሩ የሆኑ</p>
+                                  <p style="margin-left: 20px; font-size: 24px;">1ኛ የሰሌዳ ቁጥሩ ኢት {{transport.yseleda_kutr}} የሆነ ተሸከርካሪ ፣ የተሳቢ ቁጥር ኢት {{transport.yetesabi_kutr}}</p>
+                                  <p style="margin-left: 20px; font-size: 24px;">2ኛ የሰሌዳ ቁጥር ኢት {{transport.yeseleda_kutr1}} የሆነ ተሸከርካሪ ፤ የተሳቢ ቁጥር ኢት {{transport.yetesabi_kutr1}}</p>
+                                  <p style="margin-left: 20px; font-size: 24px;">2ኛ የሰሌዳ ቁጥር ኢት {{transport.yeseleda_kutr2}} የሆነ ተሸከርካሪ ፤ የተሳቢ ቁጥር ኢት {{transport.yetesabi_kutr2}}</p>
+                                  <p style="margin-left: 20px; font-size: 24px;">2ኛ የሰሌዳ ቁጥር ኢት {{transport.yeseleda_kutr3}} የሆነ ተሸከርካሪ ፤ የተሳቢ ቁጥር ኢት {{transport.yetesabi_kutr3}}</p>
+                                  <p style="margin-left: 20px; font-size: 24px;">2ኛ የሰሌዳ ቁጥር ኢት {{transport.yeseleda_kutr4}} የሆነ ተሸከርካሪ ፤ የተሳቢ ቁጥር ኢት {{transport.yetesabi_kutr4}}</p>
+                                  
+                                  <p class="no-gap" style="margin-left: 20px, font-size: 24px;">በአጠቃላይ {{transport.numberof_cars}} የተለያዩ የነዳጅ ማጓጓዣ መኪኖችን ለመመደብና ለማሰራት ሃላፊነት የወሰደ ሲሆን ክፍያቸውንም በተመለከተ መንግስት በሚያወጣው የትራንስፖርት ስሌት መሰረት ለመፈፀም ተስማምቷል፡፡</p>
+                                        <h3 style="font-size: 24px;">አንቀጽ አራት</h3>
+                                  <p style="margin-left: 20px; font-size: 24px;">4.1. ኩባንያው ወይም ወኪሉ የመነሻና የመድረሻ ጣቢያውን በመወሰን እንዲጓጓዝለት የሚፈልገውን የነዳጅ አይነትና መጠን በትራንስፖርተሩ ተሽከርካሪ እንዲጫን ትዕዛዝ ይሰጣል፡፡</p>
+                                  <p style="margin-left: 20px; font-size: 24px;">4.2	ኩባንያው ከጅቡቲ ፤ ከሱዳንና ወይም በኢትዮጵያ ውስጥ ከሚገኙ ከማንኛቸውም የነዳጅ መጫኛ ዴፖዎች ነዳጅ እንዲጫንለት ለተሸከርካሪዎቹ /ለአሽከርካሪዎቹ/ ትእዛዝ ሲሰጥ ትራንስፖርተሩ/አሽከርካሪው የኩባንያው የጭነት ትዕዛዝ በደረሰው በ 24 ሰዓት ጊዜ ውስጥ ለመጫንና ነዳጁን ኩባንያው ባዘዘው ቦታ ለማድረስ ተስማምቷል፡፡</p>
+                                  <p style="margin-left: 20px; font-size: 24px;">4.3	ኩባንያው ወይም የኩባንያው ህጋዊ ወኪል ለትራንስፖርተሩ ሹፌር በስልክ የሚሰጠው የጭነት ትዕዛዝ ወይም መመሪያ ለትራንስፖርተሩ እንደተሰጠ ተቆጥሮ ተፈፃሚ ይሆናል፡፡</p>
+                                  <p style="margin-left: 20px; font-size: 24px;">4.4	ማንኛውም አውቶቦቴ በኩባንያው ወይም በዴፖ ሰራተኞች ወይም በህጋዊ ወኪሎች ቀጥታ ቁጥጥር ይጫናል፡፡ የተጫነውም የነዳጅ ዓይነትና መጠን ልክ በትራንስፖርተሩ ወይም በሹፌር መረከቢያ ሰነድ ላይ በፊርማ ይረጋገጣል፡፡</p>
+                                  <p style="margin-left: 20px; font-size: 24px;">4.5	ማንኛውንም ነዳጅ የጫነ አውቶቦቴ ኩባንያው ነዳጅ ከሚወስድበት ኢንስታሌሽን ወይም ዴፖ እንዲወጣ የሚፈቀድለት የተጫነውን ነዳጅ ትክክለኛ መጠንና ጥራት በትራንስፖርተሩ ወይም በሹፌሩና በኩባንያው ከተረጋገጠ እንዲሁም ታንከሮች፣ ጌት ባልቮች በሚገባ ከታሸጉና አስፈላጊ ሰነዶች ለሹፌሩ ከተሰጡ በኋላ ነው፡፡</p>
+                                  <p style="margin-left: 20px; font-size: 24px;">4.6	መንገዱ ክረምት ከበጋ መኪና ከነተሳቢው የማያስኬድ መሆኑ በኢትዮጵያ መንገዶች ባለስልጣን ወይም በኢትዮጵያ የመንገድና ትራንስፖርት ሚኒስተር በጽሑፍ ካልተረጋገጠ በስተቀር ትራንስፖርተሩ ከጂቡቲ ከሱዳን ወይም በኢትዮጵያ ውስጥ ከሚገኙ ማናቸውም የነዳጅ መጫኛ ዴፖዎች በመኪና ከነተሳቢው የሚቀርቡትን የኩባንያውን ጥያቄዎች መቀበል ግዴታው ነው፡፡ ትራንስፖርተሩ ሼልቶ ለመላክ ከወሰነና ኩባንያው ከተስማማለት የትራንስፖርት ክፍያው በመኪና ከነተሳቢው ሂሳብ ወይም በስምምነት መሰረት ይሆናል፡፡<p>
+                                  <p style="margin-left: 20px; font-size: 24px;">4.7	ኩባንያው በቀጥታ ርክክብ ወቅት በ 100 ኪ.ሜ ርቀት ባሉ ሁለት ጣቢያዎች ላይ መኪና ከነተሳቢው እንዲራገፍለት የጭነት ጥያቄ ሲያቀርብ ትራንስፖርተሩ የማሟላት ግዴታ አለበት፡፡ የትራንስፖርት ክፍያው የሚፈፀመውም ከ 100 ኪ.ሜ ርቀት በላይ ከሆነ እስከ መጀመሪያ ማደያ የመኪና ከነተሳቢው ሂሳብ የሚከፈል ሲሆን ፤ ከመጀመሪያው ማደያ እስከ ሁለተኛው ማደያ ደግሞ በሽልቶ ታሪፍ የሚፈፀም ይሆናል፡፡</p>
+                              
+                    </div>
+                </div>
+            </div>
+            
+
+                  <div class="page">
+                    <div class="content" style="display: flex; flex-wrap: wrap;">
+                        <div style="margin-left: 60px; margin-right: 60px;">
+                            <div style="font-family: Arial, sans-serif; line-height: 1.5; text-align: justify;">
+                              <p style="margin-left: 20px; font-size: 24px;">4.8	የመኪና ስምሪት ድልድል የሚፈጽመው በሁሉም የኢትዮጵያ ክልሎች ይሆናል፡፡ </p>
+                              <h3 style="font-size: 24px;"><strong>አንቀጽ አምስት</strong></h3>
+                              <h3 style="font-size: 24px;"><strong>የነዳጅ ጭነት አላላክ እና የመለኪያ መሳሪያዎች</strong></h3>
+
+                              <p style="margin-left: 20px; font-size: 24px;">5.1.	በእያንዳንዱ አውቶቦቴ የተጓጓዘው ትክክለኛ የነዳጅ መጠን (ከጅቡቲ፣ ከሱዳን ወይም በኢትዮጵያ ውስጥ ከሚገኙ የነዳጅ መጫኛ ዴፖዎች ወይም የነዳጅ መጫኛ ቦታዎች) መለኪያ መጠን/በልክ/የቆጣሪ ንባብ/ በልክ ሜትር/ እና ወይም በጥልቀት መለኪያ ዘንግ/ ዲፕስቲክ/መሳሪያዎች ይረጋገጣል፡፡ የመለኪያ መሳሪያው በጫኝ ዴፖዎች፤ በአጓጓዥ ትራንስፖርተር (አሽከርካሪ) እና ፤ በተረካቢ ነዳጅ ማደያ ጣቢያዎች ወይም ቀጥታ ተጠቃሚዎች መካከል የተጫነበትና የሚራገፍበት መለኪያ አንድ ዓይነት መሆን አለበት፤ ስለዚህ ትራንስፖርተሩ ተለክቶ ለተረከበው የነዳጅ መጠን ሙሉ ኃላፊነት አለበት፡፡</p>
+                              <p style="margin-left: 20px; font-size: 24px;">5.2.	ትራንስፖርተሩ ለእያንዳንዱ አውቶቦቴ አግባብ ባለው ባለስልጣን የተረጋገጠ ወቅታዊ የካሊብሬሽን ቻርትና ዲፕስቲክ የመያዝ ግዴታ አለበት፡፡</p>
+                              <p style="margin-left: 20px; font-size: 24px;">5.3.	ትራንስፖርተሩ የመለኪያ ዘንጎችና ካሊብሬሽን ሰነዶችን በተገቢው ሁኔታ ከማናቸውም ብልሽትና ለውጦች ነፃ አድርጎ የመያዝ ግዴታ አለበት፡፡</p>
+                              <p style="margin-left: 20px; font-size: 24px;">5.4.	ብልሽት ወይም መዛባት በደረሰባቸው የመለኪያ ዘንጎችና በደረጃ መዳቢ ባለስልጣን ባልተፈቀዱ የመለኪያ ሰንጠረዦች፣ ካሊብሬሽን ቻርት መጠቀም ክልክል ነው፡፡ ይህ ሆኖ ከተገኘ ትራንስፖርተሩ የዚህን ውል አንዱን ግዴታ እንዳልፈፀመ ወይም እንደሻረ ተቆጥሮ ኩባንያው ውሉን ያለምንም ማስጠንቀቂያ ሊያቋርጥ ይችላል፡፡ በተጨማሪም በእነዚህ ምክንያቶች ኩባንያው ላይ ለሚደርስ ጉዳት ትራንስፖርተሩ ለኩባንያው ካሳ ይከፍላል፡፡</p>
+                                                              <h3 style="font-size: 24px;">አንቀፅ ስድስት</h3>
+                                                              <h3 style="font-size: 24px;">የአውቶቦቴ ታንክ ስለማስለካት</h3>
+                              <p style="margin-left: 20px; font-size: 24px;">6.1. በዚህ ስምምነት መሰረት ትራንስፖርተሩ ግዴታዎቹን ለመፈፀም የሚገለገልባቸው አውቶቦቴዎች ሁሉ በተገቢው የመንግስት ባለስልጣን በሚገባ የተለኩና እያንዳንዱን አውቶቦቴ የሚመለከት የልክ ዝርዝር መግለጫ/ካሊብሬሽን ቴብል/ በተገቢው ባለስልጣን ተፈርሞና ማህተም ተደርጎበት የተሰጠ መሆኑ የማረጋገጥ ሃላፊነት የትራንስፖርተሩ ነው፡፡</p>
+                              <p style="margin-left: 20px; font-size: 24px;">6.2. ኩባንያው የአውቶቦቴውን የልክ ዝርዝር መግለጫ ትክክለኛነት ሲያረጋግጥ ብቻ ጭነት ያዛል፡፡</p>
+                              <p style="margin-left: 20px; font-size: 24px;">6.3. ማንኛውም አውቶቦቴ በማንኛውም ምክንያት በአካሉ ላይ ለውጥ ከተደረገበትና ወይም በካሊብሬሽን ቻርትና በሜትር መካከል ለውጥ ከተገኘ መኪናው እንደገና ካሊብሬት ይደረጋል፡፡</p>
+                                                              <h3 style="font-size: 24px;">አንቀጽ ሰባት</h3>
+                                                              <h3 style="font-size: 24px;">ርክክብ</h3>
+                              <p style="margin-left: 20px; font-size: 24px;">7.1.	ነዳጅ ከጅቡቲ ወይም ከሱዳን ኢንስታሌሽኖች ወይም በኢትዮጵያ ውስጥ ከሚገኙ የነዳጅ መጫኛ ዴፖዎች ወይም ከታፍ ኦይል ኃ/የተ/የግ/ማህበር ማከማቻና መጠባበቂያ ዴፖዎች ወደ ኩባንያው ማደያዎች/ ደንበኞች ቦታ ያጓጉዛል፡፡</p>
+                              <p style="margin-left: 20px; font-size: 24px;">7.2.	ከጅቡቲ ኢንስታሌሽን ወይም ከማንኛውም ዴፖ አዲስ አበባ ላይ ነዳጁን ለማራገፍ ነዳጅ የጫነ አውቶቦቴ ዴፖ ሲደርስ ኩባንያው ተሳቢውን ዴፖ አራግፎ ለመኪናው የሎካል ትራንስፖርት ዋጋ ከፍሎ በአዲስ አበባ ባሉት ማደያዎች ማራገፍ ይችላል፡፡ ወይም መኪናው ከነተሳቢው ዴፖ ሳያራግፍ በቀጥታ አዲስ አበባ ውስጥ ባሉት ማደያዎች ያለምንም ተጨማሪ የትራንስፖርት ክፍያ ማራገፍ ይችላል፡፡</p>
+                              <p style="margin-left: 20px; font-size: 24px;">7.3.	ርክክብ እንደተፈፀመ የሚቆጠረው የተጫነው የነዳጅ መጠን በዴፖዎች ወይም በነዳጅ ማደያ ጣቢያዎች ወይም ለተጫነለት ደንበኛ በመለኪያዎች ተለክቶ ከተረጋገጠ በኋላ የማስረከቢያ ሰነዱን የኩባንያው ደንበኛ ወይም ህጋዊ ወኪሉን በማስፈረምና ማህተም በማስደረግ ለኩባንያው ሲሰጥ/ሲያስረክብ/ነው፡፡</p>
+                                                                          
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+
+
+                <div class="page">
+                  <div class="content" style="display: flex; flex-wrap: wrap;">
+                      <div style="margin-left: 60px; margin-right: 60px;">
+                          <div style="font-family: Arial, sans-serif; line-height: 1.5; text-align: justify;">
+
+                            <p style="margin-left: 20px; font-size: 24px;">7.4.	በርክክብ ጊዜ ነዳጅ የሚራገፈው በአንድ ከተማ ውስጥ ከሆነ በባለተሳቢ ሲሆን ቢበዛ ለሁለት የማደያ ጣቢያዎች፣ በሽልቶ ከሆነ በአንድ ማራገፊያ ቦታ ብቻ እንዲራገፍ ይደረጋል፡፡</p>
+                            <p style="margin-left: 20px; font-size: 24px;">7.5.	ነዳጅ በማስረከቢያ ቦታ ሲደርስ ኩባንያው ወይም የኩባንያው ደንበኛ ነዳጁን በሚረከብበት ጊዜ የነዳጅ ማራገፊያ ቱቦዎች መተሳሰሮች/ቫልብ/ ማንሆል መክደኛዎች ፣ መገጣጠሚዎች፣ ማስተንፈሻ ቱቦዎችና የመሳሰሉት ሁሉ በኩባንያው የሴኩሪቲ ሲሎች እና ሽቦ በሚገባ የታሸጉና ቁጥራቸው ከሸኚው ወይም ከማስረከቢያው ሰነድ ጋር የሚጣጣሙ መሆኑን የማረጋገጥ መብት አለው፡፡ እሽጉ በመንገድ ብልሽት ወይንም በመሳሰሉት ምክንያቶች ከተበጠሰና ሹፌሩ እና ተረካቢው በዚሁ ከተማመኑ ነዳጅ እንዲራገፍ ይደረጋል፡፡ ጉድለት ካለ ትራንስፖርተሩ ተጠያቂ ይሆናል፡፡</p>
+                            <p style="margin-left: 20px; font-size: 24px;">7.6.	ኩባንያው ወይም የኩባንያው ደንበኛ የተጫነው ነዳጅ በሸኚው ሰነድ ላይ ከተገለጹት ዝርዝር ሁኔታዎች ጋር የሚመሳሰል መሆኑን ለማረጋገጥ ከታንከሩ ውስጥ ናሙና መውሰድ ይችላል፡፡</p>
+                            <p style="margin-left: 20px; font-size: 24px;">7.7.	ኩባንያው ከደህንነት ጥበቃና ከነዳጅ ብክነት አኳያ በእያንዳንዱ አውቶቦቴ ላይ የሚገጠመው ማለትም፣ የእሳት አደጋ መከላከያዎች /ፋየር ኤክስትንጉሸር/ የማራገፊያ ሆዞች/ቱቦዎች/ ዲስቻርቺንግ ሆዞች/ መገጣጠሚያዎች ጃይንትና ካፕሊንግ/የማራገፊያ ቫልቮች/ዲስቻርጂንግ ቫልቮች/የቦቴው ክዳኖች/ማንሆልከቨር የኤሌክትሪክ ሽቦዎችና ሌሎችም ከነዚህ ጋር የተያያዙ መሳሪያዎች፣ ትክክለኛነታቸውን ያረጋግጣል፡፡ የሚያፈሱ አውቶቦቴዎች በመጀመሪያ እንዲስተካከሉ ማስጠንቀቂያ ይሰጣቸዋል፡፡  በመሆኑም ትራንስፖርተሩ ከላይ የተዘረዘሩትን ጉድለቶች ሙሉ በሙሉ አሟልቶ እስኪያቀርብ ስምሪት ያለመስጠት መብት አለው፡፡ በተጨማሪም ትራንስፖርተሩ እነዚህን ጉድለቶች ባለማስተካከሉ ወይም አስቀድሞ ተገቢውን ማስተካከያ ሳያደርግ በመቅረቱ በኩባንያው ወይም በኩባንያው ደንበኛ ለሚደርስ ማናቸውም ጉዳትና ኪሳራ ተጠያቂ ይሁናል፡፡</p>
+                                                    <h3>አንቀፅ ስምንት</h3>
+                                                    <h3>የነዳጅ ታንከሮችን ስለማከፋፈል</h3>
+                            <p style="margin-left: 20px; font-size: 24px;">8.1.	እያንዳንዱ የአውቶቦቴ ታንከር እና ተሳቢ በሁለት የተለያዩ ክፍሎች ይከፈላል፡፡ በእያንዳንዱ ክፍል ያለው ነዳጅ ወደ ሌላ ክፍል የማይተላለፍ መሆኑን ትራንስፖርተሩ ያረጋግጣል፡፡ ሆኖም ከቁጥጥር ውጭ በሆነ ምክንያት፤ ወይም በሌላ በማናቸውም መንገድ የመተላለፍ እና የተጫነው ነዳጅ አንዱ ሌላውን የማበላሸት ሁኔታ ቢከሰት ትራንስፖርተሩ ሙሉ ለሙሉ ኃላፊነቱን ይወስዳል ፤ የደረሰውንም ኪሳራ ከነቅጣቱ ይከፍላል፡፡</p>
+                            <p style="margin-left: 20px; font-size: 24px;">8.2.	ከላይ በአንቀጽ 8 ንኡስ አንቀጽ 1 ላይ የተገለፀው እንደ ተጠበቀ ሆኖ በአንድ መኪና ወይም ተሳቢ ላይ የተጫነው ነዳጅ በማናቸውም ምክንያት ቢበከል ለሚደርሰው ማንኛውም ጉድለት ወይም ኪሳራ ትራንስፖርተሩ ተጠያቂና ከፋይ ይሆናል፡፡</p>
+                                                    <h3 style="font-size: 24px;">አንቀፅ ዘጠኝ</h3>
+                                                    <h3 style="font-size: 24px;">የመጫን/የማራገፍ /ሥራን ማዘግየት</h3>
+                            <p style="margin-left: 20px; font-size: 24px;">9.1	ነዳጅ የጫነ ባለተሳቢ ወይም ሼልቶ ቦቴ በኩባንያው ዴፖ ወይም በኩባንያው ደንበኛ የነዳጅ ማራገፊያ ቦታዎች ላይ ከደረሰ በኋላ ባለተሳቢ ከሆነ በ4/አራት ሰዓታት ውስጥ፣ ሼልቶ ከሆነ በ3 /ሶስት/ ሰዓታት ውስጥ ማራገፍ አለበት</p>
+                            <p style="margin-left: 20px; font-size: 24px;">9.2	በቀጥታ ርክክብ ጊዜ ነዳጅ የጫነ አውቶቦቴ ለኩባንያው አመቺ በሆነው ቦታ ቁጥጥር ማድረግ አለበት፡፡</p>
+                            <p style="margin-left: 20px; font-size: 24px;">9.3	በኩባንያው ወይም በኩባንያው ደንበኛ ቦታ እያንዳንዱ አውቶቦቴ በማራገፊያ ቦታው ላይ የደረሰበትን ጊዜና እንዲሁም ስራው የተጠናቀቀበትን ቀንና ሰዓት በርክክብ ሰነዶች ይጽፋል፡፡ ይህን ማረጋገጥ የትራንስፖርተሩ ግዴታ ነው፡፡</p>
+                            <p style="margin-left: 20px; font-size: 24px;">9.4	ኩባንያው የትራንስፖርተሩ አውቶቦቴዎች ጁቡቲ ፤ ሱዳን ወይም በኢትዮጵያ ውስጥ ከሚገኙ ማናቸውም የነዳጅ መጫኛ ዴፖዎች እንደደረሱ ከአቅም በላይ የሆኑ ሁኔታዎች እንደተጠበቁ ሆነው በተቻለ መጠን በ 24 ሰዓት ውስጥ ለማስጫን ይሞክራል፡፡</p>
+                            <p style="margin-left: 20px; font-size: 24px;">9.5	የመጫን ወይም የማራገፍን ስራ ለመቆጣጠር አመቺ ይሆን ዘንድ ለእያንዳንዱ አውቶቦቴ ኩባንያውና ትራንስፖርተሩ የተስማሙበት የመጫኛ ሰነድ ይሰጠዋል፡፡ እያንዳንዱ አውቶቦቴ ነዳጅ ለመጫንና ለማራገፍ የደረሰበትን ቀንና ሰዓት እንዲሁም ጭኖ ወይም አራግፎ የጨረሰበትን ቀንና ሰዓት፣ የአውቶቦቴውን ሰሌዳና የጎን ቁጥር እና ሌሎች አግባብነት ያላቸውን መረጃዎች የሚገልፅ ይሆናል፡፡ ይህ መሸኛ በዝርዝሮቹ መሰረት ተሞልቶ በሹፌሩና በኩባንያው ወይም በኩባንያው ደንበኛ ወይም ሠራተኛ ወይም ወኪል ከተፈረመ በኋላ የዚሁ ቅጂ ለሹፌሩ መተማመኛ ይሰጠዋል፡፡</p>
+                                                    
+                                                    
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+
+              <div class="page">
+                <div class="content" style="display: flex; flex-wrap: wrap;">
+                    <div style="margin-left: 60px; margin-right: 60px;">
+                        <div style="font-family: Arial, sans-serif; line-height: 1.5; text-align: justify;">
+                          
+                          <p style="margin-left: 20px; font-size: 24px;">9.6	በትራንስፖርተሩ ጥፋት ወይም ቸልተኝነት ወይም በሌላ በማናቸውም ምክንያት ነዳጅ ሳይራገፍ የዘገየ እንደሆነ የኩባንያው ደንበኛና የአውቶቦቴው ሹፌር ወዲያውኑ ለኩባንያው አቅርቦትና ስርጭት ወይም ለሚመለከተው ክፍል ወይም ለትራንስፖርተሩ ማሳወቅ አለባቸው፡፡ እንዲህ አይነት ችግር ሲያጋጥም ኩባንያውና ትራንስፖርተሩ ጉዳዩን አንዱ ለሌላው በመግለጽ በስምምነት ችግሩን ይፈታሉ፡፡ ጉዳዩ በስምምነት እስኪያልቅ ድረስ አውቶቦቴው ለቆመበት ጊዜ ኩባንያው ነፃ ይሆናል፡፡</p>
+                          <p style="margin-left: 20px; font-size: 24px;">9.7	ማንኛውም ነዳጅ የጫነ አውቶቦቴ በብልሽት ምክንያት መንገድ ላይ ቢዘገይና በምትኩ ኩባንያው ሌላ መኪና ልኮ ቢያራግፍ የዘገየው አውቶቦቴ በቦታ ዕጦት ምክንያት ሳያራግፍ ለቆመበት ጊዜ ኩባንያው አይከፍልም ፡፡</p>
+                                                            <h3 style="font-size: 24px;">አንቀጽ አስር</h3>
+                                                            <h3 style="font-size: 24px;">የአውቶቦቴዎች ለመንገድ ብቁነት/ሮድ ወርዚነስ/</h3>
+                          <p style="margin-left: 20px; font-size: 24px;">10.1	ማንኛውም አውቶቦቴ በተገቢው የመንግስት ባለስልጣን የተመረመረና አስተማማኝ፣ጠንካራና ለመንገድ ብቁ ሁኔታ ላይ የሚገኝ መሆኑ ትራንስፖርተሩ የማረጋገጥ ኃላፊነት አለበት፡፡</p>
+                          <p style="margin-left: 20px; font-size: 24px;">10.2	ትራንስፖርተሩ ያሰማራው አውቶ ቦቴ መንግስት ስለነዳጅ ማጓጓዝ ያወጣቸውንና የሚያወጣቸውን ህጎች፣ ደንቦች እና መመሪያዎች ተከትሎ ግዴታውን ስለመፈጸሙ ማረጋገጥ አለበት</p>
+                          <p style="margin-left: 20px; font-size: 24px;">10.3	 በዚህ ስምምነት መሰረት የሚከናወነውን የነዳጅ ማጓጓዣ ስራን በሚመለከት ማንኛውንም ዓይነት ግብሮችን ሁሉ፣ የመንገድ ይለፍ ቀረጦችን የመክፈልና የደህንነትና የክብደት ደንቦች እያንዳንዱ አውቶቦቴ ማሟላቱን ትራንስፖርተሩ ማረጋገጥ አለበት፡፡</p>
+                                                            <h3 style="font-size: 24px;">አንቀፅ አስራ አንድ</h3>
+                                                            <h3 style="font-size: 24px;">የጥራት ፣ ቁጥጥርና የደህንነት ደንቦች</h3>
+                                                            
+                          <p class="no-gap" style="margin-left: 20px, font-size: 24px;">ትራንስፖርተሩ ከዚህ በታች የተዘረዘሩትን የጥራት ቁጥጥር ሥርዓቶችና የደህንነት ደንቦችን የማክበርና የመጠበቅ ግዴታ አለበት፡፡</p>
+                          <p style="margin-left: 20px; font-size: 24px;">11.1.	ነዳጅ በመጫን፣ በማጓጓዝና በማራገፍ ተግባር ላይ የተሰማሩ የአውቶቦቴ ታንኮች፣ ሼልቶች፣ ጋለሪ መስመሮች፣ የማራገፊያ ቱቦዎች/ሀዝስ/ የአውቶቦቴው የኤሌክትሪክ መስመሮችና ማናቸውም ሌሎች መሳሪያዎች የፀዱ፣ አስተማማኛና የማያፈሱ መሆናቸውን ትራንስፖርተሩ ያረጋግጣል፡፡</p>
+                          <p style="margin-left: 20px; font-size: 24px;">11.2.	ከላይ የተጠቀሱትን የማያሟሉ አውቶቦቴዎች በመጀመሪያ እንዲስተካከሉ ማስጠንቀቂያ ይሰጣቸዋል፣ አሟልተው ካልተገኙ ግን ኩባንያው ውሉን የማቋረጥ መብት አለው፡፡</p>
+                          <p style="margin-left: 20px; font-size: 24px;">11.3.	ነዳጅ በመጫን፣ በማጓጓዝና በማራገፍ ተግባር ላይ የተሰማሩ የትራንስፖርተሩ አውቶቦቴዎች በተደጋጋሚ ብልሽት የሚያጋጥማቸው ከሆነ ኩባንያው ምንም አይነት ቅድመ ማስጠንቀቂያ መስጠት ሳይጠበቅበት ውሉን ማቋረጥ ይችላል፡፡</p>
+                          <p style="margin-left: 20px; font-size: 24px;">11.4.	ነዳጅ በመጫን፣ በማጓጓዝና በማራገፍ ተግባር ላይ የተሰማራ አውቶቦቴ ለኩባንያው ወይም ለኩባንያው ደንበኞች ወይም ዴፖ ለማድረስ የተረከበውን ነዳጅ ጥራትና መጠን ጠብቆ የማስረከብ ኃላፊነት አለበት፡፡ ይህን ማረጋገጥ የትራንስፖርተሩ ድርሻ ነው፡፡ ራስን ለመጥቀም ወይም በሌላ ምክንያት ሆን ብሎ ነዳጅ መቀነስ ወይም መበከል ህገወጥ ድርጊት ነው፡፡ ይህን ህገወጥ ድርጊት ፈጽሞ የተገኘ አውቶቦቴ ያለምንም ቅድመ ማስጠንቀቂያ ከኩባንያው ጋር ያለው ውል ወዲያው ይቋርጣል፡፡ ድርጊቱም ወንጀል በመሆኑ ምክንያት ትራንስፖርተሩ በወንጀል ይጠየቃል፡፡ በኩባንያውም ሆነ በኩባንያው ደንበኛ ላይ በዚህ ድርጊት ምክንያት ለደረሰ ማንኛውም ጉዳት ኪሳራ ትራንስፖርተሩ ይከፍላል፡፡</p>
+                          <p style="margin-left: 20px; font-size: 24px;">11.5.	ማንኛውም የአውቶቦቴ ሹፌር የተጠቀሱትን መስፈርቶች ያሟላ መሆኑን፣ የደህንነትና የጥራት ቁጥጥር ስርዓቶችን ጠንቅቆ ማወቁን፤ ተግባራዊ ማድረጉን ፣ እንዲሁም አውቶቦቴው በትክክል ስለመስራቱ ተፈትሾ የተረጋገጠበትን ፣ ቀን የተጻፈበት የእሳት አደጋ መከላከያ መያዙን ትራንስፖርተሩ ያረጋግጣል፡፡</p>
+                                                            
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="page">
+              <div class="content" style="display: flex; flex-wrap: wrap;">
+                  <div style="margin-left: 60px; margin-right: 60px;">
+                        <div>
+                          <p style="margin-left: 20px; font-size: 24px;">11.6.	ከዚህ ውል ጋር አባሪ 2 ሆኖ የተያያዘውን ዝርዝር የፈሳሽ ጭነት ማመላለሻ ተሸከርካሪዎች የደህንነት መስፈርት/Safety features/ ትራንስፖርተሩ መሟላቱን ያረጋግጣል፡፡ተግባራዊም ያደርጋል፡፡</p>
+                                                          <h3 style="font-size: 24px;">አንቀፅ አስራ ሁለት</p>
+                                                          <h3 style="font-size: 24px;">ስለጉድለቶች</p>
+
+                          <p style="margin-left: 20px; font-size: 24px;">12.1.	ትራንስፖርተሩ ነዳጁን ከተረከበበት ጊዜ ጀምሮ በማራገፊያው ቦታ እስካራገፈበት ጊዜ ድርስ በቀረበው ነዳጅ ላይ በማንኛውም ምክንያቶች ለሚደርሰው ጉድለትና ብልሽት ትራንስፖርተሩ ሃላፊ ነው፡፡</p>
+                          <p style="margin-left: 20px; font-size: 24px;">12.2.	በአንቀጽ 12 ንዑስ አንቀጽ 1 መሰረት ለሚደርሰው ጉድለት ትራንስፖርተሩ ነዳጁን በሚያራግፍበት ቦታ ላይ ባለው የችርቻሮ ዋጋ ተመን ልክ ይከፍላል፡፡ ክፍያውም ከትራንስፖርት ሂሳብ ተቀናሽ ይሆናል፡፡ ይህ ጉድለት በተደጋጋሚ የሚከሰት ከሆነ ኩባንያው ከትራንስፖርተሩ ጋር የገባውን ውል ያለምንም ቅድመ ማስጠንቀቂያ ማቋረጥ ይችላል፡፡</p>
+                                                          <h3 style="font-size: 24px;">አንቀጽ አስራ ሶስት</h3>
+                                                          <h3 style="font-size: 24px;">ስለጉድለትና በአደጋ ጊዜ ለሚደርስ የነዳጅ ኪሳራ ካሳ ስለመክፈል/ኢንሹራንስ/</h3>
+
+                          <p style="margin-left: 20px; font-size: 24px;">13.1.	ትራንስፖርተሩ የሚያጓጉዘውን ነዳጅ አስመልክቶ ተገቢውን የመድን ዋስትና በኩባንያው ስም ይገባል፡፡ የገባውንም የመድህን ዋስትና ኮፒውን ለኩባንያው ያስረክባል፡፡ወቅቱንም እየጠበቀ ያሳድሳል፡፡</p>
+                          <p style="margin-left: 20px; font-size: 24px;">13.2.	ትራንስፖርተሩ አደጋው በደረሰ በዕለቱ የመድህን ዋስትና ለገባበት ድርጅት እና ለኩባንያ ወዲያውኑ ማሳወቅ አለበት፡፡</p>
+                          <p style="margin-left: 20px; font-size: 24px;">13.3	የትራንስፖርተሩ አውቶቦቴ ላይ አደጋ ደርሶ ወይም አውቶቦቴው አደጋ አድርሶ በዚህ መንስኤ ለሚመጣው የሶስተኛ ወገን የጉዳት ጥያቄ ትራንስፖርተሩ ኃላፊነትን ይወስዳል፡፡</p>
+                          <p style="margin-left: 20px; font-size: 24px;">13.4	የትራንስፖርተሩ አውቶ ቦቴ ሾፌር የተረከበውን ነዳጅ ሙሉ በሙሉ ወይም በከፊል በማንኛውም ምክንያት በተፈለገው ቦታ ሳያደርስ ቢቀር ለጠፋው ወይም ለጎደለው ነዳጅ ትራንስፖርተሩ ኃላፊነት ይወስዳል፡፡ ኩባንያውም የጠፋውን ወይም የጎደለውን የነዳጅ ሂሳብ ከትራንስፖርተሩ /ከኩባንያው ከሚገያገኘው/ ያልተከፈለ ሂሳብ ላይ ቀንሶ ይወስዳል፡፡ ሆኖም ሂሳቡ በቂ ካልሆነ ኩባንያው ትርንስፖርተሩን በህግ ይጠይቃል፡፡</P>
+                                                          <h3 style="font-size: 24px;">አንቀጽ አስራ አራት</h3>
+                                                          <h3 style="font-size: 24px;">ስለነዳጅ ማጓጓዣ የዋጋ ተመን</h3>
+                          <p style="margin-left: 20px; font-size: 24px;">14.1.	ከዚህ ውል ጋር አባሪ 1 ሆኖ በተያያዘው ሰንጠረዥ መሰረት ትራንስፖርተሩ ለሰጠው የማጓጓዣ አገልግሎት ኩባንያው ለመክፈል ተስማምቷል፡፡ በመንግስት ውሳኔ መሰረት የነዳጅ ማጓጓዣ ተመን ቢለወጥ አዲሱ ተመን ተግባራዊ ይሆናል፡፡</p>
+                          <p style="margin-left: 20px; font-size: 24px;">14.2.	ኩባንያው ባለተሳቢ/ቢሊኮ/ አውቶቦቴ ወይም ሼልቶ ብቻ በማዘዝ ነዳጅ ለመጫን ይችላል፡፡ የማጓጓዣውንም ዋጋ በእያንዳንዱ አውቶቦቴ የዋጋ ዝርዝር ተመን መሰረት ይከፍላል፡፡ ትዕዛዙ የሼልቶ ከሆነና በሼልቶው ብቻ ነዳጅ ያዘዘ እንደሆነ በሼልቶ የዋጋ ተመን መሰረት የማጓጓዣውን ዋጋ ይከፍላል፡፡ ነገር ግን ኩባንያው ከነተሳቢው ጠይቆ ትራንስፖርተሩ መኪና ከነተሳቢው ማቅረብ አቅቶት ሼልቶ የላከ እንደሆነ በጫነው ሼልቶ ታሪፍ ይከፍላል፡፡</p>
+                          <p style="margin-left: 20px; font-size: 24px;">14.3.	አንድ አውቶቦቴ ነዳጅን በማራገፊያው ቦታ ካደረሰ ወይም ከማድረሱ በፊት እንደጫነ እንዲመለስ ኩባንያው ትዕዛዝ ያስተላለፈ እንደሆነ ለተመለሰበት በተመኑ መሰረት ኩባንያው የማጓጓዣ ዋጋ ይከፍላል፡፡</p>
+                          <p style="margin-left: 20px; font-size: 24px;">14.4.	ለትራንስፖርተሩ የማጓጓዣ ዋጋ የሚሰላው አውቶቦቴ ነዳጅ በጫነበት ቦታ ፤ ቀን እንዲሁም በጫነው የነዳጅ መጠን መሰረት ነው፡፡</p>
+                          <p style="margin-left: 20px; font-size: 24px;">14.5.	ኩባንያው የተሟላ የርክክብ ሰነድ ሲደርሰው የማስጫኛ ክፍያን በተመለከተ ትራንስፖርተሩ ባቀረበው የሂሳብ መጠየቂያ ሰነድ መሰረት በ 15(አሥራ አምስት) ተከታታይ ቀናት ውስጥ ይከፍላል፡፡</p>
+                                                          
+
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+
+          <div class="page">
+            <div class="content" style="display: flex; flex-wrap: wrap;">
+                <div style="margin-left: 60px; margin-right: 60px;">
+                    <div style="font-family: Arial, sans-serif; line-height: 1.5; text-align: justify;">
+                                          <h3 style="font-size: 24px;">አንቀፅ አስራ አምስት</h3>
+                                          <h3 style="font-size: 24px;">ተጨማሪ ውል </h3>
+                      <p class="no-gap" style="margin-left: 20px, font-size: 24px;">ከጅቡቲ ፣ ከሱዳን ወይም በኢትዮጵያ ውስጥ ከሚገኙ የነዳጅ መጫኛ ዴፖዎች ውጭ ኩባንያው ነዳጅ ማስጫን ከፈለገ በትራንስፖርተሩ 
+                      እና በኩባንያው መካከል የተለየ ድርድር ተደርጎ አስፈላጊውን መፈጸም ይቻላል፡፡</p>
+                                          <h3>አንቀፅ አስራ ስድስት</h3>
+                                          <h3>ከአቅም በላይ የሆነ ምክንያት</h3>
+                      <p style="margin-left: 20px; font-size: 24px;">16.1.	የኢትዮጵያ ፍ/ብሄር ህግ ስለ ከአቅም በላይ በደነገገው መሰረት ከአቅም በላይ በሆነ ምክንያት የዚህን ውል ድንጋጌ በማንኛውም ጊዜ ሳይፈፀምሙ ቢቀርሩ ሁለቱም ተዋዋይ ወገኖች በኃላፊነት አይጠየቁም፡፡</p>
+                      <p style="margin-left: 20px; font-size: 24px;">16.2.	ለኩባንያው ከአቅም በላይ የሆነ ሀይል ማለት ከኩባንያው ቁጥጥር ውጭ የሆኑ ምክንያቶች ወይም በፌደራል መንግስት ፣ በክልል መንግስት በሚወጡ ማናቸውም መመሪያ ወይም ትዕዛዞች ፣ ከወደብ ጋር በተያያዘ ፣ ከመጓጓዣ ጋር በተያያዘ ፣ ከተማ አስተዳደር ጋር በተያያዘ ፣ በፖሊስ ወይም በሌላ ህጋዊ ስልጣን ትዕዛዞችን ወይም ጥያቄዎችን ለማሟላት ወይም ማከፋፈያ ማቅረቢያ በቂ ሆኖ ባለመገኘቱ ወይም በመቋረጡ በስራ ማቆም አድማ መዝጋት የሰራተኛ ወይም የተቀጣሪ ችግሮች ወይም የዚሁ ስጋት የእሳት አደጋ፣ የተፈጥሮ ሀይል፣ ድንገተኛ አደጋ የአየር ንብረት ሁኔታ ወይም ከዚህ በላይ ከተገለፁት ሁኔታዎች የሚመሳሰል ወይም የማይመሳሰል ቢሆንም ከኩባንያው ቀጥተኛ ቁጥጥር ውጪ የሆነ ምክንያት ይጨምራል፡፡</p>
+                      <p style="margin-left: 20px; font-size: 24px;">16.3.	ኩባንያው ከአቅም በላይ ሁኔታ ሲገጥመው ስለሁኔታው ለትራንስፖርተሩ በጽሑፍ በመግለፅ ከአቅም በላይ የሆነው ሁኔታ ለሚቆይበት ጊዜ ይህን ውል ለማቋረጥ ወይም ለመቀነስ ይችላል፡፡</p>
+                      <p class="no-gap" style="margin-left: 20px, font-size: 24px;">ከጅቡቲ ፣ ከሱዳን ወይም በኢትዮጵያ ውስጥ ከሚገኙ የነዳጅ መጫኛ ዴፖዎች ውጭ ኩባንያው ነዳጅ ማስጫን ከፈለገ በትራንስፖርተሩ 
+                                          <h3 style="font-size: 24px;">አንቀጽ አስራ ሰባት</h3>
+                                          <h3 style="font-size: 24px;">ስለማስታወቂያዎች</h3>
+
+                      <p class="no-gap" style="margin-left: 20px, font-size: 24px;"> በዚህ ውል መሰረት ማስታወቂያዎች /ማስጠንቀቂያዎች/ በበቂ ሁኔታ እንደተሰጠ የሚቆጠረው ማስታወቂያውን / ማስጠንቀቂያው/ ለትራንስፖርተሩ በግል ወይም በዚህ ውል 
+                      በተገለፀው አድራሻው ሲላክ ወይንም ለትራንስፖተሩ የአውቶቦቴ ሹፌር ሲደርስ ይሆናል፡፡</p>
+                                          <h3 style="font-size: 24px;">አንቀጽ አስራ ስምንት</h3>
+                                          <h3 style="font-size: 24px;">ውሉ ጸንቶ ስለሚቆይበት ጊዜ ፣ ስለሚታደስበት እና የሚቋረጥበት ሁኔታ</h3>
+                      <p style="margin-left: 20px; font-size: 24px;">18.1	ይህ ውል በተዋዋይ ወገኖች ከተፈረመ ከዛሬ {{transport.date_year}} ዓ.ም ጀምሮ ለ {{transport.contract_length}} ዓመታት በመካከላችን አስገዳጅና በህግ ፊትም የጸና ሆኖ ይቆያል፡፡</p>
+                      <p style="margin-left: 20px; font-size: 24px;">18.2	ከላይ በአንቀጽ 18.1 የተቀመጠው የውል ጊዜ አብቅቶ ተዋዋይ ወገኖች የውል ጊዜው እንዲራዘም ወይም እንዲቋረጥ ቢፈልጉ የውል ጊዜ ከማለቁ ከሁለት ወር በፊት በጽሁፍ መግለጽ አለባቸው፡፡ 
+                      ይህ ሳይሆን ቢቀርና ወይም በዝምታ የውሉ ጊዜ ቢያልፍ ኩባንያው በግልፅ እስከሚያቋርጠው ጊዜ ድረስ የውሉ ስምምነቱ በፈቃዳቸው እንደተራዘመ ይቆጠራል፡፡</p>
+                                          <h3 style="font-size: 24px;">አንቀጽ አስራ ዘጠኝ</h3>
+                                          <h3 style="font-size: 24px;">አግባብ ስላለው ህግና ስልጣን ስላለው ፍርድ ቤት</h3>
+                      <p class="no-gap" style="margin-left: 20px, font-size: 24px;">ይህ ስምምነት በኢትዮጵያ ህግ መሰረት ይተረጎማል፡፡ በተዋዋይ ወገኖች መካከል የሚነሳ ማንኛውም አለመግባባት አዲስ አበባ ውስጥ በሚገኝ የፌደራል ፍርድ ቤቶችይቀርባል፡፡</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        
+  <div class="page">
+    <div class="content" style="display: flex; flex-wrap: wrap;">
+        <div style="margin-left: 60px; margin-right: 60px;">
+            <div style="font-family: Arial, sans-serif; line-height: 1.5; text-align: justify;">
+              <h3 style="font-size: 24px;"><strong>አንቀፅ ሃያ</strong></h3>
+              <h3 style="font-size: 24px;"><strong>የፊርማ ሥነስርዓት</strong></h3>
+              <p style="font-size: 24px;"><strong>35. ተዋዋይ ወገኖች</strong></p>
+              <p style="margin-left: 20px; font-size: 24px;">በኩባንያው በኩል ዋና ሥራ አስኪያጁ እና ይህን ውል እንዲያፀድቁ ስልጣን የተሰጣቸው የኩባንያው ዋና ኦዲተር እና የአስተዳደር እና የፋይናንስ ዳይሬክተሩ 
+              ይህንን ውል ፈቅደውና ወደው መስማማታቸውን በፊርማቸንና የኩባንያውን ማህተም ቀጥሎ በማተም አረጋግጠዋል፡፡
+              በትራንስፖርተሩ በኩል ዋና ስራ አስኪያጁ {{transport.title}} {{transport.transporter_name}}ይህንን ውል ወደው እና ፈቅደው መስማማታቸውን በፊርማቸው አረጋግጠዋል፡፡
+              
+                              <div class="d-flex justify-content-between">
+                                  <div class="text-left">
+                                      <p style="font-size: 24px;" class="text-center"><strong>ስለ ኩባንያው</strong></p>
+                                      <p style="font-size: 24px;" class="text-left line-break">{{transport.yekubanya_title}} {{ transport.yekubanya_tewekay  }}</p>
+                                      <p style="font-size: 24px;" class="text-left line-break">የስራ ሃላፊነት: {{ transport.yekubanya_tewekay_position }}</p>
+                                      <p style="font-size: 24px;" class="text-left line-break">ፌርማ: -----------------</p>
+                                      <p style="font-size: 24px;" class="text-left line-break">ቀን: {{ transport.wil_ken }}</p>
+                                  </div>
+                                  <div class="text-right">
+                                      <p style="font-size: 24px;" class="text-center"><strong>ስለ ትራንስፖርተሩ</strong></p>
+                                      <p style="font-size: 24px;" class="text-left line-break">ስም: {{transport.title}} {{ transport.transporter_tewekay }}</p>
+                                      <p style="font-size: 24px;" class="text-left line-break">የስራ ሃላፊነት: {{ transport.transporter_tewekay_postion }}</p>
+                                      <p style="font-size: 24px;" class="text-left line-break">ፌርማ: -----------------</p>
+                                      <p style="font-size: 24px;" class="text-left line-break">ቀን: {{ transport.wil_ken }}</p>
+                                  </div>
+                                
+                              </div><br>
+
+                              <div class="text-center">
+                                  <p style="font-size: 24px;"><strong>ምስክሮች</strong></p>
+                              </div>
+                              <div class="d-flex justify-content-between">
+                                  <div class="text-left">
+                                    <p style="font-size: 24px;"><strong>ስም</strong></p>
+                                    <p style="font-size: 24px;">1ኛ/ {{ transport.miskir1 }}</p>
+                                    <p style="font-size: 24px;">2ኛ/ {{ transport.miskir2 }}</p>
+                                  </div>
+                                  <div class="text-center">
+                                    <p style="font-size: 24px;"><strong>አድራሻ</strong></p>
+                                    <p style="font-size: 24px;">{{ transport.misikir1_address }} </p>
+                                    <p style="font-size: 24px;">{{ transport.misilir2_address }} </p>
+                                  </div>
+
+                                  <div class="text-center">
+                                    <p style="font-size: 24px;"><strong>የቤ.ቁ</strong></p>
+                                    <p style="font-size: 24px;">{{ transport.misikir1_house_no }} </p>
+                                    <p style="font-size: 24px;">{{ transport.misikir2_house_no }} </p>
+                                  </div>
+                                  <div class="text-right">
+                                    <p style="font-size: 24px;"><strong>ፌርማ</strong></p>
+                                    <p>---------------</p>
+                                    <p>--------------</p>
+                                  </div>
+                              </div>
+                          <p class="no-gap" style="margin-left: 20px, font-size: 24px;">እኛ ስማችን፤ አድራሻችንና ፊርማችን ከላይ የተመለከተው ምስክሮች ተዋዋይ ወገኖች ይህንን ውል ወደው እና ፈቅደው ሲዋዋሉ ማየታችንን በእማኝነት እናረጋግጣለን፡፡</p>
+                                                            
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      <br>
+      </div>
+      <div><br>
+        <button onclick="window.print()" class="btn btn-primary noprint">Click to Preview</button>
+      </div><br><br>
+    </div>
+</body>
+</html>

@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Contract, Delier, Deal, Petroleum
+from .models import Contract, Delier, Deal, Petroleum, Transport
 from decimal import Decimal, InvalidOperation
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
@@ -102,3 +102,19 @@ def petroleum_preview(request, petroleum_id):
 def petroleum_print(request, petroleum_id):
     petroleum = get_object_or_404(Petroleum, pk=petroleum_id)
     return render(request, 'petroleum_print.html', {'petroleum': petroleum})
+
+
+
+
+def transport_form(request):
+    if request.method == 'POST':
+        transport = request.POST.dict()
+        transport.pop('csrfmiddlewaretoken', None)
+        transport = Transport(**transport)
+        transport.save()
+        return redirect('transport_preview', transport_id=transport.id)
+    return render(request, 'transport_form.html')
+
+def transport_preview(request, transport_id):
+    transport = get_object_or_404(Petroleum,  pk=transport_id)
+    return render(request, 'transport_preview.html', {'transport': transport})
