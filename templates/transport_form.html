@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Contract Form</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        @media print {
+            .noprint {
+                display: none;
+            }
+        }
+
+        body {
+            margin-top: 100px;
+            margin-bottom: 100px;
+        }
+    
+        . form-container {
+            margin-top: 20px;
+            padding: 10px;
+            {% comment %} border: 1px solid #ccc; {% endcomment %}
+        }
+    
+        .section-container {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    
+        pre {
+            font-size: 16px;
+            font-family: Arial, sans-serif;
+            line-height: 1.5;
+            margin: 0; /* Added to remove margin around paragraphs */
+        }
+    
+        h2, h3, h4 {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            text-decoration: underline;
+        }
+        .timer {
+            text-align: right;
+            margin-top: 40px;
+            margin-right: 60;
+        }
+    
+        .page {
+            page-break-after: always;
+            padding: 0; /* Updated to remove padding */
+            border: none;
+        }
+    
+        .page:first-child {
+            padding-top: 0;
+        }
+    
+        .page:last-child {
+            padding-bottom: 0;
+        }
+    
+        .content {
+            display: flex; /* Added to distribute paragraphs horizontally */
+            flex-wrap: wrap;/* Added to wrap paragraphs to new lines */
+            display: flex;
+            margin-top: 20px;    /* Add margin to the top */
+            margin-bottom: 20px;
+        }
+    
+        .content > div {
+            flex-basis: 100%; /* Added to make each div take full width */
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 20px;    /* Add margin to the top */
+            margin-bottom: 20px;
+        }
+
+        .line-break {
+            margin-bottom: 0.2em; /* Adjust the value to control the spacing */
+          }
+        .text-right {
+            text-align: right;
+            padding-left: 0;
+            margin-bottom: 0;
+        }
+        .page {
+            display: none;
+        }
+    </style>  
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <form method="POST" action="{% url 'contract_form' %}">
+                {% csrf_token %}
+                <h1 class="text-center">ትራንስፖርተር ፎርም</h1>
+                    <div class="col-md-6">
+                        <div class="section-container">
+                            <h3 class="text-center">ትራንስፖርተር ፎርም</h3>
+                            <div class="form-group">
+                                <label for="transporter_name">የትራንስፖርተሩ ስም</label>
+                                <input type="text" class="form-control" name="transporter_name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="transport.title">የትራንስፖርተሩ መአርግ</label>
+                                <input type="text" class="form-control" name="transport.title" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="adrasha">አድራሻ</label>
+                                <input type="text" class="form-control" name="adrasha" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="ketema">ከተማ</label>
+                                <input type="text" class="form-control" name="ketema" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="wereda">ወረዳ</label>
+                                <input type="text" class="form-control" name="wereda" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="yebet_kutr">የቤ.ቁ</label>
+                                <input type="text" class="form-control" name="yebet_kutr" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="silk_kutr">ስ.ቁ</label>
+                                <input type="text" class="form-control" name="silk_kutr" required>
+                            </div>
+
+                            <div class="form-group">
+                              <label for="wil_ken">የውል ቀን</label>
+                              <input type="text" class="form-control" name="wil_ken" required>
+                          </div>
+                            
+                            <!-- Add more fields for section 2 -->
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="section-container">
+                            <h3 class="text-center">ምስክር ፎርም</h3>
+                            <div class="form-group">
+                                <label for="companyname">የ1ኛ ምስክር ስም</label>
+                                <input type="text" class="form-control" name="wname" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="companyname">የ1ኛ ምስክር አድራሻ</label>
+                                <input type="text" class="form-control" name="waddress" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="companyname">የ2ኛ ምስክር ስም</label>
+                                <input type="text" class="form-control" name="wname1" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="waddress1">የ2ኛ ምስክር አድራሻ</label>
+                                <input type="text" class="form-control" name="waddress1" required>
+                            </div>
+                            <!-- Add more fields for witness form -->
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="section-container">
+                            <h3 class="text-center">የትራንስፖርተሩ ተወካይ ፎርም</h3>
+
+                            <div class="form-group">
+                              <label for="title">መአርግ</label>
+                              <input type="text" class="form-control" name="title" required>
+                          </div>
+                            <div class="form-group">
+                                <label for="transporter_tewekay">የትራንስፖርተሩ ተወካይ ስም</label>
+                                <input type="text" class="form-control" name="transporter_tewekay" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="transporter_tewekay_postion ">የስራ ሃላፊነት</label>
+                                <input type="text" class="form-control" name="transporter_tewekay_postion " required>
+                            </div>
+                            <div class="form-group">
+                                <label for="wil_ken">የፌርማ ቀን</label>
+                                <input type="text" class="form-control" name="wil_ken" required>
+                            </div>
+                            <!-- Add more fields for buyer representative form -->
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="section-container">
+                            <h3 class="text-center">የኩባንያ ፎርም</h3>
+                            <div class="form-group">
+                              <label for="yekubanya_title">መአርግ</label>
+                              <input type="text" class="form-control" name="yekubanya_title" required>
+                          </div>
+                            <div class="form-group">
+                                <label for="yekubanya_tewekay">የኩባንያ ተወካይ ስም</label>
+                                <input type="text" class="form-control" name="yekubanya_tewekay" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="yekubanya_tewekay_position">የስራ ሃላፊነት</label>
+                                <input type="text" class="form-control" name="yekubanya_tewekay_position" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="wil_ken">የፌርማ ቀን</label>
+                                <input type="text" class="form-control" name="wil_ken" required>
+                            </div>
+                            
+                            <!-- Add more fields for buyer representative form -->
+                        </div>
+                    </div>
+                </div>
+                <!-- Hidden input fields -->
+                {% comment %} <div class="form-container"> {% endcomment %}
+                    {% comment %} <form method="POST" action="{% url 'contract_form' %}">
+                        {% csrf_token %}
+                    </form> {% endcomment %}
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
