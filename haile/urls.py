@@ -22,6 +22,6 @@ urlpatterns = [
     path('print_consumer/<int:petroleum_id>', views.petroleum_print, name='petroleum_print'),
 
     path('transport/', views.transport_form, name='transport_form'),
-    path('preview_transport/<int:petroleum_id>/', views.petroleum_preview, name='petroleum_preview'),
+    path('preview_transport/<int:transport_id>/', views.transport_preview, name='transport_preview'),
     
 ]
