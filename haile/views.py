@@ -116,5 +116,5 @@ def transport_form(request):
     return render(request, 'transport_form.html')
 
 def transport_preview(request, transport_id):
-    transport = get_object_or_404(Petroleum,  pk=transport_id)
+    transport = get_object_or_404(Transport,  pk=transport_id)
     return render(request, 'transport_preview.html', {'transport': transport})
