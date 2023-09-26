@@ -23,5 +23,8 @@ urlpatterns = [
 
     path('transport/', views.transport_form, name='transport_form'),
     path('preview_transport/<int:transport_id>/', views.transport_preview, name='transport_preview'),
+
+    path('search', views.search, name="search"),
     
 ]
+1199418087

@@ -36,6 +36,8 @@ class Contract(models.Model):
     shouse = models.CharField(max_length=50, default='')
     sroad = models.CharField(max_length=100, default='')
     spobox = models.CharField(max_length=25, default='')
+    print_count = models.PositiveIntegerField(default=0)
+
 
 
 

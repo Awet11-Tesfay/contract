@@ -3,6 +3,8 @@ from .models import Contract, Delier, Deal, Petroleum, Transport
 from decimal import Decimal, InvalidOperation
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
+from django.db.models import Q
 
 
 def contract_form(request):
@@ -22,6 +24,8 @@ def contract_preview(request, contract_id):
 
 def contract_print(request, contract_id):
     contract = get_object_or_404(Contract, pk=contract_id)
+    contract.print_count += 1
+    contract.save()
     return render(request, 'contract_print.html', {'contract': contract})
 
 
@@ -118,3 +122,23 @@ def transport_form(request):
 def transport_preview(request, transport_id):
     transport = get_object_or_404(Transport,  pk=transport_id)
     return render(request, 'transport_preview.html', {'transport': transport})
+
+
+
+
+def search(request):
+    query = request.GET.get('q', '')  # Get the search query from the URL, default to an empty string if not provided
+
+    contracts = Contract.objects.all()  # Start with all contracts
+
+    if query:
+        # If a query is provided, filter contracts based on companyname or signed_date
+        contracts = contracts.filter(
+            Q(companyname__icontains=query) | Q(buyerrepre_signe_date__icontains=query)
+        )
+
+    paginator = Paginator(contracts, 10)  # Show 10 results per page
+    page = request.GET.get('page')
+    contracts = paginator.get_page(page)
+
+    return render(request, 'search.html', {'contracts': contracts, 'query': query})
